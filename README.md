@@ -8,5 +8,5 @@ Hight perfomance. Sorting feature is in progress...
 
 ## Installing via Bower
 ```
-bower install object-table
+bower install angular-object-table
 ```
