@@ -16,18 +16,21 @@ bower install angular-object-table
 =================
 ```
 <link rel="stylesheet" type="text/css" href="{path to library}/build/object-table-style.css">
+
 <script type="text/javascript" src="{path to library}/build/object-table.js"></script>
+
 <!-- optional -->
 <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 ```
+
 Add HTML-markup :
 ```
 <table object-table 
-from-url="/example/fake-data.json" 
-data="exportDataVariable" 
-display="2" 
-headers="Name, Age" 
-fields="name, age"
+       from-url="http://some-url.com/getData" 
+       data="exportDataVariable" 
+       display="2" 
+       headers="Name, Age" 
+       fields="name, age"
 ></table>
 ```
 
@@ -36,7 +39,7 @@ fields="name, age"
 
 Here is a file list for possible attributes for stable version:
 
-Atribute Name        | Description
+Atribute             | Description
 ---------------------|----------------
 data                 | - data source (array of objects)
 fromUrl				 | - load data from external URL. Atribute 'data' or 'fromUrl' should be present
