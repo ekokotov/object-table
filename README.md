@@ -13,7 +13,7 @@ bower install angular-object-table
 ```
 
 ## Using
-=================
+
 ```
 <link rel="stylesheet" type="text/css" href="{path to library}/build/object-table-style.css">
 
@@ -35,7 +35,6 @@ Add HTML-markup :
 ```
 
 ## Atributes
-=================
 
 Here is a file list for possible attributes for stable version:
 
