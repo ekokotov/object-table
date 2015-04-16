@@ -22,6 +22,10 @@ bower install angular-object-table
 <!-- optional -->
 <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 ```
+Add dependency:
+```
+angular.module('yourModule', ['objectTable'])
+```
 
 Add HTML-markup :
 ```
