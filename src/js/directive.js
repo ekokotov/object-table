@@ -15,25 +15,32 @@ angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpol
 			//fromUrl:"@",
 			//headers:"@",
 			//fields:"@",
+			sortingType: "@sorting"
 
 		},
 		compile:function( tElement, tAttributes) {
 
 			//collect filters
-			var rowFilter = " | offset: currentPage:display |limitTo: display";
-			var paggingFilter = "";
+			var rowFilter = "",
+			    paggingFilter = "";
 
 			// additional user filters 
 			if(!!tAttributes.addFilter){
-				rowFilter = tAttributes.addFilter + rowFilter;
-				paggingFilter +=  tAttributes.addFilter;
+				rowFilter += tAttributes.addFilter;
 			};
 
-			//IS SEARCH allowed
-			if(typeof(tAttributes.search)=='undefined' || Boolean.valueOf(tAttributes.search)()){
-				rowFilter = "| filter:globalSearch" + rowFilter;
-				paggingFilter +=  "| filter:globalSearch";
+			//If SORTING allowed
+			if(typeof(tAttributes.sorting)!='undefined' && tAttributes.sorting!=="false"){
+				rowFilter += "| orderBy:sortingArray";
 			};
+
+			//If SEARCH allowed
+			if(typeof(tAttributes.search)=='undefined' || Boolean.valueOf(tAttributes.search)()){
+				rowFilter += "| filter:globalSearch";
+			};
+
+			paggingFilter = rowFilter;
+			rowFilter += " | offset: currentPage:display |limitTo: display";
 
 			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in data" + rowFilter);
 			//add pagging

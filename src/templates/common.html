@@ -1,23 +1,30 @@
 <div>
-<div class="form-group">
-<input type="text" ng-if="search" placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search">
 
-<div class="sorting-container" ng-if="sorting">
-		Sorting order: <span ng-repeat="sortField in sort.fields" class="sorting-badge">
-		<span class="fa" 
-		ng-class="{'fa-arrow-up':sort.reverse[$index],
-		'fa-arrow-down':!sort.reverse[$index]}" 
-		></span>
+<div class="col-sm-8 sorting-container" ng-if="sortingType">
+		Sorting order: <div ng-repeat="sortField in sort.fields" class="sorting-badge">
+		<span class="glyphicon " 
+		ng-class="{'glyphicon-chevron-up':sort.reverse[$index],
+		'glyphicon-chevron-down':!sort.reverse[$index]}" 
+		></span> 
+
 		{{::sortField}}
-		<span class="fa fa-remove sorting-close" ng-click="removeSorting()"></span>
-	</span>
+		<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span> 
+
+
+	</div>
 </div>
+
+<div class="form-group col-sm-4">
+<input type="text" ng-if="search" placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search">
 
 </div>
 	<table class="table table-responsive table-bordered">
 		<thead ng-if="headers.length" >
 			<tr>
-				<th ng-repeat="head in headers">{{::head}}</th>
+				<th ng-repeat="head in headers track by $index" 
+				    ng-click="changeSorting(head)"
+			        ng-class="headerIsSortedClass(head)"
+			        class="sortable">{{::head}}</th>
 			</tr>
 		</thead>
 
@@ -35,4 +42,12 @@
 
 <pagging ng-if="pagging" data-display="display"></pagging>
 
-</div>
+
+<!-- debug:
+<br>
+Sort: {{sort}}
+<br>
+Sorting Array: {{sortingArray}}
+<br>
+current Page : {{currentPage}}
+</div> -->

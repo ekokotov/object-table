@@ -1,5 +1,94 @@
+/*## Search */
 .search{
-	float:right;
-	width:250px;
-	margin:10px;
+	max-width:250px;
 }
+
+/*## Sorting */
+.sorting-badge{
+	background-color: white;
+	position: relative;
+	font-weight: 600;
+	font-size: 10px;
+	padding: 5px 5px 5px 10px;
+	display: inline-block;
+	border-radius: 4px;
+	margin-left: 5px;
+	color: rgb(51, 122, 183);
+	border: 1px solid rgba(12, 75, 140, 0.43);
+}
+.sorting-badge:hover{
+	background-color: rgb(51, 122, 183);
+	color: white;
+}
+
+.sorting-badge .close{
+	margin-left: 5px;
+	float: right;
+	font-size: 12px;
+	line-height: 1;
+	color: #000;
+	filter: alpha(opacity=20);
+	opacity: .2;
+}
+
+.sorting-badge:hover .close{
+	opacity:1;
+	cursor: pointer;
+	color: rgb(0, 38, 85);
+	text-shadow:none;
+}
+
+/*sorting icons*/
+.sorting-container{
+	margin: 10px 0;
+}
+th.sortable{
+	position: relative;
+}
+
+th.sortable:before {
+	margin-top: 2px;
+	border-bottom: 0;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	border-top: 4px solid #000;
+}
+
+th.sortable:before,th.sortable:after,
+.sorting-badge .up,.sorting-badge .down {
+	content: "";
+	border-width: 0 4px 4px;
+	border-style: solid;
+	border-color: #000 transparent;
+	visibility: visible;
+	right: 8px;
+	top: 50%;
+	position: absolute;
+	opacity: .3;
+	margin-top: -4px;
+}
+
+th.sortable:after,
+.sorting-badge .down {
+	margin-top: 5px;
+	border-bottom: 0;
+	border-width: 4px 4px 0 4px;
+}
+.sorting-badge .up,.sorting-badge .down{
+	margin-top: -2px;
+	margin-left: 2px; 
+}
+
+th.sortable:hover:after, th.sortable:hover:before{
+	opacity: 1;
+}
+
+th.sortable.table-sort-up:before,th.sortable.table-sort-down:after{
+	border-color: blue transparent;
+	opacity: 1;
+}
+
+
+/* th.sortable:not(.sort-asc):not(.table-sort-up):not(.table-sort-down):hover:before{
+	border-color: red transparent;
+} */

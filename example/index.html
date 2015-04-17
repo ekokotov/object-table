@@ -14,7 +14,6 @@
 <script type="text/javascript" src="../build/object-table.js"></script>
 <script type="text/javascript" src="example.js"></script>
 <body ng-app="test" ng-controller="gTableTest">
-
 <h2>Just headers</h2>
 
 <table object-table 
@@ -24,7 +23,7 @@ headers="Name, Age, Money"
 pagging="false" 
 search="false"
 ></table>
-####################################### 
+#######################################  
 
 <h2>Headers and properties</h2>
 
@@ -32,7 +31,8 @@ search="false"
 data="data" 
 display="10" 
 headers="Name, Age" 
-fields="name, age"
+fields="name, age" 
+sorting="simple"
 ></table>
 #######################################
 
@@ -45,7 +45,7 @@ display="2"
 headers="Name, Age" 
 fields="name, age"
 ></table>
-#######################################
+####################################### 
 
 <h2>External resource JUSt with headers</h2>
 
@@ -53,7 +53,9 @@ fields="name, age"
 from-url="/example/fake-data.json" 
 data="exportDataVariable" 
 display="10" 
-headers="Name, Age, money" 
+headers="Age, Money, Name" 
+fields="age,money,name" 
+sorting="compound"
 ></table>
 #######################################
 

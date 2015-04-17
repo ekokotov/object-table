@@ -1,5 +1,7 @@
-angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element', '$attrs','$http','$q', '$compile','$timeout', '$controller', '$filter',
-	function angTableCtrl($scope, $element, $attrs, $http, $q, $compile, $timeout, $controller, $filter) {
+angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element', '$attrs','$http', '$compile', '$controller',
+	function angTableCtrl($scope, $element, $attrs, $http, $compile, $controller, objectTableSortingCtrl) {
+
+		$controller('objectTableSortingCtrl', {$scope: $scope});
 
 		this.init = function(){
 			$scope.headers = [];
@@ -19,6 +21,11 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 				$attrs.fields.split(',').forEach(function(item){
 					$scope.fields.push( item.trim() );
 				});
+			}else{
+				// Compound sorting is allowed just with specified 'fields' attribute 
+				if("compound"===$attrs.sorting){
+					throw "Compound sorting is allowed just with specified 'fields' attribute !";
+				}
 			};
 
 			//INIT pagging
@@ -40,6 +47,11 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 
 			if(!!$attrs.display){
 				$scope.display = $attrs.display;
+			};
+
+			//Check Sorting
+			if(!$attrs.sorting){
+				$scope.sortingType = "simple";
 			};
 		};
 		
@@ -64,6 +76,5 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 		this.setCurrentPage = function(_currentPage){
 			$scope.currentPage = _currentPage
 		};
-
 
 	}]);
