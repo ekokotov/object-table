@@ -18,12 +18,14 @@
 <input type="text" ng-if="search" placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search">
 
 </div>
+
 <div class="clearfix"></div>
+
 	<table class="table table-responsive table-bordered">
 		<thead ng-if="headers.length" >
 			<tr>
 				<th ng-repeat="head in headers track by $index" 
-				    ng-click="changeSorting(head)"
+				    ng-click="sortBy(head)"
 			        ng-class="headerIsSortedClass(head)"
 			        class="sortable">{{::head}}</th>
 			</tr>
@@ -33,7 +35,7 @@
 
 			<tr id="rowTr"><!-- <= will inject ng-repeat -->
 				<!-- params: headers and all fields -->
-				<td ng-if="!fields.length" ng-repeat="(key, prop) in item track by key">{{prop}}</td>
+				<td ng-if="!fields.length" ng-repeat="(key, prop) in item">{{prop}}</td>
 				<!-- params: headers and fields -->
 				<td ng-if="fields.length" ng-repeat="field in fields">{{item[field]}}</td>
 			</tr>
@@ -44,7 +46,7 @@
 <pagging ng-if="pagging" data-display="display"></pagging>
 
 
-<!-- debug:
+ <!-- debug:
 <br>
 Sort: {{sort}}
 <br>

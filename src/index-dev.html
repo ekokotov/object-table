@@ -19,26 +19,18 @@
 
 <script type="text/javascript" src="../example/example.js"></script>
 <body ng-app="test" ng-controller="gTableTest">
-
-<h2>Just headers</h2>
-
-<table object-table 
-data="data" 
-display="3" 
-headers="Name, Age, Money" 
-pagging="false" 
-search="false"
-></table>
-#######################################  
+<div class="col-sm-12">
 
 <h2>Headers and properties</h2>
 
 <table object-table 
 data="data" 
 display="10" 
-headers="Name, Age" 
-fields="name, age" 
-sorting="simple"
+headers="Age, full Name" 
+fields="age,name" 
+pagging="false" 
+sorting="simple" 
+search="false"
 ></table>
 #######################################
 
@@ -49,7 +41,7 @@ from-url="/example/fake-data.json"
 data="exportDataVariable" 
 display="2" 
 headers="Name, Age" 
-fields="name, age"
+fields="name, age" 
 ></table>
 ####################################### 
 
@@ -71,6 +63,7 @@ sorting="compound"
 from-url="/example/fake-data.json" 
 data="exportDataVariable" 
 display="10" 
+fields="age,money,name" 
 >
 <thead style="background-color:yellow">
 	<tr>
@@ -134,11 +127,13 @@ display="10"
 	from-url="/example/fake-data.json" 
 	data="exportDataVariable" 
 	display="10" 
-	headers="age,money,name" 
+	headers="age,name,money" 
+	fields="age,name,money" 
 	add-filter="| filter:{'name':$owner.name} |filter:{'age':$owner.age} | filter:$owner.all" 
 	search="false"
 	></table>
 	<!-- ####################################### -->
 
+</div>
 </body>
 </html>

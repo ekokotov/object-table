@@ -42,15 +42,23 @@
 .sorting-container{
 	margin: 10px 0;
 }
+.table{
+	  color: gray;
+}
 .table thead>tr{
-	  background-color: rgba(103, 103, 103, 0.08);
+	  background-color: #e6f1f6;
+	    color: rgb(33, 101, 163);
 }
 .table>thead:first-child>tr:first-child>th{
 	border-bottom: 0;
 }
+.table>tbody>tr:hover{
+	background-color:rgba(103, 103, 103, 0.08);
+	color: black;
+	cursor: pointer;
+}
 .table th.sortable{
 	position: relative;
-	
 }
 
 .table th.sortable:before {

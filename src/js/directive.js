@@ -30,7 +30,7 @@ angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpol
 			};
 
 			//If SORTING allowed
-			if(typeof(tAttributes.sorting)!='undefined' && tAttributes.sorting!=="false"){
+			if(tAttributes.sorting!=="false"){
 				rowFilter += "| orderBy:sortingArray";
 			};
 
@@ -75,4 +75,4 @@ angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpol
             var offset = start* display;
             return input.slice(offset, offset + display);
         };
-    });
+    })
