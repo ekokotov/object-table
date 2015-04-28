@@ -25,7 +25,7 @@
 		<thead ng-if="headers.length" >
 			<tr>
 				<th ng-repeat="head in headers track by $index" 
-				    ng-click="sortBy(head)"
+				    ng-click="sortBy(fields[$index])"
 			        ng-class="headerIsSortedClass(head)"
 			        class="sortable">{{::head}}</th>
 			</tr>
@@ -46,11 +46,11 @@
 <pagging ng-if="pagging" data-display="display"></pagging>
 
 
- <!-- debug:
+ debug:
 <br>
 Sort: {{sort}}
 <br>
 Sorting Array: {{sortingArray}}
 <br>
 current Page : {{currentPage}}
-</div> -->
+</div> 

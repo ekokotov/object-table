@@ -67,9 +67,9 @@ fields="age,money,name"
 >
 <thead style="background-color:yellow">
 	<tr>
-		<th style="background-color: green">1</th>
-		<th style="background-color: red">Second</th>
-		<th style="background-color: gray">3</th>
+		<th style="background-color: rgb(206, 247, 206);" ng-click="sortBy('age')">1</th>
+		<th style="background-color: rgb(160, 231, 160);">Second</th>
+		<th style="background-color: rgb(120, 230, 120);">3</th>
 	</tr>
 </thead>
 </table>
@@ -82,12 +82,13 @@ from-url="/example/fake-data.json"
 data="exportDataVariable" 
 display="10" 
 headers="Name, Age, money" 
+fields="name,age,money"
 >
 <tbody style="background-color:yellow">
 	<tr>
-		<td style="background-color: green">{{::item.name}}</td>
-		<td style="background-color: red">{{::item.age}}</td>
-		<td style="background-color: gray">{{::item.money}}</td>
+		<td style="background-color: rgb(206, 247, 206);">{{::item.name}}</td>
+		<td style="background-color: rgb(160, 231, 160);">{{::item.age}}</td>
+		<td style="background-color: rgb(120, 230, 120);">{{::item.money}}</td>
 	</tr>
 </tbody>
 </table>
@@ -99,12 +100,13 @@ headers="Name, Age, money"
 data="data" 
 data="exportDataVariable" 
 display="10" 
+fields="name,age,money" 
 >
 <thead style="background-color:yellow">
 	<tr>
 		<th ng-click="$owner.test()" style="background-color: blue">1</th>
-		<th style="background-color: magenta">1</th>
-		<th style="background-color: gray">1</th>
+		<th style="background-color: magenta">2</th>
+		<th style="background-color: gray">3</th>
 	</tr>
 </thead>
 

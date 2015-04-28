@@ -17,16 +17,10 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 				};
 
 			// GET FIELDSnk
-			if(!!$attrs.fields){
-				$attrs.fields.split(',').forEach(function(item){
-					$scope.fields.push( item.trim() );
-				});
-			}else{
-				// Compound sorting is allowed just with specified 'fields' attribute 
-				if("compound"===$attrs.sorting){
-					throw "Compound sorting is allowed just with specified 'fields' attribute !";
-				}
-			};
+			if(!$attrs.fields) throw "Sorting is allowed just with specified 'fields' attribute !";
+			$attrs.fields.split(',').forEach(function(item){
+				$scope.fields.push( item.trim() );
+			});
 
 			//INIT pagging
 			$scope.pagging = true;
