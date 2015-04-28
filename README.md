@@ -51,5 +51,5 @@ display     		 | *default: 5* - Display count. Using with pagging is displayed i
 search               | *default: true* - Display search input 
 pagging				 | *default: true* - Use pagging to present data
 headers              | *required* - Example: ['HeaderName1','HeaderName2']. - Array of table header names
-fields  			 | *optional* Example: ['property1','property2'].  - Array of displayed properties of object. This option allows you to display only certain fields of the object. Number of fields must be equal number of headers. *required* if you are using 'compound' sorting.
+fields  			 | *required* - Example: ['property1','property2'].  - Array of displayed properties of object. This option allows you to display only certain fields of the object. Number of fields must be equal number of headers.
 sorting				 | *default: simple*. Use sorting feature. 'simple' - by single column. 'compound' - order by multiple fields.
