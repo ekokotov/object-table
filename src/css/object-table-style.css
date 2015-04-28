@@ -42,49 +42,50 @@
 .sorting-container{
 	margin: 10px 0;
 }
-th.sortable{
-	position: relative;
+.table thead>tr{
+	  background-color: rgba(103, 103, 103, 0.08);
 }
-
-th.sortable:before {
-	margin-top: 2px;
+.table>thead:first-child>tr:first-child>th{
 	border-bottom: 0;
-	border-left: 4px solid transparent;
-	border-right: 4px solid transparent;
-	border-top: 4px solid #000;
+}
+.table th.sortable{
+	position: relative;
+	
 }
 
-th.sortable:before,th.sortable:after,
+.table th.sortable:before {
+	margin-top: 2px;
+}
+
+.table th.sortable:before,th.sortable:after,
 .sorting-badge .up,.sorting-badge .down {
-	content: "";
-	border-width: 0 4px 4px;
-	border-style: solid;
-	border-color: #000 transparent;
+	font-size: 9px;
+	font-family: 'Glyphicons Halflings';
+	content: "\e113";
 	visibility: visible;
 	right: 8px;
-	top: 50%;
+	top: 40%;
 	position: absolute;
-	opacity: .3;
+	opacity: .25;
 	margin-top: -4px;
 }
 
-th.sortable:after,
+.table th.sortable:after,
 .sorting-badge .down {
 	margin-top: 5px;
-	border-bottom: 0;
-	border-width: 4px 4px 0 4px;
+	content: "\e114";
 }
 .sorting-badge .up,.sorting-badge .down{
 	margin-top: -2px;
 	margin-left: 2px; 
 }
 
-th.sortable:hover:after, th.sortable:hover:before{
+.table th.sortable:hover:not(.table-sort-up):not(.table-sort-down):after,
+.table th.sortable:hover:not(.table-sort-up):not(.table-sort-down):before{
 	opacity: 1;
 }
 
-th.sortable.table-sort-up:before,th.sortable.table-sort-down:after{
-	border-color: blue transparent;
+.table th.sortable.table-sort-up:before,th.sortable.table-sort-down:after{
 	opacity: 1;
 }
 
