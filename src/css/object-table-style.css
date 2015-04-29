@@ -43,11 +43,18 @@
 	margin: 10px 0;
 }
 .table{
-	  color: gray;
+	color: gray;
 }
 .table thead>tr{
-	  background-color: #e6f1f6;
-	    color: rgb(33, 101, 163);
+	background-color: #e6f1f6;
+	color: rgb(33, 101, 163);
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 .table>thead:first-child>tr:first-child>th{
 	border-bottom: 0;

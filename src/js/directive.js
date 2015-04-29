@@ -10,12 +10,12 @@ angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpol
 		scope:{
 			data:"=",
 			display:"@",
-			//search:"@"
-			//pagging:"@"
-			//fromUrl:"@",
+			pagging:"=?",
+			fromUrl:"@",
+			//search:"@?",
 			//headers:"@",
 			//fields:"@",
-			sortingType: "@sorting"
+			sortingType: "@?sorting"
 
 		},
 		compile:function( tElement, tAttributes) {
@@ -35,7 +35,15 @@ angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpol
 			};
 
 			//If SEARCH allowed
-			if(typeof(tAttributes.search)=='undefined' || Boolean.valueOf(tAttributes.search)()){
+			if(tAttributes.search =="separate"){
+				//var fields = [];
+				tAttributes.fields.split(',').forEach(function(item,index){
+				//fields.push( item.trim() );
+				rowFilter += "| filter:{'" +item.trim()+ "':columnSearch[" +index+ "]}";
+			});
+
+				
+			}else if(typeof(tAttributes.search)=='undefined' || tAttributes.search=="true"){
 				rowFilter += "| filter:globalSearch";
 			};
 
@@ -66,13 +74,4 @@ angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpol
 
 	}
 
-}]).filter('offset', function() {
-	return function(input, start, display) {
-		if (!input) return;
-		start = parseInt(start, 10);
-            //if (start == 1) return input.slice(0, display);
-            display = parseInt(display, 10);
-            var offset = start* display;
-            return input.slice(offset, offset + display);
-        };
-    })
+}]);

@@ -27,7 +27,7 @@ angular.module('objectTable').controller('paggingTableCtrl', ['$scope', '$elemen
 		};
 
 		$scope.pageCount = function() {
-				return $scope.count>0 ?Math.ceil($scope.count/$scope.display)-1: 0;
+			return $scope.count>0 ?Math.ceil($scope.count/$scope.display)-1: 0;
 		};
 
 		$scope.nextPageDisabled = function() {
@@ -41,7 +41,7 @@ angular.module('objectTable').controller('paggingTableCtrl', ['$scope', '$elemen
 
 		
 		$scope.range = function() {
-		var rangeSize = $scope.pageCount()+1 <5 ?$scope.pageCount()+1 :5;
+			var rangeSize = $scope.pageCount()+1 <5 ?$scope.pageCount()+1 :5;
 			
 			var ret = [];
 			var start = $scope.currentPage;

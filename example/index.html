@@ -16,7 +16,8 @@
 <body ng-app="test" ng-controller="gTableTest">
 <div class="col-sm-12">
 
-<h2>Headers and properties</h2>
+
+<h2>Bacis</h2>
 
 <table object-table 
 data="data" 
@@ -28,6 +29,28 @@ sorting="simple"
 search="false"
 ></table>
 #######################################
+
+<h2>Compound sorting</h2>
+
+<table object-table 
+data="data" 
+headers="Full Name,Money, Age" 
+fields="name,money,age" 
+pagging="false" 
+sorting="compound" 
+></table>
+#######################################
+
+<h2>Separate Search</h2>
+
+<table object-table 
+data="data" 
+headers="Age, full Name" 
+fields="age,name" 
+search="separate"
+></table>
+#######################################
+
 
 <h2>External resource</h2>
 
@@ -52,7 +75,7 @@ sorting="compound"
 ></table>
 #######################################
 
-<h2>Headers pattern</h2>
+<!-- <h2>Headers pattern</h2>
 
 <table object-table 
 from-url="/example/fake-data.json" 
@@ -68,7 +91,7 @@ fields="age,money,name"
 	</tr>
 </thead>
 </table>
-#######################################
+####################################### -->
 
 <h2>ROWs pattern</h2>
 
@@ -89,7 +112,7 @@ fields="name,age,money"
 </table>
 #######################################
 
-<h2>ROWs and headers pattern</h2>
+<!-- <h2>ROWs and headers pattern</h2>
 
 <table object-table 
 data="data" 
@@ -113,7 +136,7 @@ fields="name,age,money"
 	</tr>
 </tbody>
 </table>
-#######################################  
+#######################################   -->
 
 <h2>External resource + additionalFilter</h2>
 	<input type="text" ng-model="name" placeholder="name">

@@ -1,33 +1,40 @@
 <div>
 
-<div class="col-sm-8 sorting-container" ng-if="sortingType">
-		Sorting order: <div ng-repeat="sortField in sort.fields" class="sorting-badge">
-		<span class="glyphicon " 
-		ng-class="{'glyphicon-chevron-down':sort.reverse[$index],
-		'glyphicon-chevron-up':!sort.reverse[$index]}" 
-		></span> 
+	<div class="col-sm-8 sorting-container" ng-if="sortingType">
+		Sorting order: 
+		<div ng-repeat="sortField in sort.fields" class="sorting-badge">
+			<span class="glyphicon " 
+			ng-class="{'glyphicon-chevron-down':sort.reverse[$index],
+			'glyphicon-chevron-up':!sort.reverse[$index]}" 
+			></span> 
 
-		{{::sortField}}
-		<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span> 
-
-
+			{{::sortField}}
+			<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span> 
+		</div>
 	</div>
-</div>
 
-<div class="form-group col-sm-4">
-<input type="text" ng-if="search" placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search">
+	<div class="form-group col-sm-4" ng-if="search && search!=='separate'">
+		<input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search">
+	</div>
 
-</div>
-
-<div class="clearfix"></div>
+	<div class="clearfix"></div>
 
 	<table class="table table-responsive table-bordered">
 		<thead ng-if="headers.length" >
 			<tr>
 				<th ng-repeat="head in headers track by $index" 
-				    ng-click="sortBy(fields[$index])"
-			        ng-class="headerIsSortedClass(head)"
-			        class="sortable">{{::head}}</th>
+				ng-click="sortBy(fields[$index])"
+				ng-class="headerIsSortedClass(head)"
+				class="sortable">{{::head}}
+			</th>
+			</tr>
+		</thead>
+
+		<thead ng-if="headers.length && search==='separate'" >
+			<tr>
+				<th ng-repeat="head in headers track by $index">
+				<input type="text" ng-model="columnSearch[$index]" placeholder="Search {{::head}}..." class="form-control">
+			</th>
 			</tr>
 		</thead>
 
@@ -43,14 +50,14 @@
 		</tbody>
 	</table>
 
-<pagging ng-if="pagging" data-display="display"></pagging>
+	<pagging ng-if="pagging" data-display="display"></pagging>
 
 
- debug:
+<!-- debug:
 <br>
 Sort: {{sort}}
 <br>
 Sorting Array: {{sortingArray}}
 <br>
 current Page : {{currentPage}}
-</div> 
+</div> -->
