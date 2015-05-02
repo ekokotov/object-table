@@ -17,69 +17,93 @@
 <body ng-app="test" ng-controller="gTableTest">
 <div class="col-sm-12">
 
+		<h2>Bacis</h2>
 
-<h2>Bacis</h2>
+		<table object-table 
+		data="data" 
+		display="10" 
+		headers="Age, full Name" 
+		fields="age,name" 
+		pagging="false" 
+		sorting="simple" 
+		search="false"
+		></table>
+		#######################################
 
-<table object-table 
-data="data" 
-display="10" 
-headers="Age, full Name" 
-fields="age,name" 
-pagging="false" 
-sorting="simple" 
-search="false"
-></table>
-#######################################
+		<h2>Compound sorting</h2>
 
-<h2>Compound sorting</h2>
+		<table object-table 
+		data="data" 
+		headers="Full Name,Money, Age" 
+		fields="name,money,age" 
+		pagging="false" 
+		sorting="compound" 
+		></table>
+		#######################################
 
-<table object-table 
-data="data" 
-headers="Full Name,Money, Age" 
-fields="name,money,age" 
-pagging="false" 
-sorting="compound" 
-></table>
-#######################################
+		<h2>Separate Search</h2>
 
-<h2>Separate Search</h2>
-
-<table object-table 
-data="data" 
-headers="Age, full Name" 
-fields="age,name" 
-search="separate"
-></table>
-#######################################
+		<table object-table 
+		data="data" 
+		headers="Age, full Name" 
+		fields="age,name" 
+		search="separate"
+		></table>
+		#######################################
 
 
-<h2>External resource</h2>
+		<h2>External resource</h2>
 
-<table object-table 
-from-url="example/fake-data.json" 
-data="exportDataVariable" 
-display="2" 
-headers="Name, Age" 
-fields="name, age" 
-></table>
-####################################### 
+		<table object-table 
+		from-url="/example/fake-data.json" 
+		data="exportDataVariable1" 
+		display="2" 
+		headers="Name, Age" 
+		fields="name, age" 
+		></table>
+		#######################################  
+		<h2>Editable cells (all)</h2>
 
-<h2>External resource JUSt with headers</h2>
+		<table object-table 
+		from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+		data = "exportDataVariable2" 
+		display = "10" 
+		headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+		fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
+		sorting = "compound" 
+		editable = "true"
+		>
+	</table>
+	#######################################
 
-<table object-table 
-from-url="example/fake-data.json" 
-data="exportDataVariable" 
-display="10" 
-headers="Age, Money, Name" 
-fields="age,money,name" 
-sorting="compound"
-></table>
+	<h2>Editable cells (Eye color)</h2>
+
+	<table object-table 
+	from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data="exportDataVariable3" 
+	display="10" 
+	headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+	fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+	sorting="compound"
+	>
+	<tbody>
+		<tr>
+			<td><span contenteditable ng-model="item.name">{{::item.name}}</span></td>
+			<td editable>{{item.eyeColor}}</td>
+			<td>{{::item.age}}</td>
+			<td>{{::item.balance}}</td>
+			<td>{{::item.company}}</td>
+			<td>{{::item.address}}</td>
+			<td>{{::item.favoriteFruit}}</td>
+		</tr>
+	</tbody>
+</table>
 #######################################
 
 <!-- <h2>Headers pattern</h2>
 
 <table object-table 
-from-url="example/fake-data.json" 
+from-url="/example/fake-data.json" 
 data="exportDataVariable" 
 display="10" 
 fields="age,money,name" 
@@ -94,20 +118,31 @@ fields="age,money,name"
 </table>
 ####################################### -->
 
-<h2>ROWs pattern</h2>
+<h2>Rows pattern</h2>
 
 <table object-table 
-from-url="example/fake-data.json" 
-data="exportDataVariable" 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable4" 
 display="10" 
-headers="Name, Age, money" 
-fields="name,age,money"
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+sorting="compound"
 >
-<tbody style="background-color:yellow">
+<tbody>
 	<tr>
-		<td style="background-color: rgb(206, 247, 206);">{{::item.name}}</td>
-		<td style="background-color: rgb(160, 231, 160);">{{::item.age}}</td>
-		<td style="background-color: rgb(120, 230, 120);">{{::item.money}}</td>
+		<td>{{::item.name}}</td>
+		<td><div style="
+			background-color:{{::item.eyeColor}};
+			width:10px;height:10px;border-radius:5px;
+			float:left;margin:5px;
+			"></div>
+			{{::item.eyeColor}}
+		</td>
+		<td>{{::item.age}}</td>
+		<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+		<td>{{::item.company}}</td>
+		<td>{{::item.address}}</td>
+		<td>{{::item.favoriteFruit}}</td>
 	</tr>
 </tbody>
 </table>
@@ -140,20 +175,33 @@ fields="name,age,money"
 #######################################   -->
 
 <h2>External resource + additionalFilter</h2>
-	<input type="text" ng-model="name" placeholder="name">
-	<input type="text" ng-model="age" placeholder="age">
-	<input type="text" ng-model="all" placeholder="all">
+<div class="col-sm-3">
+	<select name="name" id="nameSelect" ng-model="age" class="form-control">
+		<option value='' disabled selected style='display:none;'>Please Choose age</option>
+		<option value="27">27</option>
+		<option value="34">34</option>
+		<option value="43">43</option>
+		<option value="50">50</option>
+	</select>	
+
+</div>
+<div class="col-sm-3">
+	<input type="text" ng-model="name" class="form-control" placeholder="age">
+</div>
+<div class="col-sm-3">
+	<input type="text" ng-model="all" class="form-control" placeholder="all">
+</div>
 <br><br>
-	<table object-table 
-	from-url="example/fake-data.json" 
-	data="exportDataVariable" 
-	display="10" 
-	headers="age,name,money" 
-	fields="age,name,money" 
-	add-filter="| filter:{'name':$owner.name} |filter:{'age':$owner.age} | filter:$owner.all" 
-	search="false"
-	></table>
-	<!-- ####################################### -->
+<table object-table 
+from-url="/example/fake-data.json" 
+data="exportDataVariable5" 
+display="10" 
+headers="age,name,money" 
+fields="age,name,money" 
+add-filter="| filter:{'name':$owner.name} |filter:{'age':$owner.age} | filter:$owner.all" 
+search="false"
+></table>
+ ####################################### 
 
 </div>
 </body>
