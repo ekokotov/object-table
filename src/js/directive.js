@@ -1,5 +1,5 @@
 "use strict"
-angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpolate',function ($compile,$interpolate) {
+angular.module('objectTable').directive('objectTable', ['$compile','$interpolate',function ($compile,$interpolate) {
 	return {
 		restrict: 'A',
 		replace:true,
@@ -15,7 +15,8 @@ angular.module('objectTable',[]).directive('objectTable', ['$compile','$interpol
 			//search:"@?",
 			//headers:"@",
 			//fields:"@",
-			sortingType: "@?sorting"
+			sortingType: "@?sorting",
+			editable:"=?"
 
 		},
 		compile:function( tElement, tAttributes) {

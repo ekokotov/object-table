@@ -32,12 +32,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 				$scope.fields.push( item.trim() );
 			});
 
-			//INIT pagging
-			//$scope.pagging = true;
-			/*if(!!$attrs.pagging){
-				$scope.pagging = Boolean.valueOf($attrs.pagging)();
-			};*/
-
 			//LOAD FROM EXTERNAL URL
 			if(!!$attrs.fromUrl){
 				$scope.loadExternalData($attrs.fromUrl);
@@ -55,10 +49,19 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 		};
 
 		this.addRowPattern = function(node, filter){
+			node = this.checkEditableContent(node);
 			angular.element(node).find("tr").attr("ng-repeat","item in data" + filter);
 			$element.find("table").append(node.outerHTML);
 			$compile($element.find("table"))($scope);
 		};
+
+		this.checkEditableContent = function(node){
+			[].forEach.call(node.querySelectorAll("[editable]"), function(td){
+				var innerModel = td.innerHTML.replace("::","").replace("{{","").replace("}}","");
+				td.innerHTML = "<span contentEditable ng-model='" +innerModel+ "'>" +td.innerHTML.replace("::","")+ "</span>";
+			});
+			return node;
+		},
 
 		this.setCurrentPage = function(_currentPage){
 			$scope.currentPage = _currentPage

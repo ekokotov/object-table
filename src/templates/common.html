@@ -1,7 +1,8 @@
 <div>
 
-	<div class="col-sm-8 sorting-container" ng-if="sortingType">
-		Sorting order: 
+	<div class="col-sm-8 sorting-container">
+		<div ng-if="sortingType && sort.fields.length">
+		Sorting: 
 		<div ng-repeat="sortField in sort.fields" class="sorting-badge">
 			<span class="glyphicon " 
 			ng-class="{'glyphicon-chevron-down':sort.reverse[$index],
@@ -11,6 +12,7 @@
 			{{::sortField}}
 			<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span> 
 		</div>
+		</div>
 	</div>
 
 	<div class="form-group col-sm-4" ng-if="search && search!=='separate'">
@@ -18,7 +20,7 @@
 	</div>
 
 	<div class="clearfix"></div>
-
+	{{editable}}
 	<table class="table table-responsive table-bordered">
 		<thead ng-if="headers.length" >
 			<tr>
@@ -36,15 +38,16 @@
 				<input type="text" ng-model="columnSearch[$index]" placeholder="Search {{::head}}..." class="form-control">
 			</th>
 			</tr>
-		</thead>
+		</thead>	
 
 		<tbody ng-if="!findBody">
 
 			<tr id="rowTr"><!-- <= will inject ng-repeat -->
-				<!-- params: headers and all fields -->
-				<td ng-if="!fields.length" ng-repeat="(key, prop) in item">{{prop}}</td>
 				<!-- params: headers and fields -->
-				<td ng-if="fields.length" ng-repeat="field in fields">{{item[field]}}</td>
+				<td ng-if="!editable" ng-repeat="field in fields">{{::item[field]}}</td>
+				<td ng-if="editable" editable ng-repeat="field in fields">
+				<span contenteditable ng-model="item[field]">{{item[field]}}</span>
+				</td>
 			</tr>
 
 		</tbody>

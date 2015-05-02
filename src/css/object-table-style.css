@@ -104,7 +104,15 @@
 	opacity: 1;
 }
 
+/*contentEditable*/
 
-/* th.sortable:not(.sort-asc):not(.table-sort-up):not(.table-sort-down):hover:before{
-	border-color: red transparent;
-} */
+.table>tbody>tr>td[editable] span:focus{
+	padding: 3px;
+	margin: -3px;
+	border: 2px dotted #738395;
+	background-color: #F5F5F5;
+	vertical-align: middle;
+	color: rgb(12, 75, 140);
+	display: block;
+	outline: none;
+}
