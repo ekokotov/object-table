@@ -3,14 +3,17 @@ Display JSON in Table with AngularJS
 
 Code licensed under BSD license.
 
-This directive allow show your data in tables. It support searching, filtering and pagination.
-Hight perfomance. Sorting one or more fields!
+This directive allow show your data in tables. It support searching, filtering, pagination, compound sorting, editable cells, row template, etc...
+Hight perfomance.
 
 
 ## Installing via Bower
 ```
 bower install angular-object-table
 ```
+
+## Run examples
+Just run http server form root folder and open in browser example directory: http://localhost:8080/example/
 
 ## Using
 

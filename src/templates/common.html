@@ -1,60 +1,63 @@
-<div>
-
-	<div class="col-sm-8 sorting-container">
+<div class="object-table-module">
+	<div class="col-xs-12 col-sm-6 col-md-8 sorting-container">
 		<div ng-if="sortingType && sort.fields.length">
-		Sorting: 
-		<div ng-repeat="sortField in sort.fields" class="sorting-badge">
-			<span class="glyphicon " 
-			ng-class="{'glyphicon-chevron-down':sort.reverse[$index],
-			'glyphicon-chevron-up':!sort.reverse[$index]}" 
-			></span> 
+			Sorting: 
+			<div ng-repeat="sortField in sort.fields" class="sorting-badge">
+				<span class="glyphicon " 
+				ng-class="{'glyphicon-chevron-down':sort.reverse[$index],
+				'glyphicon-chevron-up':!sort.reverse[$index]}" 
+				></span> 
 
-			{{::sortField}}
-			<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span> 
-		</div>
+				{{::sortField}}
+				<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span> 
+			</div>
 		</div>
 	</div>
 
-	<div class="form-group col-sm-4" ng-if="search && search!=='separate'">
-		<input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="pull-right form-control search">
+	<div class="form-group col-xs-12 col-sm-6 col-md-4" ng-if="search && search!=='separate'">
+		<input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="row pull-right form-control search">
 	</div>
 
 	<div class="clearfix"></div>
 
-	<table class="table table-responsive table-bordered">
-		<thead ng-if="headers.length" >
+	<table class="table table-responsive table-bordered object-table">
+		<thead ng-if="!customHeader" >
 			<tr>
 				<th ng-repeat="head in headers track by $index" 
 				ng-click="sortBy(fields[$index])"
 				ng-class="headerIsSortedClass(head)"
 				class="sortable">{{::head}}
 			</th>
-			</tr>
-		</thead>
+		</tr>
+	</thead>
 
-		<thead ng-if="headers.length && search==='separate'" >
-			<tr>
-				<th ng-repeat="head in headers track by $index">
+	<thead ng-if="!customHeader&& search==='separate'" >
+		<tr>
+			<th ng-repeat="head in headers track by $index">
 				<input type="text" ng-model="columnSearch[$index]" placeholder="Search {{::head}}..." class="form-control">
 			</th>
-			</tr>
-		</thead>	
+		</tr>
+	</thead>	
 
-		<tbody ng-if="!findBody">
+	<tbody ng-if="!findBody">
 
-			<tr id="rowTr"><!-- <= will inject ng-repeat -->
-				<!-- params: headers and fields -->
-				<td ng-if="!editable" ng-repeat="field in fields">{{::item[field]}}</td>
-				<td ng-if="editable" editable ng-repeat="field in fields">
+		<tr id="rowTr" ng-click="setSelected(item)" ng-class="{'selected-row':item.$$hashKey==data.selected.$$hashKey}"> <!-- <= will inject ng-repeat -->
+			<!-- params: headers and fields -->
+			<td ng-if="!editable" ng-repeat="field in fields">{{::item[field]}}</td>
+			<td ng-if="editable" editable ng-repeat="field in fields">
 				<span contenteditable ng-model="item[field]">{{item[field]}}</span>
-				</td>
-			</tr>
+			</td>
+		</tr>
 
-		</tbody>
-	</table>
+	</tbody>
+</table>
 
-	<pagging ng-if="pagging" data-display="display"></pagging>
+<div class="loading" ng-show="dataIsLoading">
+	<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Data...
+</div>
+<pagging ng-if="pagging" data-display="display" class="object-table-pagging" ng-hide="dataIsLoading"></pagging>
 
+<div class="clearfix"></div>
 
 <!-- debug:
 <br>

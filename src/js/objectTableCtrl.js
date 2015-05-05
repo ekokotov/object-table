@@ -1,5 +1,5 @@
-angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element', '$attrs','$http', '$compile', '$controller',
-	function angTableCtrl($scope, $element, $attrs, $http, $compile, $controller, objectTableSortingCtrl) {
+angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout','$element', '$attrs','$http', '$compile', '$controller',
+	function angTableCtrl($scope, $timeout, $element, $attrs, $http, $compile, $controller, objectTableSortingCtrl) {
 
 		$controller('objectTableSortingCtrl', {$scope: $scope});
 
@@ -10,6 +10,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 			$scope.pagging = angular.isDefined($scope.pagging) ? $scope.pagging : true;
 			$scope.sortingType = $scope.sortingType || "simple";
 			$scope.currentPage = 0;
+			$scope.customHeader = false;
 
 			
 			/* 'separate' or 'true' or 'false '*/
@@ -24,6 +25,8 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 				$attrs.headers.split(',').forEach(function(item){
 					$scope.headers.push( item.trim() );
 				});
+			}else{
+				throw "Required 'headers' attribute is not found!"
 			};
 
 			/* GET FIELDS */
@@ -39,18 +42,26 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 		};
 
 		$scope.loadExternalData = function(url){
+			$scope.dataIsLoading= true;
 			$http.get(url).then(function(response){
 				$scope.data = response.data;
+				$scope.dataIsLoading = false;
 			});
+			
 		};
 
 		this.addHeaderPattern = function(node){
+			$scope.customHeader = true;
 			$element.find("table").prepend(node);
 		};
 
 		this.addRowPattern = function(node, filter){
 			node = this.checkEditableContent(node);
-			angular.element(node).find("tr").attr("ng-repeat","item in data" + filter);
+			var tr = angular.element(node).find("tr");
+			tr.attr("ng-repeat","item in data" + filter);
+			tr.attr("ng-click","setSelected(item)");
+			tr.attr("ng-class","{'selected-row':item.$$hashKey==data.selected.$$hashKey}");
+
 			$element.find("table").append(node.outerHTML);
 			$compile($element.find("table"))($scope);
 		};
@@ -65,6 +76,10 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$element
 
 		this.setCurrentPage = function(_currentPage){
 			$scope.currentPage = _currentPage
+		};
+
+		$scope.setSelected = function(item){
+			$scope.data.selected = item;
 		};
 
 	}]);

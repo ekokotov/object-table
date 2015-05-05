@@ -2,7 +2,7 @@ angular.module('objectTable').directive('pagging', ['$compile','$interpolate',fu
 	return {
 		restrict: 'E',
 		replace:true,
-		templateUrl: 'templates/pagging.html',
+		templateUrl: '/src/templates/pagging.html',
 		controller:'paggingTableCtrl',
 		require:"^objectTable",
 		scope:{

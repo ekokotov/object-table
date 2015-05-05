@@ -3,7 +3,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 	return {
 		restrict: 'A',
 		replace:true,
-		templateUrl: 'templates/common.html',
+		templateUrl: '/src/templates/common.html',
 		controller:'objectTableCtrl',
 		controllerAs:"ctrl",
 		transclude: true,

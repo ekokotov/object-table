@@ -1,10 +1,28 @@
+.object-table-module .count .records{
+	color: rgb(136, 136, 136);
+	font-weight: normal;
+}
+.object-table-module .count{
+	font-size: 15px;
+	float: right;
+	margin-top: 20px;
+	color: rgb(33, 101, 163);
+	background-color: rgba(119, 119, 119, 0.31);
+}
+
+.object-table-module .loading{
+	padding: 5px;
+	text-align: center;
+	color: rgb(51, 122, 185);
+}
+
 /*## Search */
-.search{
+.object-table-module .search{
 	max-width:250px;
 }
 
 /*## Sorting */
-.sorting-badge{
+.object-table-module .sorting-badge{
 	background-color: white;
 	position: relative;
 	font-weight: 600;
@@ -15,13 +33,14 @@
 	margin-left: 5px;
 	color: rgb(51, 122, 183);
 	border: 1px solid rgba(12, 75, 140, 0.43);
+	margin-bottom: 3px;
 }
-.sorting-badge:hover{
+.object-table-module .sorting-badge:hover{
 	background-color: rgb(51, 122, 183);
 	color: white;
 }
 
-.sorting-badge .close{
+.object-table-module .sorting-badge .close{
 	margin-left: 5px;
 	float: right;
 	font-size: 12px;
@@ -31,7 +50,7 @@
 	opacity: .2;
 }
 
-.sorting-badge:hover .close{
+.object-table-module .sorting-badge:hover .close{
 	opacity:1;
 	cursor: pointer;
 	color: rgb(0, 38, 85);
@@ -39,13 +58,17 @@
 }
 
 /*sorting icons*/
-.sorting-container{
+.object-table-module .sorting-container{
 	margin: 10px 0;
 }
-.table{
+
+/*table*/
+.object-table{
+	margin-bottom: 0px;
 	color: gray;
 }
-.table thead>tr{
+
+.object-table thead>tr{
 	background-color: #e6f1f6;
 	color: rgb(33, 101, 163);
 	cursor: pointer;
@@ -56,23 +79,23 @@
 	-ms-user-select: none;
 	user-select: none;
 }
-.table>thead:first-child>tr:first-child>th{
+.object-table>thead:first-child>tr:first-child>th{
 	border-bottom: 0;
 }
-.table>tbody>tr:hover{
+.object-table>tbody>tr:hover{
 	background-color:rgba(103, 103, 103, 0.08);
 	color: black;
 	cursor: pointer;
 }
-.table th.sortable{
+.object-table th.sortable{
 	position: relative;
 }
 
-.table th.sortable:before {
+.object-table th.sortable:before {
 	margin-top: 2px;
 }
 
-.table th.sortable:before,th.sortable:after,
+.object-table th.sortable:before,th.sortable:after,
 .sorting-badge .up,.sorting-badge .down {
 	font-size: 9px;
 	font-family: 'Glyphicons Halflings';
@@ -85,7 +108,7 @@
 	margin-top: -4px;
 }
 
-.table th.sortable:after,
+.object-table th.sortable:after,
 .sorting-badge .down {
 	margin-top: 5px;
 	content: "\e114";
@@ -95,18 +118,21 @@
 	margin-left: 2px; 
 }
 
-.table th.sortable:hover:not(.table-sort-up):not(.table-sort-down):after,
-.table th.sortable:hover:not(.table-sort-up):not(.table-sort-down):before{
+.object-table th.sortable:hover:not(.object-table-sort-up):not(.object-table-sort-down):after,
+.object-table th.sortable:hover:not(.object-table-sort-up):not(.object-table-sort-down):before{
 	opacity: 1;
 }
 
-.table th.sortable.table-sort-up:before,th.sortable.table-sort-down:after{
+.object-table th.sortable.object-table-sort-up:before,th.sortable.object-table-sort-down:after{
 	opacity: 1;
+}
+.object-table tr.selected-row{
+	background-color: rgb(215, 241, 160);
 }
 
 /*contentEditable*/
 
-.table>tbody>tr>td[editable] span:focus{
+.object-table>tbody>tr>td[editable] span:focus{
 	padding: 3px;
 	margin: -3px;
 	border: 2px dotted #738395;
@@ -115,4 +141,21 @@
 	color: rgb(12, 75, 140);
 	display: block;
 	outline: none;
+}
+
+/* ANIMATION */
+/* loading icon */
+.object-table-module .glyphicon-refresh-animate {
+	-animation: spin .7s infinite linear;
+	-webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+	from { -webkit-transform: rotate(0deg);}
+	to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+	from { transform: scale(1) rotate(0deg);}
+	to { transform: scale(1) rotate(360deg);}
 }
