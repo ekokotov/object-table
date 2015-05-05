@@ -1,160 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="test">
 
 <head>
 	<meta charset="UTF-8">
 	<title>jTable Example</title>
-<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="https://code.jquery.com/jquery-2.1.4.min.js">
-<link rel="stylesheet" type="text/css" href="build/object-table-style.css">
+	<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../build/object-table-style.css">
+
+	<style>
+	._personal_inf{
+		background-color: rgb(212, 255, 227);
+		color: green;
+	}
+	.additional_inf{
+		background-color: rgb(230, 241, 246);
+	}
+	body{
+		margin-top: 70px;
+	}
+	</style>
 </head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.js"></script>
+
 <!-- bower:js -->
-<script src="example/bower_components/angular/angular.js"></script>
 <!-- endbower -->
 
-<script type="text/javascript" src="build/object-table.js"></script>
-<script type="text/javascript" src="example/example.js"></script>
-<body ng-app="test" ng-controller="gTableTest">
-<div class="col-sm-12">
+<script type="text/javascript" src="../build/object-table.js"></script>
+<script type="text/javascript" src="js/example.js"></script>
+<script type="text/javascript" src="js/router.js"></script>
+<body>
 
+<nav class="navbar navbar-default navbar-fixed-top">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">Object-table</a>
+        </div>
 
-<h2>Bacis</h2>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+          <ul class="nav navbar-nav">
+            <li><a href="https://github.com/ekokotov/object-table" target="_blank">GitHub project</a></li>
+            <!-- <li><a href="#">Link</a></li> -->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
 
-<table object-table 
-data="data" 
-display="10" 
-headers="Age, full Name" 
-fields="age,name" 
-pagging="false" 
-sorting="simple" 
-search="false"
-></table>
-#######################################
+	<div class="col-md-3">
+		<!-- <p class="lead">Samples:</p> -->
 
-<h2>Compound sorting</h2>
+		<div class="list-group">
+			<a href="#basic" class="list-group-item">Basic</a>
+			<a href="#compound_sorting" class="list-group-item">Compound sorting</a>
+			<a href="#separate_search" class="list-group-item">Separate Search</a>
+			<a href="#external" class="list-group-item">External resource</a>
+			<a href="#custom_headers" class="list-group-item">Custom headers</a>
+			<a href="#custom_rows" class="list-group-item">Custom rows patterns</a>
+			<a href="#custom_rows_headers" class="list-group-item">Custom rows and headers</a>
+			<a href="#additional_filters" class="list-group-item">External filters</a>
+			<a href="#editable_cells" class="list-group-item">Editable cells</a>
+		</div>
+	</div>
 
-<table object-table 
-data="data" 
-headers="Full Name,Money, Age" 
-fields="name,money,age" 
-pagging="false" 
-sorting="compound" 
-></table>
-#######################################
+	<div class="col-md-9">
+		<div ng-view></div> 
+	</div>
 
-<h2>Separate Search</h2>
-
-<table object-table 
-data="data" 
-headers="Age, full Name" 
-fields="age,name" 
-search="separate"
-></table>
-#######################################
-
-
-<h2>External resource</h2>
-
-<table object-table 
-from-url="example/fake-data.json" 
-data="exportDataVariable" 
-display="2" 
-headers="Name, Age" 
-fields="name, age" 
-></table>
-####################################### 
-
-<h2>External resource JUSt with headers</h2>
-
-<table object-table 
-from-url="example/fake-data.json" 
-data="exportDataVariable" 
-display="10" 
-headers="Age, Money, Name" 
-fields="age,money,name" 
-sorting="compound"
-></table>
-#######################################
-
-<!-- <h2>Headers pattern</h2>
-
-<table object-table 
-from-url="example/fake-data.json" 
-data="exportDataVariable" 
-display="10" 
-fields="age,money,name" 
->
-<thead style="background-color:yellow">
-	<tr>
-		<th style="background-color: rgb(206, 247, 206);" ng-click="sortBy('age')">1</th>
-		<th style="background-color: rgb(160, 231, 160);">Second</th>
-		<th style="background-color: rgb(120, 230, 120);">3</th>
-	</tr>
-</thead>
-</table>
-####################################### -->
-
-<h2>ROWs pattern</h2>
-
-<table object-table 
-from-url="example/fake-data.json" 
-data="exportDataVariable" 
-display="10" 
-headers="Name, Age, money" 
-fields="name,age,money"
->
-<tbody style="background-color:yellow">
-	<tr>
-		<td style="background-color: rgb(206, 247, 206);">{{::item.name}}</td>
-		<td style="background-color: rgb(160, 231, 160);">{{::item.age}}</td>
-		<td style="background-color: rgb(120, 230, 120);">{{::item.money}}</td>
-	</tr>
-</tbody>
-</table>
-#######################################
-
-<!-- <h2>ROWs and headers pattern</h2>
-
-<table object-table 
-data="data" 
-data="exportDataVariable" 
-display="10" 
-fields="name,age,money" 
->
-<thead style="background-color:yellow">
-	<tr>
-		<th ng-click="$owner.test()" style="background-color: blue">1</th>
-		<th style="background-color: magenta">2</th>
-		<th style="background-color: gray">3</th>
-	</tr>
-</thead>
-
-<tbody style="background-color:yellow">
-	<tr>
-		<td style="background-color: green">{{::item.name}}</td>
-		<td style="background-color: red">{{::item.age}}</td>
-		<td style="background-color: gray">{{::item.money}}</td>
-	</tr>
-</tbody>
-</table>
-#######################################   -->
-
-<h2>External resource + additionalFilter</h2>
-	<input type="text" ng-model="name" placeholder="name">
-	<input type="text" ng-model="age" placeholder="age">
-	<input type="text" ng-model="all" placeholder="all">
-<br><br>
-	<table object-table 
-	from-url="example/fake-data.json" 
-	data="exportDataVariable" 
-	display="10" 
-	headers="age,name,money" 
-	fields="age,name,money" 
-	add-filter="| filter:{'name':$owner.name} |filter:{'age':$owner.age} | filter:$owner.all" 
-	search="false"
-	></table>
-	<!-- ####################################### -->
-
-</div>
 </body>
-</html>
