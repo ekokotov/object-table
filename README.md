@@ -8,6 +8,7 @@ Hight perfomance.
 
 Feature List
 ------------
+- loading data from URL
 - column-specific filtering
 - column sorting
 - compound sorting (sorting bt few fields)
