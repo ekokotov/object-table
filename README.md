@@ -6,6 +6,20 @@ Code licensed under BSD license.
 This directive allow show your data in tables. It support searching, filtering, pagination, compound sorting, editable cells, row template, etc...
 Hight perfomance.
 
+Feature List
+------------
+- column-specific filtering
+- column sorting
+- compound sorting (sorting bt few fields)
+- live editing (editable cells)
+- custom row templates
+- custom header templates
+- column highlighting
+- multiply selection
+- external filtering
+- pagination
+- searching
+- column searching
 
 ## Installing via Bower
 ```
