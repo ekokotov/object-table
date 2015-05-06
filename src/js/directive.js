@@ -16,7 +16,8 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			//headers:"@",
 			//fields:"@",
 			sortingType: "@?sorting",
-			editable:"=?"
+			editable:"=?",
+			select:"@?"
 
 		},
 		compile:function( tElement, tAttributes) {
@@ -56,16 +57,16 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			tElement.find("pagging").attr("count","(data" + paggingFilter + ").length");
 
 			return function preLink(scope, element, attrs, ctrl, transclude) {
-				ctrl.init();
+				ctrl._init();
 
 				transclude(scope, function(clone, innerScope) {
 					scope.$owner = innerScope.$parent;
 					for(var key in clone){
 						if(clone.hasOwnProperty(key) && clone[key].tagName=="THEAD"){
-							ctrl.addHeaderPattern(clone[key]);
+							ctrl._addHeaderPattern(clone[key]);
 						}else if(clone[key].tagName=="TBODY"){
 							scope.findBody = true;
-							ctrl.addRowPattern(clone[key],rowFilter);
+							ctrl._addRowPattern(clone[key],rowFilter);
 						}
 					};
 				});

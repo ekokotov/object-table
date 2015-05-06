@@ -39,6 +39,7 @@ Add HTML-markup :
        headers="Name, Age" 
        fields="name, age"
        sorting="false"
+       editable="true"
 ></table>
 ```
 ## Example
@@ -48,14 +49,15 @@ http://ekokotov.github.io/object-table/
 
 Here is a file list for possible attributes for stable version:
 
-Atribute             | Description
+Atribute             | required | Description
 ---------------------|----------------
-data                 | *required* - data source (array of objects) in your Controller. But if 'fromUrl' is present 'data' atribute will contain controller link to empty array( will be fill up after receiving data ). Example: data="exportDataVariable"
-fromUrl				 | - load data from external URL. 
-display     		 | *default: 5* - Display count. Using with pagging is displayed items per page
-search               | *default: true* - Display search input. Value search="separate" is allows you search by columns.
-pagging				 | *default: true* - Use pagging to present data
-headers              | *required* - Example: ['HeaderName1','HeaderName2']. - Array of table header names
-fields  			 | *required* - Example: ['property1','property2'].  - Array of displayed properties of object. This option allows you to display only certain fields of the object. Number of fields must be equal number of headers.
-sorting				 | *default: simple*. Use sorting feature. 'simple' - by single column. 'compound' - order by multiple fields.
-editable     		 | *optional* - Alows to edit content inside cells. Edit uptates your angular model. 
+data                 | yes      | Data source (array of objects) in your Controller. But if 'fromUrl' is present 'data' atribute will contain controller link to empty array( will be fill up after receiving data ). Example: data="exportDataVariable"
+fromUrl				 | no       | Load data from external URL. 
+display     		 | no       | *default: 5* - Display count. Using with pagging is displayed items per page
+search               | no       | *default: true* - Display search input. Value search="separate" is allows you search by columns.
+pagging				 | no       | *default: true* - Use pagging to present data
+headers              | yes      | Example: ['HeaderName1','HeaderName2']. - Array of table header names
+fields  			 | yes      | Example: ['property1','property2'].  - Array of displayed properties of object. This option allows you to display only certain fields of the object. Number of fields must be equal number of headers.
+sorting				 | no       | *default: simple*. Use sorting feature. 'simple' - by single column. 'compound' - order by multiple fields.
+editable     		 | no       | Allows to edit content inside cells. Edit uptates your angular model. 
+select               | no       | select="multiply" allows to select more than one row. Selected rows are accessible.

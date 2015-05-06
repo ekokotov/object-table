@@ -11,11 +11,7 @@ sorting="compound"
 <tbody>
 	<tr>
 		<td>{{::item.name}}</td>
-		<td><div style="
-			background-color:{{::item.eyeColor}};
-			width:10px;height:10px;border-radius:5px;
-			float:left;margin:5px;
-			"></div>
+		<td><div class="{{::item.eyeColor}} eye"></div>
 			{{::item.eyeColor}}
 		</td>
 		<td>{{::item.age}}</td>

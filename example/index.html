@@ -6,19 +6,8 @@
 	<title>jTable Example</title>
 	<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../build/object-table-style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-	<style>
-	._personal_inf{
-		background-color: rgb(212, 255, 227);
-		color: green;
-	}
-	.additional_inf{
-		background-color: rgb(230, 241, 246);
-	}
-	body{
-		margin-top: 70px;
-	}
-	</style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.js"></script>
@@ -35,12 +24,6 @@
       <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
       <div class="container-fluid">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="#/">Object-table</a>
         </div>
 
@@ -66,6 +49,8 @@
 			<a href="#custom_rows_headers" class="list-group-item">Custom rows and headers</a>
 			<a href="#additional_filters" class="list-group-item">External filters</a>
 			<a href="#editable_cells" class="list-group-item">Editable cells</a>
+			<a href="#select_multiply" class="list-group-item">Multiply Selection</a>
+			<a href="#column_highlighting" class="list-group-item">Column Highlighting</a>
 		</div>
 	</div>
 

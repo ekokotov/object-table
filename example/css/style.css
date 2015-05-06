@@ -1,0 +1,30 @@
+  ._personal_inf{
+  	background-color: rgb(212, 255, 227);
+  	color: green;
+  }
+  .additional_inf{
+  	background-color: rgb(230, 241, 246);
+  }
+  body{
+  	margin-top: 70px;
+  }
+  .eye{
+  	width: 30px;
+  	height: 10px;
+  	border-radius: 5px;
+  	float: left;
+  	margin: 5px;
+  	box-shadow: 0px 0px 3px gray;
+  	border: 1px solid gray;
+  }
+
+  .eye.green{
+  	background-color: rgb(92, 197, 23);
+  }
+  .eye.brown{
+  	background-color: rgb(208, 92, 92);
+  }
+
+  .eye.blue{
+  	background-color: rgb(49, 191, 255);
+  }

@@ -79,8 +79,9 @@
 	-ms-user-select: none;
 	user-select: none;
 }
-.object-table>thead:first-child>tr:first-child>th{
+.object-table>thead:first-child>tr>th{
 	border-bottom: 0;
+	padding-right: 25px;
 }
 .object-table>tbody>tr:hover{
 	background-color:rgba(103, 103, 103, 0.08);
@@ -118,15 +119,15 @@
 	margin-left: 2px; 
 }
 
-.object-table th.sortable:hover:not(.object-table-sort-up):not(.object-table-sort-down):after,
-.object-table th.sortable:hover:not(.object-table-sort-up):not(.object-table-sort-down):before{
+.object-table th.sortable:hover:not(.table-sort-up):not(.table-sort-down):after,
+.object-table th.sortable:hover:not(.table-sort-up):not(.table-sort-down):before{
 	opacity: 1;
 }
 
-.object-table th.sortable.object-table-sort-up:before,th.sortable.object-table-sort-down:after{
+.object-table th.sortable.table-sort-up:before,.object-table th.sortable.table-sort-down:after{
 	opacity: 1;
 }
-.object-table tr.selected-row{
+.object-table tr.selected-row td{
 	background-color: rgb(215, 241, 160);
 }
 
@@ -158,4 +159,29 @@
 @keyframes spin {
 	from { transform: scale(1) rotate(0deg);}
 	to { transform: scale(1) rotate(360deg);}
+}
+
+
+.object-table-module.hover-column table{
+  overflow: hidden !important;
+}
+
+.object-table-module.hover-column table td{
+  position: relative;
+  outline: 0;
+}
+
+.object-table-module.hover-column table td:hover::after{ 
+  content: '';  
+  height: 10000px;
+  left: 0;
+  position: absolute;  
+  top: -5000px;
+  width: 100%;
+  z-index: -1;
+}
+
+.object-table-module.hover-column table td:hover::after,
+.object-table-module.hover-column table th:hover::after {
+  background-color: rgba(103, 103, 103, 0.08);
 }
