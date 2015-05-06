@@ -7,7 +7,7 @@
 	float: right;
 	margin-top: 20px;
 	color: rgb(33, 101, 163);
-	background-color: rgba(119, 119, 119, 0.31);
+	background-color: rgba(188, 188, 188, 0.35);
 }
 
 .object-table-module .loading{
@@ -161,7 +161,7 @@
 	to { transform: scale(1) rotate(360deg);}
 }
 
-
+/* hover column */
 .object-table-module.hover-column table{
   overflow: hidden !important;
 }
