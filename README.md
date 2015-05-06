@@ -50,7 +50,7 @@ http://ekokotov.github.io/object-table/
 Here is a file list for possible attributes for stable version:
 
 Atribute             | required | Description
----------------------|----------------
+---------------------|----------|-------------------------
 data                 | yes      | Data source (array of objects) in your Controller. But if 'fromUrl' is present 'data' atribute will contain controller link to empty array( will be fill up after receiving data ). Example: data="exportDataVariable"
 fromUrl				 | no       | Load data from external URL. 
 display     		 | no       | *default: 5* - Display count. Using with pagging is displayed items per page
