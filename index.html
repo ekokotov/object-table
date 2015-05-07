@@ -1,91 +1,161 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="test">
-
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Object-table Example</title>
-	<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Angular Object-table">
+	<link rel="shortcut icon" href="assets/img/favicon.png">
+
+
+
+
 	<link rel="stylesheet" type="text/css" href="build/object-table-style.css">
 	<link rel="stylesheet" type="text/css" href="example/css/style.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.js"></script>
+	<script type="text/javascript" src="build/object-table.js"></script>
+	<script type="text/javascript" src="example/js/example.js"></script>
+	<script type="text/javascript" src="example/js/router.js"></script>
+
+	<!-- codemirror -->
+	<script type="text/javascript" src="example/js/codemirror/codemirror.js"></script>
+	<script type="text/javascript" src="example/js/codemirror/xml.js"></script>
+	<script type="text/javascript" src="example/js/codemirror/htmlmixed.js"></script>
+	<script type="text/javascript" src="example/js/codemirror/javascript.js"></script>
+	<script type="text/javascript" src="example/js/ui-codemirror.js"></script>
+	<link rel="stylesheet" type="text/css" href="example/js/codemirror/codemirror.css">
+
+
+	<title>Angular Object-table</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="assets/css/main.css" rel="stylesheet">
+
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/smoothscroll.js"></script>
+
 
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.js"></script>
 
-<!-- bower:js -->
-<!-- endbower -->
+<body data-spy="scroll" data-offset="0" data-target="#navigation" ng-app="test">
 
-<script type="text/javascript" src="build/object-table.js"></script>
-<script type="text/javascript" src="example/js/example.js"></script>
-<script type="text/javascript" src="example/js/router.js"></script>
-
-<!-- codemirror -->
-<script type="text/javascript" src="example/js/codemirror/codemirror.js"></script>
-<script type="text/javascript" src="example/js/codemirror/xml.js"></script>
-<script type="text/javascript" src="example/js/codemirror/htmlmixed.js"></script>
-<script type="text/javascript" src="example/js/codemirror/javascript.js"></script>
-<script type="text/javascript" src="example/js/ui-codemirror.js"></script>
-<link rel="stylesheet" type="text/css" href="example/js/codemirror/codemirror.css">
-
-<body>
-
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
-		<div class="container-fluid">
+	<!-- Fixed navbar -->
+	<div id="navigation" class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#/">Object-table &nbsp;<span class="badge">v.0.1.1</span></a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><b>Object-table &nbsp;<span class="badge version">v.0.1.1</span></b></a>
 			</div>
-
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li><a class="btn download" href="https://github.com/ekokotov/object-table/releases/download/0.1.1/object-table_v0.1.1.zip" target="_blank">Download</a></li>
-					<li><a href="https://github.com/ekokotov/object-table" target="_blank"><span class="glyphicon glyphicon-inbox"></span> GitHub project</a></li>
-
+					<li class="active"><a href="samples.html" class="smothscroll">Samples</a></li>
 				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div>
-	</nav>
-	<div class="wrap">
-		<div class="col-md-3">
-			<div class="list-group">
-				<a href="#attributes" class="list-group-item">Basic Attributes</a>
-			</div>
-			<p class="lead">&nbsp;Samples:</p> 
-
-			<div class="list-group">
-				<a href="#basic" class="list-group-item">Basic</a>
-				<a href="#compound_sorting" class="list-group-item">Compound sorting</a>
-				<a href="#pagination" class="list-group-item">Pagination</a>
-				<a href="#separate_search" class="list-group-item">Separate Search</a>
-				<a href="#external" class="list-group-item">External resource</a>
-				<a href="#custom_headers" class="list-group-item">Custom headers</a>
-				<a href="#custom_rows" class="list-group-item">Custom rows patterns</a>
-				<a href="#custom_rows_headers" class="list-group-item">Custom rows and headers</a>
-				<a href="#additional_filters" class="list-group-item">External filters</a>
-				<a href="#editable_cells" class="list-group-item">Editable cells</a>
-				<a href="#select_multiply" class="list-group-item">Multiply Selection</a>
-				<a href="#column_highlighting" class="list-group-item">Column Highlighting</a>
-			</div>
-
-
-
-		</div>
-
-		<div class="col-md-9">
-			<div ng-view></div> 
+			</div><!--/.nav-collapse -->
 		</div>
 	</div>
-	<footer>
+
+
+	<section id="home" name="home"></section>
+	<div id="headerwrap">
 		<div class="container">
-			<p class="muted credit">
-				By <a href="https://github.com/ekokotov">Evgeny Kokotov</a>.
-				<a class="pull-right" href="mailto:ekokotov@gmail.com" target="_blank">
-					<i class="glyphicon glyphicon-envelope"></i> Contact Me
-				</a>
-			</p>
+			<div class="row centered">
+				<div class="col-lg-2 col-md-3 hidden-sm hidden-xs">
+					<a class="btn download index col-md-12" href="https://github.com/ekokotov/object-table/releases/download/0.1.1/object-table_v0.1.1.zip" target="_blank"><span class="glyphicon glyphicon-save"></span> .ZIP</a>
+				</div>
+				<div class="col-lg-8 col-md-6">
+					<h1>Object-table</h1>
+					<h3>Smart Angular table directive.</h3>
+					<br>
+				</div>
+				<div class="col-lg-2 col-md-3 col-sm-offset-3 col-md-offset-0">
+					<a class="btn download index col-md-12 col-sm-6" href="https://github.com/ekokotov/object-table/archive/0.1.1.tar.gz" target="_blank"><span class="glyphicon glyphicon-save"></span> .TAR.GZ</a>
+<br>
+					<a class="btn download indexcol-sm-6 md hidden-lg hidden-md" href="https://github.com/ekokotov/object-table/releases/download/0.1.1/object-table_v0.1.1.zip" target="_blank"><span class="glyphicon glyphicon-save"></span> .ZIP</a>
 
+					<br>
+				</div>
+
+			</div>
+		</div> <!--/ .container -->
+		<div id="sample">
+			<div class="col-lg-4 col-lg-offset-1">
+				<h4>Stupid simple HTML markup:</h4>
+				<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+<table  object-table 
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+data = "exportDataVariable" 
+display = "10" 
+headers = "Name, Eye color, Age,Balance,Company,Favorite Fruit" 
+fields = "name,eyeColor,age,balance,company,favoriteFruit" 
+sorting = "compound" 
+editable = "true">
+</table>
+			</textarea>
+			<p>Requires Angular v. 1.3.x</p>
 		</div>
-	</footer>
-	
+		<div class="col-lg-1">
+			<div class="row">
+			<img class="img-responsive hidden-md hidden-xs hidden-sm arrow" src="assets/img/arrow-sketch-right.png" alt="">
+			<br>
+			<div class="col-xs-12 visible-md visible-xs visible-sm">
+			<h4 >Will be rendered into:</h4></div>
+			</div>
+		</div>
+		<div class="col-lg-5">
 
+			<table  object-table class="hover-column"
+					from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+					data = "exportDataVariable" 
+					display = "10" 
+					headers = "Name, Eye color, Age,Balance,Company,Favorite Fruit" 
+					fields = "name,eyeColor,age,balance,company,favoriteFruit" 
+					sorting = "compound" 
+					editable = "true"
+					>
+			</table>
+	
+	</div>
+	<div class="col-lg-1"></div>
+	<div class="clearfix"></div>
+</div>
+</div><!--/ #headerwrap -->
+
+
+<section id="desc" name="desc"></section>
+<!-- INTRO WRAP -->
+<div id="intro">
+	<div class="container">
+		<div class="row centered">
+			<!-- <div class="col-lg-4">
+				<img src="assets/img/intro01.png" alt="">
+				<h3>Community</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			</div>
+			<div class="col-lg-4">
+				<img src="assets/img/intro02.png" alt="">
+				<h3>Schedule</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			</div>
+			<div class="col-lg-4">
+				<img src="assets/img/intro03.png" alt="">
+				<h3>Monitoring</h3>
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+			</div> -->
+		</div>
+		<br>
+	</div> <!--/ .container -->
+</div><!--/ #introwrap -->
+
+<script src="assets/js/bootstrap.js"></script>
 </body>
+</html>

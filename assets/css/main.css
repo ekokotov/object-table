@@ -13,57 +13,57 @@ body {
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Raleway";
-    font-weight: 300;
-    color: #333;
+  font-family: "Raleway";
+  font-weight: 300;
+  color: #333;
 }
 
 
 /* Paragraph & Typographic */
 p {
-    line-height: 28px;
-    margin-bottom: 25px;
+  line-height: 28px;
+  margin-bottom: 25px;
 }
 
 .centered {
-    text-align: center;
+  text-align: center;
 }
 
 /* Links */
 a {
-    color: #3bc492;
-    word-wrap: break-word;
+  color: #3bc492;
+  word-wrap: break-word;
 
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-    transition: color 0.1s ease-in, background 0.1s ease-in;
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
 a:hover,
 a:focus {
-    color: #c0392b;
-    text-decoration: none;
-    outline: 0;
+  color: #c0392b;
+  text-decoration: none;
+  outline: 0;
 }
 
 a:before,
 a:after {
-    -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
-    -o-transition: color 0.1s ease-in, background 0.1s ease-in;
-    transition: color 0.1s ease-in, background 0.1s ease-in;
+  -webkit-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -moz-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -ms-transition: color 0.1s ease-in, background 0.1s ease-in;
+  -o-transition: color 0.1s ease-in, background 0.1s ease-in;
+  transition: color 0.1s ease-in, background 0.1s ease-in;
 }
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 
@@ -72,17 +72,18 @@ hr {
    ========================================================================== */
 
    #headerwrap {
-      color: rgb(248, 248, 248);
-      background: rgb(4,178,155); /* Old browsers */
-      background: -moz-linear-gradient(left,  rgb(4,178,155) 0%, rgb(161,219,255) 100%); /* FF3.6+ */
-      background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(4,178,155)), color-stop(100%,rgb(161,219,255))); /* Chrome,Safari4+ */
-      background: -webkit-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Chrome10+,Safari5.1+ */
-      background: -o-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Opera 11.10+ */
-      background: -ms-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* IE10+ */
-      background: linear-gradient(to right,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* W3C */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04b29b', endColorstr='#a1dbff',GradientType=1 ); /* IE6-9 */
+    color: rgb(248, 248, 248);
+    background: rgb(4,178,155); /* Old browsers */
+    background: -moz-linear-gradient(left,  rgb(4,178,155) 0%, rgb(161,219,255) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(4,178,155)), color-stop(100%,rgb(161,219,255))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04b29b', endColorstr='#a1dbff',GradientType=1 ); /* IE6-9 */
 
-      padding-top: 60px;
+    padding-top: 60px;
+    min-height: 730px;
   }
 
   #headerwrap h1 {
@@ -90,16 +91,16 @@ hr {
    color: white;
    font-size: 70px;
 
-}
+ }
 
-#headerwrap h3 {
-	color: white;
-	font-size: 30px;
-}
+ #headerwrap h3 {
+   color: white;
+   font-size: 30px;
+ }
 
-#headerwrap h4 {
-    color: white;
-    font-size: 30px;
+ #headerwrap h4 {
+  color: white;
+  font-size: 30px;
 }
 
 #headerwrap h5 {
@@ -178,16 +179,12 @@ hr {
 
 /*table*/
 table.object-table{
-  /* background-color: white; */
   font-size: 14px;
 }
 table.object-table td{
   padding: 4px !important;
-  /* z-index: 2; */
 }
-table.object-table th{
-/*     z-index: 3; */
-}
+
 .arrow{
   margin-top: 150px;
 }
@@ -199,6 +196,26 @@ table.object-table th{
   background-color: rgba(242, 242, 242, 1);
 }
 
-.object-table-module.hover-column table td:hover::after {
-  /*z-index: 0;*/
+.pagination{
+  font-size: 13px;
+}
+a.btn.download.index{
+  padding: 10px 25px;
+}
+.object-table-module .back-cover{
+  border-radius: 10px;
+  }
+.object-table{
+ border-radius: 10px;
+}
+.object-table-module .back-cover,
+.object-table-module .count,
+.object-table-module .pagination,
+.object-table-module .sorting-badge{
+box-shadow: 0 0 1px black;
+border: none; 
+}
+.object-table-module .search{
+    box-shadow: inset 1px 0px 5px rgba(0, 0, 0, 0.52);
+  border: 1px solid rgb(4, 160, 193);
 }
