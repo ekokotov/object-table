@@ -23,7 +23,7 @@ gulp.task('js-min', function () {
 gulp.task('js-templates', function() {
 	return gulp.src(SRC_FOLDER + '/' + TEMPLATES_FOLDER + '/**/*.html')
 	.pipe(plugins.htmlmin({collapseWhitespace: true}))
-	.pipe(plugins.angularTemplatecache('templates.js',{ module:'objectTable', root:TEMPLATES_FOLDER + '/' }))
+	.pipe(plugins.angularTemplatecache('templates.js',{ module:'objectTable', root:'/'+SRC_FOLDER + '/' + TEMPLATES_FOLDER + '/' }))
 	.pipe(gulp.dest(TEMP_FOLDER))
 });
 
