@@ -1,3 +1,6 @@
+.object-table-module .back-cover{
+	background-color: white;
+}
 .object-table-module .count .records{
 	color: rgb(136, 136, 136);
 	font-weight: normal;
@@ -169,9 +172,13 @@
 .object-table-module.hover-column table td{
   position: relative;
   outline: 0;
+  z-index: 2;
+}
+.object-table-module.hover-column table th{
+	z-index: 2;
 }
 
-.object-table-module.hover-column table td:hover::after{ 
+.object-table-module.hover-column table td:hover::before{ 
   content: '';  
   height: 10000px;
   left: 0;
@@ -181,7 +188,9 @@
   z-index: -1;
 }
 
-.object-table-module.hover-column table td:hover::after,
-.object-table-module.hover-column table th:hover::after {
+.object-table-module.hover-column table tbody td:hover::before {
   background-color: rgba(103, 103, 103, 0.08);
+}
+.object-table-module.hover-column table td:hover{
+	z-index: 1;
 }
