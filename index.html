@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>jTable Example</title>
+	<title>Object-table Example</title>
 	<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="build/object-table-style.css">
 	<link rel="stylesheet" type="text/css" href="example/css/style.css">
@@ -29,47 +29,63 @@
 
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#/">Object-table &nbsp;<span class="badge">v.0.1.1</span></a>
-        </div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/">Object-table &nbsp;<span class="badge">v.0.1.1</span></a>
+			</div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-          <ul class="nav navbar-nav">
-            <li><a class="btn download" href="https://github.com/ekokotov/object-table/releases/download/0.1.1/object-table_v0.1.1.zip" target="_blank">Download</a></li>
-            <li><a href="https://github.com/ekokotov/object-table" target="_blank"><span class="glyphicon glyphicon-inbox"></span> GitHub project</a></li>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+				<ul class="nav navbar-nav">
+					<li><a class="btn download" href="https://github.com/ekokotov/object-table/releases/download/0.1.1/object-table_v0.1.1.zip" target="_blank">Download</a></li>
+					<li><a href="https://github.com/ekokotov/object-table" target="_blank"><span class="glyphicon glyphicon-inbox"></span> GitHub project</a></li>
 
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div>
-    </nav>
-
-	<div class="col-md-3">
-		<div class="list-group">
-			<a href="#attributes" class="list-group-item">Basic Attributes</a>
+				</ul>
+			</div><!-- /.navbar-collapse -->
 		</div>
-		 <p class="lead">&nbsp;Samples:</p> 
+	</nav>
+	<div class="wrap">
+		<div class="col-md-3">
+			<div class="list-group">
+				<a href="#attributes" class="list-group-item">Basic Attributes</a>
+			</div>
+			<p class="lead">&nbsp;Samples:</p> 
 
-		<div class="list-group">
-			<a href="#basic" class="list-group-item">Basic</a>
-			<a href="#compound_sorting" class="list-group-item">Compound sorting</a>
-			<a href="#pagination" class="list-group-item">Pagination</a>
-			<a href="#separate_search" class="list-group-item">Separate Search</a>
-			<a href="#external" class="list-group-item">External resource</a>
-			<a href="#custom_headers" class="list-group-item">Custom headers</a>
-			<a href="#custom_rows" class="list-group-item">Custom rows patterns</a>
-			<a href="#custom_rows_headers" class="list-group-item">Custom rows and headers</a>
-			<a href="#additional_filters" class="list-group-item">External filters</a>
-			<a href="#editable_cells" class="list-group-item">Editable cells</a>
-			<a href="#select_multiply" class="list-group-item">Multiply Selection</a>
-			<a href="#column_highlighting" class="list-group-item">Column Highlighting</a>
+			<div class="list-group">
+				<a href="#basic" class="list-group-item">Basic</a>
+				<a href="#compound_sorting" class="list-group-item">Compound sorting</a>
+				<a href="#pagination" class="list-group-item">Pagination</a>
+				<a href="#separate_search" class="list-group-item">Separate Search</a>
+				<a href="#external" class="list-group-item">External resource</a>
+				<a href="#custom_headers" class="list-group-item">Custom headers</a>
+				<a href="#custom_rows" class="list-group-item">Custom rows patterns</a>
+				<a href="#custom_rows_headers" class="list-group-item">Custom rows and headers</a>
+				<a href="#additional_filters" class="list-group-item">External filters</a>
+				<a href="#editable_cells" class="list-group-item">Editable cells</a>
+				<a href="#select_multiply" class="list-group-item">Multiply Selection</a>
+				<a href="#column_highlighting" class="list-group-item">Column Highlighting</a>
+			</div>
+
+
+
+		</div>
+
+		<div class="col-md-9">
+			<div ng-view></div> 
 		</div>
 	</div>
+	<footer>
+		<div class="container">
+			<p class="muted credit">
+				By <a href="https://github.com/ekokotov">Evgeny Kokotov</a>.
+				<a class="pull-right" href="mailto:ekokotov@gmail.com" target="_blank">
+					<i class="glyphicon glyphicon-envelope"></i> Contact Me
+				</a>
+			</p>
 
-	<div class="col-md-9">
-		<div ng-view></div> 
-	</div>
+		</div>
+	</footer>
+	
 
 </body>
