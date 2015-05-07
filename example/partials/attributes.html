@@ -1,0 +1,67 @@
+<h2>Possible attrributes:</h2>
+<br>
+<h4 class="label label-danger">Required:</h4>
+<br><br>
+<ul>
+	<li>
+		<code>data="controllerArray"</code>
+		Data source (array of objects) in your Controller. But if 'fromUrl' is present 'data' atribute will contain controller link to empty array( will be fill up after receiving data ).
+	</li>
+	<li>
+		<code>headers="headerName1,headerName1,headerName3"</code>
+		Array of table header names
+	</li>
+	<li>
+		<code>fields="Property1, Property2"</code>
+		Array of displayed properties of object. This option allows you to display only certain fields of the object. Number of fields must be equal number of headers.
+	</li>
+</ul>
+
+<h4 class="label label-primary">Optional:</h4>
+<br><br>
+
+<ul>
+	<li>
+		<code>fromUrl="URL"</code>
+		Load data from external URL.
+	</li>
+	<li>
+		<code>display="N"</code>
+		Display N records per page.
+	</li>
+	<li>
+		<code>search="true | false | separate"</code>
+		Display search input. Value "separate" is allows you search by columns.
+	</li>
+	<li>
+		<code>pagging="true | false"</code>
+		Use pagging to present data.
+	</li>
+	<li>
+		<code>sorting="simple | compound | false"</code>
+		Use sorting. 'simple' - by single column (property), 'compound' - by few columns.
+	</li>
+	<li>
+		<code>select="multiply"</code>
+		Allows to select more than one row. Selected rows are accessible.
+	</li>
+	<li>
+		<code>editable="all"</code>
+		Allows to edit content inside cells. Edit uptates your angular model.
+	</li>
+</ul>
+
+<h4 class="label label-success">Default values:</h4>
+<br><br>
+
+<ul>
+	<li>
+		<code>display="5"</code>
+	</li>
+	<li>
+		<code>pagging="true"</code>
+	</li>
+		<li>
+		<code>sorting="simple"</code>
+	</li>
+</ul>

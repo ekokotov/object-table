@@ -75,7 +75,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			return node;
 		};
 
-		this._setCurrentPage = function(_currentPage){
+		this.setCurrentPage = function(_currentPage){
 			$scope.currentPage = _currentPage
 		};
 

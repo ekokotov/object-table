@@ -8,3 +8,26 @@
 	fields="name, age" 
 	></table>
 	<hr>
+
+	<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="dataFromUrl" 
+			display="6" 
+			headers="Name, Age" 
+			fields="name, age" 
+	</table>
+</textarea>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice</h4>
+	Directive exports all data to controller variable.
+</div>
+
+<h3>In controller:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptionsJS">
+  // this variable will contains all data after loading
+  $scope.dataFromUrl =[];
+</textarea>

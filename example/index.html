@@ -18,6 +18,15 @@
 <script type="text/javascript" src="../build/object-table.js"></script>
 <script type="text/javascript" src="js/example.js"></script>
 <script type="text/javascript" src="js/router.js"></script>
+
+<!-- codemirror -->
+<script type="text/javascript" src="js/codemirror/codemirror.js"></script>
+<script type="text/javascript" src="js/codemirror/xml.js"></script>
+<script type="text/javascript" src="js/codemirror/htmlmixed.js"></script>
+<script type="text/javascript" src="js/codemirror/javascript.js"></script>
+<script type="text/javascript" src="js/ui-codemirror.js"></script>
+<link rel="stylesheet" type="text/css" href="js/codemirror/codemirror.css">
+
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -37,11 +46,15 @@
     </nav>
 
 	<div class="col-md-3">
-		<!-- <p class="lead">Samples:</p> -->
+		<div class="list-group">
+			<a href="#attributes" class="list-group-item">Basic Attributes</a>
+		</div>
+		 <p class="lead">&nbsp;Samples:</p> 
 
 		<div class="list-group">
 			<a href="#basic" class="list-group-item">Basic</a>
 			<a href="#compound_sorting" class="list-group-item">Compound sorting</a>
+			<a href="#pagination" class="list-group-item">Pagination</a>
 			<a href="#separate_search" class="list-group-item">Separate Search</a>
 			<a href="#external" class="list-group-item">External resource</a>
 			<a href="#custom_headers" class="list-group-item">Custom headers</a>

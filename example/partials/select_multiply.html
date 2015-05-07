@@ -11,4 +11,27 @@
 	select="multiply" 
 	></table>
 
+<p>Selected:</p>
+	<pre>
+		{{data.selected}}
+	</pre>
 	<hr>
+
+	<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			data="data" 
+			display="10" 
+			headers="Age, full Name" 
+			fields="age,name" 
+			pagging="false" 
+			search="false" 
+			select="multiply" 
+	></table>
+
+	<p>Selected:</p>
+	<pre>
+		{{data.selected}}
+	</pre>
+</textarea>

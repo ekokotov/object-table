@@ -3,8 +3,8 @@
 *
 * gTableTest Description
 */
-angular.module('test', ['objectTable','ngRoute'])
-    .controller('mainController', function ($scope, $routeParams,$location) {
+angular.module('test', ['objectTable','ngRoute','ui.codemirror'])
+    .controller('mainController', function ($scope, $routeParams,$location,$timeout) {
 
     $scope.state = $routeParams.template;
 
@@ -29,6 +29,22 @@ angular.module('test', ['objectTable','ngRoute'])
     $scope.test = function(e) {
       alert('Alert from controller method!');
   };
+
+  // this variable will contains all data after loading
+  $scope.dataFromUrl =[];
+
+  /*codemirror*/
+
+  $scope.editorOptions = {
+        lineNumbers: true,
+        readOnly: 'nocursor'
+    };
+
+      $scope.editorOptionsJS = {
+        lineNumbers: true,
+        readOnly: 'nocursor',
+        mode:"javascript"
+    };
 
 
 

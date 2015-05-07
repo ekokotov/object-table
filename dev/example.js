@@ -3,8 +3,10 @@
 *
 * gTableTest Description
 */
+angular.module('test', ['objectTable'])
+    .controller('mainController', function ($scope) {
 
-angular.module('test', ['objectTable']).controller('gTableTest', ['$scope','$http', function ($scope) {
+
 	$scope.data = [{name: "Moroni", age: 50, money: -10},
     {name: "Tiancum", age: 43,money: 120},
     {name: "Jacob", age: 27, money: 5.5},
@@ -23,7 +25,10 @@ angular.module('test', ['objectTable']).controller('gTableTest', ['$scope','$htt
     {name: "Nephi", age: 29, money: 100},
     {name: "Enos", age: 34, money: -100}];
 
-    $scope.test = function() {
-      alert('Alert from controller!');
-  }
-}]);
+    $scope.test = function(e) {
+      alert('Alert from controller method!');
+  };
+
+
+
+})
