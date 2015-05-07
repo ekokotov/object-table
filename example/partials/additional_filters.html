@@ -1,0 +1,67 @@
+<h2>Additional filters</h2>
+<p>add filtering by controller variables</p>
+<br>
+<div class="col-sm-3">
+	<select name="name" id="nameSelect" ng-model="eyeColor" class="form-control">
+		<option value='' disabled selected style='display:none;'>Please Choose eye color</option>
+		<option value="green">green</option>
+		<option value="blue">blue</option>
+		<option value="brown">brown</option>
+	</select>	
+
+</div>
+<div class="col-sm-3">
+	<input type="text" ng-model="name" class="form-control" placeholder="Name">
+</div>
+<div class="col-sm-3">
+	<input type="text" ng-model="all" class="form-control" placeholder="All fields">
+</div>
+<br><br>
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable5" 
+display="10" 
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+add-filter="| filter:{'name':$owner.name} |filter:{'eyeColor':$owner.eyeColor} | filter:$owner.all" 
+search="false"
+></table>
+<hr>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<!-- controller filters -->
+	<div class="col-sm-3">
+		<select name="name" id="nameSelect" ng-model="eyeColor" class="form-control">
+			<option value='' disabled selected style='display:none;'>Please Choose eye color</option>
+			<option value="green">green</option>
+			<option value="blue">blue</option>
+			<option value="brown">brown</option>
+		</select>	
+	</div>
+
+	<div class="col-sm-3">
+		<input type="text" ng-model="name" class="form-control" placeholder="Name">
+	</div>
+	<div class="col-sm-3">
+		<input type="text" ng-model="all" class="form-control" placeholder="All fields">
+	</div>
+
+	<br><br>
+
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportDataVariable5" 
+			display="10" 
+			headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+			add-filter="| filter:{'name':$owner.name} |filter:{'eyeColor':$owner.eyeColor} | filter:$owner.all"
+			search="false"
+	></table>
+</textarea>
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice:</h4>
+	<code>$owner</code> is a link to Controller
+</div>
+

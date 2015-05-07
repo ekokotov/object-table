@@ -1,0 +1,53 @@
+<h2>Rows pattern</h2>
+
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable4" 
+display="10" 
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+sorting="compound"
+>
+<tbody>
+	<tr>
+		<td>{{::item.name}}</td>
+		<td><div class="{{::item.eyeColor}} eye"></div>
+			{{::item.eyeColor}}
+		</td>
+		<td>{{::item.age}}</td>
+		<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+		<td>{{::item.company}}</td>
+		<td>{{::item.address}}</td>
+		<td>{{::item.favoriteFruit}}</td>
+	</tr>
+</tbody>
+</table>
+<hr>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportDataVariable" 
+			display="10" 
+			headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+			sorting="compound">
+		<tbody>
+			<tr>
+				<td>{{::item.name}}</td>
+				<td><div class="{{::item.eyeColor}} eye"></div>
+					{{::item.eyeColor}}
+				</td>
+				<td>{{::item.age}}</td>
+				<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+				<td>{{::item.company}}</td>
+				<td>{{::item.address}}</td>
+				<td>{{::item.favoriteFruit}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+</textarea>

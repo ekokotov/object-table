@@ -1,0 +1,31 @@
+<h2>Column highlighting</h2>
+
+	<table object-table class="hover-column"
+	from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data = "exportDataVariable2" 
+	display = "10" 
+	headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+	fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
+	sorting = "compound" 
+	editable = "true"
+	>
+</table>
+
+<hr>
+
+	<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table class="hover-column"
+			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data = "exportDataVariable" 
+			headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
+			editable = "true">
+	</table>
+</textarea>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice:</h4>
+	just add class <code>class="hover-column"</code> to add CSS column highlighting
+</div>

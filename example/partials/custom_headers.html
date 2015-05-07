@@ -1,0 +1,84 @@
+<h2>Custom headers pattern</h2>
+
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable5" 
+display="10" 
+headers="Name, Eye color, Age,Balance,Company,Address,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+>
+<thead>
+	<tr>
+		<th colspan="3" class="_personal_inf" >Personal information</th>
+		<th colspan="4" class="additional_inf">Additional information</th>
+	</tr>
+	<tr>
+		<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable _personal_inf">Name</th>
+		<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable  _personal_inf">Eye color</th>
+		<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable  _personal_inf">Age</th>
+		<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable">Balance</th>
+		<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable">Company</th>
+		<th ng-click="sortBy('address')" ng-class="headerIsSortedClass('Address')" class="sortable">Address</th>
+		<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable">Favorite Fruit</th>
+	</tr>
+</thead>
+</table>
+
+<hr>
+
+
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportsVariable" 
+			display="10" 
+			headers="Name, Eye color, Age,Balance,Company,Address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit">
+	<thead>
+		<!-- Additional header -->
+		<tr>
+			<th colspan="3" class="_personal_inf" >Personal information</th>
+			<th colspan="4" class="additional_inf">Additional information</th>
+		</tr>
+		<tr>
+			<th ng-click="sortBy('name')" 
+				ng-class="headerIsSortedClass('Name')"
+				class="sortable _personal_inf">Name</th>
+
+			<th ng-click="sortBy('eyeColor')"
+			    ng-class="headerIsSortedClass('Eye color')" 
+			    class="sortable  _personal_inf">Eye color</th>
+
+			<th ng-click="sortBy('age')"
+				ng-class="headerIsSortedClass('Age')"
+				class="sortable  _personal_inf">Age</th>
+
+			<th ng-click="sortBy('balance')"
+				ng-class="headerIsSortedClass('Balance')"
+				class="sortable">Balance</th>
+
+			<th ng-click="sortBy('company')"
+				ng-class="headerIsSortedClass('Company')"
+				class="sortable">Company</th>
+
+			<th ng-click="sortBy('address')"
+				ng-class="headerIsSortedClass('Address')"
+				class="sortable">Address</th>
+
+			<th ng-click="sortBy('favoriteFruit')"
+				ng-class="headerIsSortedClass('Favorite Fruit')"
+				class="sortable">Favorite Fruit</th>
+		</tr>
+	</thead>
+</table>
+</textarea>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice:</h4>
+	If you want to allow sorting you need to add attributes to header (th):
+	<code>ng-click="sortBy('object.property')"</code> and
+	<code>ng-class="headerIsSortedClass('Header Name')"</code>
+</div>

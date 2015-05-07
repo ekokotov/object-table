@@ -1,0 +1,24 @@
+<h2>Compound sorting</h2>
+
+<table object-table 
+data="data" 
+headers="Full Name,Money, Age" 
+fields="name,money,age" 
+pagging="false" 
+sorting="compound" 
+></table>
+<hr>
+<div class="bs-callout bs-callout-primary">
+	<h4>Example</h4>
+	First try sort by 'Full Name' , then by 'Money'
+</div>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			data="data" 
+			headers="Full Name, Money, Age" 
+			fields="name, money, age" 
+			pagging="false" 
+			sorting="compound" >
+	</table>
+</textarea>
+<hr>
