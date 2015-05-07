@@ -6,6 +6,6 @@ angular.module('test').config(function ($routeProvider) {
             }
         }).when('/',{
              controller:'mainController',
-            templateUrl:"example/partials/basic.html"
+            templateUrl:"example/partials/attributes.html"
         });
     });
