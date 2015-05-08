@@ -62,6 +62,12 @@ Add HTML-markup :
 ## Example
 http://ekokotov.github.io/object-table/
 
+## Build using GULP
+```
+npm install -g gulp
+gulp build
+```
+
 ## Atributes
 
 Here is a file list for possible attributes for stable version:
