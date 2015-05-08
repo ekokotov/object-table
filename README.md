@@ -1,8 +1,10 @@
 Display JSON in Table with AngularJS
 =================
 
-Code licensed under BSD license.
+Object-table code licensed under BSD license.
 
+object-table
+=================
 This directive allow show your data in tables. It support searching, filtering, pagination, compound sorting, editable cells, row template, etc...
 Hight perfomance.
 
