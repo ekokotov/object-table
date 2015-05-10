@@ -4,11 +4,13 @@
   "authors": [
     "Yauheni <yauheni@yauheni.com>"
   ],
-  "description": "angular datble data grid",
+  "description": "angular table data grid",
   "main": "index.js",
   "keywords": [
     "angular",
-    "gtable"
+    "table",
+    "datagrid",
+    "datatable"
   ],
   "license": "MIT",
   "homepage": "index.html",
