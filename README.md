@@ -71,8 +71,7 @@ Here is a file list for possible attributes for stable version:
 
 Atribute             | required | Description
 ---------------------|----------|-------------------------
-data                 | yes      | Data source (array of objects) in your Controller. Note: If 'fromUrl' is present, 'data' attribute contains controller link to empty array (will be fill up after receiving data). 
-Example: data="exportDataVariable"
+data                 | yes      | Data source (array of objects) in your Controller. Note: If 'fromUrl' is present, 'data' attribute contains controller link to empty array (will be fill up after receiving data). Example: data="exportDataVariable"
 fromUrl				 | no       | Load data from external URL. 
 display     		 | no       | *default: 5*. Displays count. Using with 'paging' displays items per page
 search               | no       | *default: true*. Display search input. Value search="separate" is allows you search by columns.
