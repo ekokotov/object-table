@@ -1,9 +1,9 @@
-angular.module('objectTable').directive('pagging', ['$compile','$interpolate',function ($compile,$interpolate) {
+angular.module('objectTable').directive('paging', ['$compile','$interpolate',function ($compile,$interpolate) {
 	return {
 		restrict: 'E',
 		replace:true,
-		templateUrl: '/src/templates/pagging.html',
-		controller:'paggingTableCtrl',
+		templateUrl: '/src/templates/paging.html',
+		controller:'pagingTableCtrl',
 		require:"^objectTable",
 		scope:{
 			count:"=",

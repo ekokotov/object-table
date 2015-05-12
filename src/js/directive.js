@@ -10,7 +10,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 		scope:{
 			data:"=",
 			display:"@",
-			pagging:"=?",
+			paging:"=?",
 			fromUrl:"@",
 			//search:"@?",
 			//headers:"@",
@@ -24,7 +24,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 
 			//collect filters
 			var rowFilter = "",
-			    paggingFilter = "";
+			    pagingFilter = "";
 
 			// additional user filters 
 			if(!!tAttributes.addFilter){
@@ -49,12 +49,12 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 				rowFilter += "| filter:globalSearch";
 			};
 
-			paggingFilter = rowFilter;
+			pagingFilter = rowFilter;
 			rowFilter += " | offset: currentPage:display |limitTo: display";
 
 			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in data" + rowFilter);
-			//add pagging
-			tElement.find("pagging").attr("count","(data" + paggingFilter + ").length");
+			//add paging
+			tElement.find("paging").attr("count","(data" + pagingFilter + ").length");
 
 			return function preLink(scope, element, attrs, ctrl, transclude) {
 				ctrl._init();

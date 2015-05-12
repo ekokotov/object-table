@@ -1,4 +1,4 @@
-angular.module('objectTable').controller('paggingTableCtrl', ['$scope', '$element', '$attrs',
+angular.module('objectTable').controller('pagingTableCtrl', ['$scope', '$element', '$attrs',
 	function ($scope, $element, $attrs) {
 
 		$scope.currentPage = 0;

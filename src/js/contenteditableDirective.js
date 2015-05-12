@@ -7,7 +7,7 @@ angular.module('objectTable',[]).directive("contenteditable", function() {
 
                 function read() {
                     ngModel.$setViewValue(element.html());
-                }
+                };
 
                 ngModel.$render = function() {
                     element.html(ngModel.$viewValue || "");

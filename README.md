@@ -1,10 +1,16 @@
 Display JSON in Table with AngularJS
 =================
 
+## Desription
+This Angular directive enable data representation via tables. It makes possible search, filtering, pagination, compound sorting, editable cells, row templates, etc... 
+Exhibits high performance. Without any dependencies - just pure Angular.
+
 Code licensed under BSD license.
 
-This directive allow show your data in tables. It support searching, filtering, pagination, compound sorting, editable cells, row template, etc...
-Hight perfomance.
+Requirements
+=================
+Angular v. 1.3.x
+Bootstrap 3 CSS 
 
 Feature List
 ------------
@@ -19,8 +25,8 @@ Feature List
 - multiply selection
 - external filtering
 - pagination
-- searching
-- column searching
+- search (by all fields)
+- column searching (by each column)
 
 ## Installing via Bower
 ```
@@ -37,7 +43,6 @@ Just run http server form root folder and open in browser example directory: htt
 
 <script type="text/javascript" src="{path to library}/build/object-table.js"></script>
 
-<!-- optional -->
 <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 ```
 Add dependency:
@@ -45,7 +50,7 @@ Add dependency:
 angular.module('yourModule', ['objectTable'])
 ```
 
-Add HTML-markup :
+Example of HTML-markup :
 ```
 <table object-table 
        from-url="http://some-url.com/getData" 
@@ -57,7 +62,7 @@ Add HTML-markup :
        editable="true"
 ></table>
 ```
-## Example
+## Examples
 http://ekokotov.github.io/object-table/
 
 ## Atributes
@@ -66,13 +71,14 @@ Here is a file list for possible attributes for stable version:
 
 Atribute             | required | Description
 ---------------------|----------|-------------------------
-data                 | yes      | Data source (array of objects) in your Controller. But if 'fromUrl' is present 'data' atribute will contain controller link to empty array( will be fill up after receiving data ). Example: data="exportDataVariable"
+data                 | yes      | Data source (array of objects) in your Controller. Note: If 'fromUrl' is present, 'data' attribute contains controller link to empty array (will be fill up after receiving data). 
+Example: data="exportDataVariable"
 fromUrl				 | no       | Load data from external URL. 
-display     		 | no       | *default: 5* - Display count. Using with pagging is displayed items per page
-search               | no       | *default: true* - Display search input. Value search="separate" is allows you search by columns.
-pagging				 | no       | *default: true* - Use pagging to present data
-headers              | yes      | Example: ['HeaderName1','HeaderName2']. - Array of table header names
-fields  			 | yes      | Example: ['property1','property2'].  - Array of displayed properties of object. This option allows you to display only certain fields of the object. Number of fields must be equal number of headers.
-sorting				 | no       | *default: simple*. Use sorting feature. 'simple' - by single column. 'compound' - order by multiple fields.
-editable     		 | no       | Allows to edit content inside cells. Edit uptates your angular model. 
+display     		 | no       | *default: 5*. Displays count. Using with 'paging' displays items per page
+search               | no       | *default: true*. Display search input. Value search="separate" is allows you search by columns.
+paging				 | no       | *default: true*. Use paging to present data.
+headers              | yes      | Table header names array. Example: headers = "HeaderName1,HeaderName2".
+fields  			 | yes      | Array of displayed properties of object. This option allows to display only certain fields of the object. Number of fields must be equal number of headers. Example: fields=propertyName1,propertyName1".
+sorting				 | no       | *default: simple*. Value "simple" is used to sort by single column,  "compound" - to order by multiple fields.
+editable     		 | no       | Allows to edit content inside cells. Editing updates your angular model. 
 select               | no       | select="multiply" allows to select more than one row. Selected rows are accessible.
