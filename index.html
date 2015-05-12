@@ -24,6 +24,8 @@
 	<script type="text/javascript" src="example/js/codemirror/javascript.js"></script>
 	<script type="text/javascript" src="example/js/ui-codemirror.js"></script>
 	<link rel="stylesheet" type="text/css" href="example/js/codemirror/codemirror.css">
+	<!-- Place this tag right after the last button or just before your close body tag. -->
+	<script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
 
 
 	<title>Angular Object-table</title>
@@ -58,7 +60,14 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="samples.html" class="smothscroll">Samples</a></li>
+					<li class=""><a href="samples.html" class="smothscroll"><span class="glyphicon glyphicon-send"></span> Samples</a></li>
+					<li class=""><a href="https://github.com/ekokotov/object-table" class="smothscroll"><span class="glyphicon glyphicon-inbox"></span> GITHUB project</a></li>
+				</ul>
+				<ul class="nav pull-right">
+					<li>
+						<!-- Place this tag where you want the button to render. -->
+						<a class="github-button" href="https://github.com/ekokotov" data-style="mega" data-count-href="/ekokotov/followers" data-count-api="/users/ekokotov#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @ekokotov on GitHub">Follow @ekokotov</a>
+					</li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -69,18 +78,21 @@
 	<div id="headerwrap">
 		<div class="container">
 			<div class="row centered">
+				
 				<div class="col-lg-2 col-md-3 hidden-sm hidden-xs">
 					<a class="btn download index col-md-12" href="https://github.com/ekokotov/object-table/releases/download/0.1.2/object-table_v0.1.2.zip" target="_blank"><span class="glyphicon glyphicon-save"></span> .ZIP</a>
 				</div>
+
 				<div class="col-lg-8 col-md-6">
 					<h1>Object-table</h1>
 					<h3>Smart Angular table directive.</h3>
 					<br>
 				</div>
+
 				<div class="col-lg-2 col-md-3 col-sm-offset-3 col-md-offset-0">
 					<a class="btn download index col-md-12 col-sm-6" href="https://github.com/ekokotov/object-table/archive/0.1.2.tar.gz" target="_blank"><span class="glyphicon glyphicon-save"></span> .TAR.GZ</a>
-<br>
-					<a class="btn download indexcol-sm-6 md hidden-lg hidden-md" href="https://github.com/ekokotov/object-table/releases/download/0.1.2/object-table_v0.1.2.zip" target="_blank"><span class="glyphicon glyphicon-save"></span> .ZIP</a>
+					<br>
+					<a class="btn download index col-sm-6 md hidden-lg hidden-md" href="https://github.com/ekokotov/object-table/releases/download/0.1.2/object-table_v0.1.2.zip" target="_blank"><span class="glyphicon glyphicon-save"></span> .ZIP</a>
 
 					<br>
 				</div>
@@ -91,43 +103,43 @@
 			<div class="col-lg-4 col-lg-offset-1">
 				<h4>Stupid simple HTML markup:</h4>
 				<textarea ui-codemirror ui-codemirror-opts="editorOptions">
-<table  object-table 
-from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
-data = "exportDataVariable" 
-display = "10" 
-headers = "Name, Eye color, Age,Balance,Company,Favorite Fruit" 
-fields = "name,eyeColor,age,balance,company,favoriteFruit" 
-sorting = "compound" 
-editable = "true">
-</table>
-			</textarea>
-			<p>Requires Angular v. 1.3.x</p>
-		</div>
-		<div class="col-lg-1">
-			<div class="row">
-			<img class="img-responsive hidden-md hidden-xs hidden-sm arrow" src="assets/img/arrow-sketch-right.png" alt="">
-			<br>
-			<div class="col-xs-12 visible-md visible-xs visible-sm">
-			<h4 >Will be rendered into:</h4></div>
-			</div>
-		</div>
-		<div class="col-lg-5">
-
-			<table  object-table class="hover-column"
+					<table  object-table 
 					from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
 					data = "exportDataVariable" 
 					display = "10" 
 					headers = "Name, Eye color, Age,Balance,Company,Favorite Fruit" 
 					fields = "name,eyeColor,age,balance,company,favoriteFruit" 
 					sorting = "compound" 
-					editable = "true"
-					>
+					editable = "true">
+				</table>
+			</textarea>
+			<p>Requires Angular v. 1.3.x</p>
+		</div>
+		<div class="col-lg-1">
+			<div class="row">
+				<img class="img-responsive hidden-md hidden-xs hidden-sm arrow" src="assets/img/arrow-sketch-right.png" alt="">
+				<br>
+				<div class="col-xs-12 visible-md visible-xs visible-sm">
+					<h4 >Will be rendered into:</h4></div>
+				</div>
+			</div>
+			<div class="col-lg-5">
+
+				<table  object-table class="hover-column"
+				from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+				data = "exportDataVariable" 
+				display = "10" 
+				headers = "Name, Eye color, Age,Balance,Company,Favorite Fruit" 
+				fields = "name,eyeColor,age,balance,company,favoriteFruit" 
+				sorting = "compound" 
+				editable = "true"
+				>
 			</table>
-	
+
+		</div>
+		<div class="col-lg-1"></div>
+		<div class="clearfix"></div>
 	</div>
-	<div class="col-lg-1"></div>
-	<div class="clearfix"></div>
-</div>
 </div><!--/ #headerwrap -->
 
 
@@ -139,7 +151,7 @@ editable = "true">
 
 			<h1>Features:</h1>
 			<br><br><br>
-			 <div class="col-lg-3 col-sm-6">
+			<div class="col-lg-3 col-sm-6">
 				<img src="assets/img/Generic Sorting-64.png" alt="">
 				<h3>Sorting</h3>
 				<p>Sorting by single or multiply columns</p>
@@ -160,26 +172,26 @@ editable = "true">
 				<p>You can include you own markup</p>
 			</div> 
 
-			 <div class="col-lg-3 col-sm-6">
-			 	<br><br>
+			<div class="col-lg-3 col-sm-6">
+				<br><br>
 				<img src="assets/img/Edit Property-64.png" alt="">
 				<h3>Editable</h3>
 				<p>Cells are editable</p>
 			</div>
-			 <div class="col-lg-3 col-sm-6">
-			 	<br><br>
+			<div class="col-lg-3 col-sm-6">
+				<br><br>
 				<img src="assets/img/Literature-64.png" alt="">
 				<h3>Pagination</h3>
 				<p>Smart paging</p>
 			</div>
 			<div class="col-lg-3 col-sm-6">
-			 	<br><br>
+				<br><br>
 				<img src="assets/img/Search Property-64.png" alt="">
 				<h3>Searching</h3>
 				<p>Separate or whole data searching</p>
 			</div>
 			<div class="col-lg-3 col-sm-6">
-			 	<br><br>
+				<br><br>
 				<img src="assets/img/Open In Browser-64.png" alt="">
 				<h3>Loading From URL</h3>
 				<p>Load data from external resource</p>
@@ -190,10 +202,10 @@ editable = "true">
 </div><!--/ #introwrap -->
 
 <div id="c">
-		<div class="container">
-			<p>Created by <a href="https://github.com/ekokotov">Evgeny Kokotov</a></p>
-		</div>
+	<div class="container">
+		<p>Created by <a href="https://github.com/ekokotov">Evgeny Kokotov</a></p>
 	</div>
+</div>
 
 <script src="assets/js/bootstrap.js"></script>
 </body>
