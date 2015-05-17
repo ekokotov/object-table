@@ -175,10 +175,11 @@
   z-index: 2;
 }
 .object-table-module.hover-column table th{
-	z-index: 2;
+	z-index: 3;
+  position: relative;
 }
 
-.object-table-module.hover-column table td:hover::before{ 
+.object-table-module.hover-column table td:hover::before,td:hover::after{ 
   content: '';  
   height: 10000px;
   left: 0;
@@ -188,7 +189,7 @@
   z-index: -1;
 }
 
-.object-table-module.hover-column table tbody td:hover::before {
+.object-table-module.hover-column table tbody td:hover::before ,td:hover::after{
   background-color: rgba(103, 103, 103, 0.08);
 }
 .object-table-module.hover-column table td:hover{
