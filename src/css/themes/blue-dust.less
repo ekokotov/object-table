@@ -1,0 +1,127 @@
+@table-background-color:#bac9d1;
+@table-font-color:#02658C;
+@table-border:rgb(0, 85, 118);
+@head-background-color:#545761;
+@head-color:rgb(144, 223, 255);
+@row-selected-background:rgba(136, 223, 255, 1);
+@row-selected-border:2px solid rgb(74, 190, 232) !important;
+@row-selected-color:black;
+@row-hover-background:rgba(136, 223, 255, 0.19);
+@editable-background:#D7D7D7;
+@editable-border:2px dotted #009AD5;
+@counts-background:#BAC9D1;
+@counts-border:1px solid rgba(43, 51, 74, 0.45);
+@paging-color:#2B334A;
+
+/* table background */
+.object-table-module.blue-dust {
+
+	.back-cover {
+		background-color: @table-background-color;
+		table{
+			color: @table-font-color;
+			&.table{
+				border: 1px solid @table-border;
+				border-bottom: 5px solid @head-background-color;
+			}
+			&.object-table{
+				thead{
+					tr{
+						background-color: @head-background-color;
+						color: @head-color;
+						th{
+							border: 1px solid rgba(143, 153, 162, 0.39);
+							text-shadow: 1px 0px 1px black;
+						}
+					}
+				}
+
+				tbody{
+					tr{
+						&:hover{
+							background-color: @row-hover-background;
+							color: @row-selected-color;
+							text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.29);
+						}
+						&.selected-row{
+							td{
+								background-color: @row-selected-background;
+								color: @row-selected-color;
+								border-bottom: @row-selected-border;
+								border-top: @row-selected-border;
+							}
+						}
+						td{
+							border:1px solid rgba(84, 87, 97, 0.23);
+							&[editable]{
+								span:focus {
+									padding: 3px;
+									margin: -5px;
+									font-weight: bold;
+									border: @editable-border;
+									background-color: @editable-background;
+								}
+							}
+						}
+					}
+				}
+
+			}
+		}
+	}
+
+	.sorting-badge{
+		color: rgb(51, 55, 66);
+		background-color: rgb(186, 201, 209);
+		&:hover{
+			background-color: @head-background-color;
+			color: rgb(186, 201, 209);
+		}
+	}
+
+
+
+	/* column hover*/
+	&.hover-column table tbody td:hover::before {
+		background-color: @row-hover-background;
+	}
+
+	/*search*/
+	.search{
+		color: rgb(51, 55, 66);
+		border: 3px solid rgba(0, 137, 189, 0.41);
+		&:focus{
+			border: 2px solid rgba(0, 184, 255, 0.85);
+		}
+	}
+
+
+	/*barge*/
+	.count {
+		background-color: @counts-background;
+		border: @counts-border;
+		color: @head-background-color;
+		.records {
+			color: rgb(51, 55, 66);
+		}
+	}
+
+	.pagination>li{
+		&.active{
+			a{
+				color: #88DFFF;
+				background-color: #545761;
+			}
+		}
+		a {
+			padding: 3px 12px;
+			color: @paging-color;
+			background-color: @counts-background;
+			border: @counts-border;
+			&:hover{
+				background-color: #DFDFDF;
+			}
+		}
+	}
+
+}

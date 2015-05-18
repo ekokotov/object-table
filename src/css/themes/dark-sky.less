@@ -1,0 +1,121 @@
+@table-background-color:#333742;
+@table-font-color:#9ca0a9;
+@table-border:#24272f;
+@head-background-color:#009AD5;
+@head-color:rgb(51, 55, 66);
+@row-selected-background:rgba(156, 156, 159, 0.56);
+@row-selected-color:rgb(0, 177, 245);
+@row-hover-background:rgba(0, 154, 213, 0.19);
+@editable-background:#D7D7D7;
+@editable-border:2px dotted #009AD5;
+@counts-background:#5D7187;
+@counts-border:#2B334A;
+@counts-color:#2B334A;
+
+.object-table-module.dark-sky{
+	/* table background */
+	.back-cover {
+		background-color: @table-background-color;
+		/* cell font color */
+		table{
+			color: @table-font-color;
+			/* cell border */
+			&.table{
+				border: 1px @table-border;
+				border-bottom: 5px solid @head-background-color;
+			}
+			/* table border */
+			&.table-bordered>tbody>tr>td{
+				border: 1px solid @table-border;
+			}
+			/* table head cell border*/
+			&.object-table thead{
+				tr{
+					background-color: @head-background-color;
+					color: @head-color;
+					th {
+						border: 1px solid @table-background-color;
+					}
+				}
+			}
+			tbody{
+				tr{
+					/* table row selected*/
+					&.selected-row td {
+						background-color: @row-selected-background;
+						color: @row-selected-color;
+					}
+					/* table row hover*/
+					&:hover {
+						background-color: @row-hover-background;
+						color: white;
+					}
+					td{
+						/*editable*/
+						&[editable] span:focus {
+							padding: 3px;
+							margin: -5px;
+							font-weight: bold;
+							border: @editable-border;
+							background-color: @editable-background;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.sorting-badge{
+		color: @head-color;
+		background-color: @head-background-color;
+		cursor: pointer;
+		&:hover{
+			background-color: fade(@head-background-color, 70%);
+			color: @head-color;
+		}
+	}
+
+
+	/* column hover*/
+	&.hover-column table tbody td:hover::before {
+		background-color: @row-hover-background;
+	}
+
+	/*search*/
+	.search{
+		background-color: rgba(239, 239, 239, 0.9);
+		color: @head-color;
+		border: 3px solid fade(@head-background-color,20%);
+		box-shadow: inset 0 1px 4px rgba(51, 55, 66, 1);
+		/* &:focus{
+			border: 2px solid @head-background-color;
+			box-shadow: inset 0 2px 6px rgba(0, 0, 0, 1);
+		} */
+	}
+
+
+	
+	.count {
+		background-color: @counts-background;
+		color: lighten(@head-background-color,30%);
+		.records {
+			color: @head-color;
+		}
+	}
+	/*paggination*/
+	.pagination>li{
+		&.active>a{
+			color: #000000;
+			background-color: @head-background-color;
+			top: -3px;
+			height: 35px;
+			padding-top: 6px;
+		}
+		a {
+			padding: 3px 12px;
+			color: @counts-color;
+			background-color: @counts-background;
+			border: 1px solid @counts-border;
+		}
+	}
+}

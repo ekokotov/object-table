@@ -34,7 +34,7 @@
 	<thead ng-if="!customHeader&& search==='separate'" >
 		<tr>
 			<th ng-repeat="head in headers track by $index">
-				<input type="text" ng-model="columnSearch[$index]" placeholder="Search {{::head}}..." class="form-control">
+				<input type="text" ng-model="columnSearch[$index]" placeholder="Search {{::head}}..." class="form-control search separate">
 			</th>
 		</tr>
 	</thead>	

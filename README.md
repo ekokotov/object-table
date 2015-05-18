@@ -27,6 +27,7 @@ Feature List
 - pagination
 - search (by all fields)
 - column searching (by each column)
+- themes!
 
 ## Installing via Bower
 ```

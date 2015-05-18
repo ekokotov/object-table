@@ -5,7 +5,9 @@
 	<meta charset="UTF-8">
 	<title>jTable Example</title>
 	<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../src/css/object-table-style.css">
+	<link rel="stylesheet" type="text/css" href="../build/object-table-style.css">
+	<link rel="stylesheet" type="text/css" href="../build/themes/dark-sky.css">
+	<link rel="stylesheet" type="text/css" href="../build/themes/blue-dust.css">
 	<style>
 	._personal_inf{
 		  background-color: rgb(212, 255, 227);
@@ -33,10 +35,12 @@
 <script type="text/javascript" src="example.js"></script>
 <body ng-controller="mainController">
 	<div class="col-sm-12">
-
-			<table  object-table class="hover-column"
+<br><br>
+			<table  object-table class="hover-column blue-dust"
 			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
 			data = "exportDataVariable" 
+			display="10" 
+			search="separate" 
 			headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
 			fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
 			editable = "true">

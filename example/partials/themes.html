@@ -1,0 +1,53 @@
+<h2>Themes</h2>
+
+<h3>Default theme:</h3>
+<p>Without additional classes</p>
+	<table object-table 
+	from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data="exportDataVariable1" 
+	display="10" 
+	headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit"
+	></table>
+	<hr>
+
+<div class="bs-callout bs-callout-success">
+	<h4>Notice</h4>
+	Add class to table to apply theme (class="blue-dust")
+</div>
+	<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+<table  object-table class="themeName"
+		from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+		data="dataFromUrl" 
+		display="6" 
+		headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+		fields="name,eyeColor,age,balance,company,address,favoriteFruit"
+</table>
+</textarea>
+<hr>
+
+<h3 class="blue_dust_theme">Blue Dust</h3>
+<p>class="blue-dust"</p>
+
+<table object-table class="blue-dust hover-column"
+	from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data="exportDataVariable_blue_dust" 
+	display="10" 
+	headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+	></table>
+<hr>
+
+<h3 class="blue_dust_theme">Dark sky</h3>
+<p>class="dark-sky"</p>
+
+<table object-table class="dark-sky hover-column"
+	from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data="exportDataVariable_dark_sky" 
+	display="10" 
+	search="separate" 
+	headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+	></table>
