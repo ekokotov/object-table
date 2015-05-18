@@ -17,7 +17,7 @@ Feature List
 - loading data from URL
 - column-specific filtering
 - column sorting
-- compound sorting (sorting bt few fields)
+- compound sorting (sorting by few fields)
 - live editing (editable cells)
 - custom row templates
 - custom header templates

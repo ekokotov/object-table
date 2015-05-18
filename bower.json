@@ -2,7 +2,7 @@
   "name": "angular-object-table",
   "version": "1.0.0",
   "authors": [
-    "Yauheni <yauheni@yauheni.com>"
+    "Evgeny Kokotov<yauheni@yauheni.com>"
   ],
   "description": "angular table data grid",
   "main": "index.js",
