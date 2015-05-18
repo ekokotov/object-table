@@ -82,3 +82,7 @@ fields  			 | yes      | Array of displayed properties of object. This option al
 sorting				 | no       | *default: simple*. Value "simple" is used to sort by single column,  "compound" - to order by multiple fields.
 editable     		 | no       | Allows to edit content inside cells. Editing updates your angular model. 
 select               | no       | select="multiply" allows to select more than one row. Selected rows are accessible.
+
+##Themes
+Please check new 'Dark-sky' and 'Blue-dust' themes:
+http://ekokotov.github.io/object-table/samples.html#/themes
