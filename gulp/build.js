@@ -22,6 +22,7 @@ gulp.task('less', function () {
         gutil.log(err);
         this.emit('end');
     }))
+    .pipe(minifyCSS())
 
 	.pipe(gulp.dest(BUILD_FOLDER));
 });
