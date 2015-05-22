@@ -11,7 +11,7 @@ TEMP_FOLDER = ".tmp",
 SRC_FOLDER = "src",
 TEMPLATES_FOLDER = "templates",
 BUILD_FOLDER = "build",
-OUTPUT_FILE = "object-table_v0.1.3.js";
+OUTPUT_FILE = "object-table_v0.1.4.js";
 
 
 gulp.task('less', function () {
