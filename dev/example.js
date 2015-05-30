@@ -29,6 +29,10 @@ angular.module('test', ['objectTable'])
       alert('Alert from controller method!');
   };
 
+  $scope.report = {
+    selectedUser:null
+  }
+
 
 
 })

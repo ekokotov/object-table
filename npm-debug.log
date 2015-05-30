@@ -1,0 +1,88 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json object-table@0.1.3 No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose install where, deps [ 'C:\\Users\\Yauheni\\Desktop\\gTable\\object-table',
+7 verbose install   [ 'gulp-util',
+7 verbose install     'gulp-watch',
+7 verbose install     'wiredep',
+7 verbose install     'gulp',
+7 verbose install     'gulp-angular-templatecache',
+7 verbose install     'gulp-clean',
+7 verbose install     'gulp-concat',
+7 verbose install     'gulp-htmlmin',
+7 verbose install     'gulp-less',
+7 verbose install     'gulp-load',
+7 verbose install     'gulp-load-plugins',
+7 verbose install     'gulp-minify-css',
+7 verbose install     'gulp-ng-annotate',
+7 verbose install     'gulp-uglify',
+7 verbose install     'plugins',
+7 verbose install     'require-dir',
+7 verbose install     'uglify' ] ]
+8 info preinstall object-table@0.1.3
+9 verbose readDependencies using package.json deps
+10 verbose already installed skipping gulp-util@^3.0.4 C:\Users\Yauheni\Desktop\gTable\object-table
+11 verbose already installed skipping gulp-watch@^4.2.4 C:\Users\Yauheni\Desktop\gTable\object-table
+12 verbose already installed skipping wiredep@^2.2.2 C:\Users\Yauheni\Desktop\gTable\object-table
+13 verbose already installed skipping gulp@^3.8.11 C:\Users\Yauheni\Desktop\gTable\object-table
+14 verbose already installed skipping gulp-angular-templatecache@^1.6.0 C:\Users\Yauheni\Desktop\gTable\object-table
+15 verbose already installed skipping gulp-clean@^0.3.1 C:\Users\Yauheni\Desktop\gTable\object-table
+16 verbose already installed skipping gulp-concat@^2.5.2 C:\Users\Yauheni\Desktop\gTable\object-table
+17 verbose already installed skipping gulp-htmlmin@^1.1.1 C:\Users\Yauheni\Desktop\gTable\object-table
+18 verbose already installed skipping gulp-less@^3.0.2 C:\Users\Yauheni\Desktop\gTable\object-table
+19 verbose already installed skipping gulp-load@^0.1.1 C:\Users\Yauheni\Desktop\gTable\object-table
+20 verbose already installed skipping gulp-load-plugins@^0.10.0 C:\Users\Yauheni\Desktop\gTable\object-table
+21 verbose already installed skipping gulp-minify-css@^1.0.0 C:\Users\Yauheni\Desktop\gTable\object-table
+22 verbose already installed skipping gulp-ng-annotate@^0.5.2 C:\Users\Yauheni\Desktop\gTable\object-table
+23 verbose already installed skipping gulp-uglify@^1.2.0 C:\Users\Yauheni\Desktop\gTable\object-table
+24 verbose already installed skipping plugins@^0.3.1 C:\Users\Yauheni\Desktop\gTable\object-table
+25 verbose already installed skipping require-dir@^0.3.0 C:\Users\Yauheni\Desktop\gTable\object-table
+26 verbose already installed skipping uglify@^0.1.3 C:\Users\Yauheni\Desktop\gTable\object-table
+27 silly resolved []
+28 info build C:\Users\Yauheni\Desktop\gTable\object-table
+29 verbose linkStuff [ false, false, false, 'C:\\Users\\Yauheni\\Desktop\\gTable' ]
+30 info linkStuff object-table@0.1.3
+31 verbose linkBins object-table@0.1.3
+32 verbose linkMans object-table@0.1.3
+33 verbose rebuildBundles object-table@0.1.3
+34 verbose rebuildBundles [ '.bin',
+34 verbose rebuildBundles   'gulp',
+34 verbose rebuildBundles   'gulp-angular-templatecache',
+34 verbose rebuildBundles   'gulp-clean',
+34 verbose rebuildBundles   'gulp-concat',
+34 verbose rebuildBundles   'gulp-htmlmin',
+34 verbose rebuildBundles   'gulp-less',
+34 verbose rebuildBundles   'gulp-load',
+34 verbose rebuildBundles   'gulp-load-plugins',
+34 verbose rebuildBundles   'gulp-minify-css',
+34 verbose rebuildBundles   'gulp-ng-annotate',
+34 verbose rebuildBundles   'gulp-uglify',
+34 verbose rebuildBundles   'gulp-util',
+34 verbose rebuildBundles   'gulp-watch',
+34 verbose rebuildBundles   'plugins',
+34 verbose rebuildBundles   'require-dir',
+34 verbose rebuildBundles   'uglify',
+34 verbose rebuildBundles   'wiredep' ]
+35 info install object-table@0.1.3
+36 info postinstall object-table@0.1.3
+37 info prepublish object-table@0.1.3
+38 error peerinvalid The package grunt does not satisfy its siblings' peerDependencies requirements!
+38 error peerinvalid Peer grunt-contrib-concat@0.3.0 wants grunt@~0.4.0
+38 error peerinvalid Peer grunt-contrib-uglify@0.2.4 wants grunt@~0.4.0
+38 error peerinvalid Peer grunt-css-url-replace@0.2.5 wants grunt@~0.4.5
+38 error peerinvalid Peer grunt-contrib-cssmin@0.6.1 wants grunt@~0.4.0
+38 error peerinvalid Peer grunt-contrib-copy@0.5.0 wants grunt@~0.4.0
+38 error peerinvalid Peer grunt-contrib-clean@0.5.0 wants grunt@~0.4.0
+39 error System Windows_NT 6.1.7601
+40 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+41 error cwd C:\Users\Yauheni\Desktop\gTable\object-table
+42 error node -v v0.10.35
+43 error npm -v 1.4.28
+44 error code EPEERINVALID
+45 verbose exit [ 1, true ]

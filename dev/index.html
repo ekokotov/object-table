@@ -35,16 +35,43 @@
 <script type="text/javascript" src="example.js"></script>
 <body ng-controller="mainController">
 	<div class="col-sm-12">
-<br><br>
+
+<h2>Without header</h2>
+
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable5" 
+display="10" 
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+select="multiply" 
+search="separate" 
+selected-model="report.selectedUser"
+>
+<tbody>
+	<tr>
+		<td>{{::item.name}}</td>
+		<td editable>{{item.eyeColor}}</td>
+		<td>{{::item.age}}</td>
+		<td>{{::item.balance}}</td>
+		<td>{{::item.company}}</td>
+		<td>{{::item.address}}</td>
+		<td>{{::item.favoriteFruit}}</td>
+	</tr>
+</tbody>
+</table>
+
+{{report.selectedUser}}
+
+ <br><br>
 			<table  object-table class="hover-column blue-dust"
 			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
 			data = "exportDataVariable" 
 			display="10" 
-			search="separate" 
+
 			headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
 			fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
-			editable = "true"
-			search="separate">
+			editable = "true">
 	</table>
 	
 <h2>Bacis</h2>
@@ -57,7 +84,6 @@
 	paging="false" 
 	sorting="simple" 
 	search="false" 
-	select="multiply" 
 	></table>
 <pre>
 	{{data.selected}}
@@ -133,7 +159,8 @@ sorting="compound"
 	</tr>
 </tbody>
 </table>
-<div class="row"><hr></div>
+<div class="row"><hr></div> 
+
 
 <h2>Custom headers pattern</h2>
 

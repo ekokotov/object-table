@@ -31,7 +31,7 @@
 						color: @head-color;
 						th{
 							border: 1px solid rgba(143, 153, 162, 0.39);
-							text-shadow: 1px 0px 1px black;
+							text-shadow: 1px 0 1px rgba(0, 0, 0, 0.64);
 						}
 					}
 				}
@@ -89,9 +89,12 @@
 	/*search*/
 	.search{
 		color: rgb(51, 55, 66);
-		border: 3px solid rgba(0, 137, 189, 0.41);
+		border: 3px solid rgba(0, 137, 189, 0.23);
 		&:focus{
-			border: 2px solid rgba(0, 184, 255, 0.85);
+			border: 2px solid rgba(84, 87, 97, 0.77);
+		}
+		&.separate{
+			border: none;
 		}
 	}
 

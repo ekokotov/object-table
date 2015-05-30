@@ -85,12 +85,16 @@
 	.search{
 		background-color: rgba(239, 239, 239, 0.9);
 		color: @head-color;
-		border: 3px solid fade(@head-background-color,20%);
-		box-shadow: inset 0 1px 4px rgba(51, 55, 66, 1);
-		/* &:focus{
-			border: 2px solid @head-background-color;
-			box-shadow: inset 0 2px 6px rgba(0, 0, 0, 1);
-		} */
+		border: 2px solid rgba(0, 154, 213, 1);
+		box-shadow: inset 0 1px 5px rgba(51, 55, 66, 0.67);
+		&:focus{
+			box-shadow: none;
+		} 
+		&.separate{
+			color: #333742;
+			border: 1px solid rgba(0, 118, 163, 1);
+			box-shadow: none;
+		}
 	}
 
 

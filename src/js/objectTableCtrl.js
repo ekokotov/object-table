@@ -40,6 +40,14 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			if(!!$attrs.fromUrl){
 				this._loadExternalData($attrs.fromUrl);
 			};
+
+			//reinitialize selected model
+			if( $scope.select==="multiply" ){
+				$scope.selectedModel = [];
+			}else{
+				$scope.selectedModel = {};
+			}
+			
 		};
 
 		this._loadExternalData = function(url){
@@ -60,7 +68,9 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			node = this._checkEditableContent(node);
 			var tr = angular.element(node).find("tr");
 			tr.attr("ng-repeat","item in data" + filter);
-			tr.attr("ng-click","setSelected(item)");
+			if(!tr.attr("ng-click")){
+				tr.attr("ng-click","setSelected(item)");
+			}
 			tr.attr("ng-class","{'selected-row':ifSelected(item)}");
 
 			$element.find("table").append(node.outerHTML);
@@ -80,35 +90,31 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 		};
 
 		$scope.setSelected = function(item){
-			if(!$scope.data.selected){
-				if( $scope.select==="multiply" ){
-					$scope.data.selected = [];
-				}
-			}
+
 			if( $scope.select==="multiply"){
 				if(!ctrl._containsInSelectArray(item)){
-					$scope.data.selected.push(item);
+					$scope.selectedModel.push(item);
 				}else{
-					$scope.data.selected.splice($scope.data.selected.indexOf(item),1);
+					$scope.selectedModel.splice($scope.selectedModel.indexOf(item),1);
 				}
 			}else{
-				$scope.data.selected = item;
+				$scope.selectedModel = item;
 			}
 		};
 
 		this._containsInSelectArray = function(obj) {
-			return $scope.data.selected.filter(function(listItem) {
-				return angular.equals(listItem, obj)
-			}).length > 0;
+			if($scope.selectedModel.length)
+				return $scope.selectedModel.filter(function(listItem) {
+					return angular.equals(listItem, obj)
+				}).length > 0;
 		};
 
 		$scope.ifSelected = function(item){
-			if(!$scope.data.selected) return false;
 
-			if( $scope.select==="multiply" ){
+			if( !!$scope.selectedModel && $scope.select==="multiply" ){
 				return ctrl._containsInSelectArray(item);
 			}else{
-				return item.$$hashKey==$scope.data.selected.$$hashKey;
+				return item.$$hashKey==$scope.selectedModel.$$hashKey;
 			}
 		};
 

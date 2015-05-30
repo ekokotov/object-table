@@ -17,7 +17,8 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			//fields:"@",
 			sortingType: "@?sorting",
 			editable:"=?",
-			select:"@?"
+			select:"@?",
+			selectedModel:"=?"
 
 		},
 		compile:function( tElement, tAttributes) {

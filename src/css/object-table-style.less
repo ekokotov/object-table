@@ -43,9 +43,23 @@
 	/*## Search */
 	.search{
 		max-width:250px;
+		padding-right: 25px;
 		&.separate{
 			width: 100%;
 			max-width: 100%;
+			padding-left: 22px;
+		}
+	}
+	.search_icon{
+		position: absolute;
+		right: 8px;
+		top: 10px;
+		color: gray;
+		&.separate{
+			left: 15px;
+			top: 20px;
+			font-size: 10px;
+			width: 10px;
 		}
 	}
 
@@ -134,8 +148,18 @@
 							&:hover:not(.table-sort-up):not(.table-sort-down):before{
 								opacity: 1;
 							}
-							&.table-sort-up:before,.object-table th.sortable.table-sort-down:after{
+							&.table-sort-up:before,&.table-sort-down:after{
 								opacity: 1;
+							}
+						}
+
+						&.separate{
+							position: relative;
+							padding-right: 7px;
+							text-shadow: none !important;
+							outline: none;
+							&:focus{
+								  outline: none;
 							}
 						}
 					}
@@ -179,7 +203,7 @@
 				tr{
 					th{
 						z-index: 3;
-  position: relative;
+						position: relative;
 					}
 				}
 			}

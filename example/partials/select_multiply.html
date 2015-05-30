@@ -9,11 +9,12 @@
 	sorting="simple" 
 	search="false" 
 	select="multiply" 
+	selected-model="report.selectedPerson"
 	></table>
 
 <p>Selected:</p>
 	<pre>
-		{{data.selected}}
+		{{report.selectedPerson}}
 	</pre>
 	<hr>
 
@@ -28,10 +29,71 @@
 			paging="false" 
 			search="false" 
 			select="multiply" 
+			selected-model="report.selectedPerson"
 	></table>
 
 	<p>Selected:</p>
 	<pre>
-		{{data.selected}}
+		{{report.selectedPerson}}
 	</pre>
+</textarea>
+
+<hr>
+<h2>Controller rows click event:</h2>
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable5" 
+display="10" 
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+>
+<tbody>
+	<tr ng-click="$owner.showItem(item);setSelected(item)">
+		<td editable>{{item.eyeColor}}</td>
+		<td>{{::item.age}}</td>
+		<td>{{::item.balance}}</td>
+		<td>{{::item.company}}</td>
+		<td>{{::item.address}}</td>
+		<td>{{::item.favoriteFruit}}</td>
+	</tr>
+</tbody>
+</table>
+
+	<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportDataVariable5" 
+			display="10" 
+			headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit">
+		<tbody>
+			<tr ng-click="$owner.showItem(item);setSelected(item)">
+				<td>{{::item.name}}</td>
+				<td editable>{{item.eyeColor}}</td>
+				<td>{{::item.age}}</td>
+				<td>{{::item.balance}}</td>
+				<td>{{::item.company}}</td>
+				<td>{{::item.address}}</td>
+				<td>{{::item.favoriteFruit}}</td>
+			</tr>
+		</tbody>
+	</table>
+</textarea>
+
+
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice</h4>
+	If you don't want to disable row selection, please add <code>setSelected(item)</code> to your ng-click. <br>	
+	<code>$owner</code> is a link to Controller. 
+</div>
+
+<textarea ui-codemirror ui-codemirror-opts="editorOptionsJS">
+	angular.module('test', ['objectTable']).controller('mainController', function ($scope) {
+		/* ... */
+	    $scope.showItem = function(item) {
+	      alert(JSON.stringify(item));
+    };
 </textarea>
