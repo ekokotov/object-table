@@ -29,6 +29,9 @@ angular.module('test', ['objectTable','ngRoute','ui.codemirror'])
     $scope.test = function(e) {
       alert('Alert from controller method!');
   };
+  $scope.showItem = function(item){
+    alert(JSON.stringify(item));
+  }
 
   // this variable will contains all data after loading
   $scope.dataFromUrl =[];
