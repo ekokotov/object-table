@@ -1,0 +1,43 @@
+<h2>Without header</h2>
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data="exportDataVariable1" 
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,address,favoriteFruit">
+<thead></thead>
+<tbody>
+	<tr>
+		<td>{{::item.name}}</td>
+		<td editable>{{item.eyeColor}}</td>
+		<td>{{::item.age}}</td>
+		<td>{{::item.balance}}</td>
+		<td>{{::item.company}}</td>
+		<td>{{::item.address}}</td>
+		<td>{{::item.favoriteFruit}}</td>
+	</tr>
+</tbody>
+</table>
+<hr>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportDataVariable_"  
+			headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,address,favoriteFruit" >
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td>{{::item.name}}</td>
+				<td editable>{{item.eyeColor}}</td>
+				<td>{{::item.age}}</td>
+				<td>{{::item.balance}}</td>
+				<td>{{::item.company}}</td>
+				<td>{{::item.address}}</td>
+				<td>{{::item.favoriteFruit}}</td>
+			</tr>
+		</tbody>
+	</table>
+</textarea>
