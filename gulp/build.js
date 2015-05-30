@@ -6,12 +6,24 @@ minifyCSS = require('gulp-minify-css'),
 path = require('path'),
 gutil = require('gulp-util'),
 plugins = gulpLoadPlugins(),
+header = require('gulp-header'),
+
 
 TEMP_FOLDER = ".tmp",
 SRC_FOLDER = "src",
 TEMPLATES_FOLDER = "templates",
 BUILD_FOLDER = "build",
-OUTPUT_FILE = "object-table.js";
+OUTPUT_FILE = "object-table.js",
+
+/* add HEADER */
+pkg = require('../package.json');
+var banner = ['/**',
+  ' * <%= pkg.name %> - <%= pkg.description %>',
+  ' * @version v<%= pkg.version %>',
+  ' * @author <%= pkg.author %>',
+  ' * @license <%= pkg.license %>',
+  ' */',
+  ''].join('\n');
 
 
 gulp.task('less', function () {
@@ -39,6 +51,7 @@ gulp.task('js-min', function () {
 	.pipe(plugins.concat(OUTPUT_FILE))
 	.pipe(plugins.ngAnnotate())
 	.pipe(plugins.uglify())
+	.pipe(header(banner, { pkg : pkg } ))
 	.pipe(gulp.dest(TEMP_FOLDER))
 });
 
