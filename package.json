@@ -1,8 +1,8 @@
 {
   "name": "object-table",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "angular table directive",
-  "main": "index.html",
+  "main": "build/object-table.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
