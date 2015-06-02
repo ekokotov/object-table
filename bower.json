@@ -5,7 +5,7 @@
     "Evgeny Kokotov<yauheni@yauheni.com>"
   ],
   "description": "angular table data grid",
-  "main": ["build/object-table_v0.1.4.js",
+  "main": ["build/object-table.js",
 "build/object-table-style.css"
 ],
   "keywords": [
