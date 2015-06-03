@@ -1,7 +1,8 @@
 Display JSON in Table with AngularJS
 =================
 
-https://travis-ci.org/ekokotov/object-table.svg
+[![Build Status](https://travis-ci.org/ekokotov/object-table.svg)](https://travis-ci.org/ekokotov/object-table) 
+
 
 ## Desription
 This Angular directive enable data representation via tables. It makes possible search, filtering, pagination, compound sorting, editable cells, row templates, etc... 
