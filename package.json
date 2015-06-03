@@ -14,12 +14,11 @@
   ],
   "author": "Yauheni Kokatau",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "gulp-util": "^3.0.4",
     "gulp-watch": "^4.2.4",
-    "wiredep": "^2.2.2"
-  },
-  "devDependencies": {
+    "wiredep": "^2.2.2",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^1.6.0",
     "gulp-clean": "^0.3.1",
