@@ -1,6 +1,6 @@
 {
   "name": "object-table",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "angular table directive",
   "main": "build/object-table.js",
   "scripts": {

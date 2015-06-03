@@ -1,6 +1,6 @@
 /**
  * object-table - angular table directive
- * @version v0.1.5
+ * @version v0.1.6
  * @author Yauheni Kokatau
  * @license MIT
  */
