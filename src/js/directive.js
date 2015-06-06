@@ -53,9 +53,9 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			//pagingFilter = rowFilter;
 			pagingFilter += " | offset: currentPage:display |limitTo: display";
 
-			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in data" + rowFilter + pagingFilter);
+			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in $filtered = (data" + rowFilter +")"+ pagingFilter);
 			//add paging
-			tElement.find("paging").attr("count","(data" + rowFilter + ").length");
+			tElement.find("paging").attr("count","$filtered.length");
 
 			return function preLink(scope, element, attrs, ctrl, transclude) {
 				ctrl._init();

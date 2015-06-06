@@ -58,9 +58,14 @@ selected-model="report.selectedUser"
 	<h4>Notice:</h4>
 	<p>variable <code>$filtered</code> contains displayed array (It depends on the filters like search or your custom filters); </p>
 	<p>If you want to apply your aggregate function for all data array despite filters, please use <code>getTotalBalance(data)</code>. In this case returned of function value won't be changed during search. </p>
-	
-	
 </div>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice:</h4>
+	<p>The <code>&lt;tfoot&gt;</code> tag must be used in the following context: As a child of a <code>&lt;table&gt;</code> element, after any <code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, and <code>&lt;thead&gt;</code> elements and before any <code>&lt;tbody&gt;</code> and <code>&lt;tr&gt;</code> elements.</p>
+</div>
+
+
 
 <!-- CODE -->
 <h3>Method <code>getTotalBalance</code> in controller:</h3>
