@@ -50,12 +50,12 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 				rowFilter += "| filter:globalSearch";
 			};
 
-			pagingFilter = rowFilter;
-			rowFilter += " | offset: currentPage:display |limitTo: display";
+			//pagingFilter = rowFilter;
+			pagingFilter += " | offset: currentPage:display |limitTo: display";
 
-			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in data" + rowFilter);
+			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in data" + rowFilter + pagingFilter);
 			//add paging
-			tElement.find("paging").attr("count","(data" + pagingFilter + ").length");
+			tElement.find("paging").attr("count","(data" + rowFilter + ").length");
 
 			return function preLink(scope, element, attrs, ctrl, transclude) {
 				ctrl._init();
@@ -67,12 +67,15 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 							ctrl._addHeaderPattern(clone[key]);
 						}else if(clone[key].tagName=="TBODY"){
 							scope.findBody = true;
-							ctrl._addRowPattern(clone[key],rowFilter);
+							ctrl._addRowPattern(clone[key],rowFilter,pagingFilter);
+						}else if(clone[key].tagName=="TFOOT"){
+							ctrl._addFooterPattern(clone[key]);
 						}
 					};
 				});
 
-			}
+			}; //[END transclude]
+			$scope.rowFilter = rowFilter;
 		},
 
 	}

@@ -63,11 +63,16 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			$scope.customHeader = true;
 			$element.find("table").prepend(node);
 		};
+		
+		this._addFooterPattern = function(node){
+			$element.find("table").prepend(node);
+		};
 
-		this._addRowPattern = function(node, filter){
+		this._addRowPattern = function(node, rowFilter, paggingFilter){
 			node = this._checkEditableContent(node);
 			var tr = angular.element(node).find("tr");
-			tr.attr("ng-repeat","item in data" + filter);
+
+			tr.attr("ng-repeat","item in $filtered = (data" + rowFilter + ")" + paggingFilter);
 			if(!tr.attr("ng-click")){
 				tr.attr("ng-click","setSelected(item)");
 			}

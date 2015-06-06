@@ -31,7 +31,18 @@ angular.module('test', ['objectTable'])
 
   $scope.report = {
     selectedUser:null
-  }
+  };
+
+  $scope.getTotalBalance = function(data){
+    if(!data || !data.length) return;
+    var totalNumber = 0;
+    for(var i=0; i<data.length; i++){
+      totalNumber = totalNumber + parseFloat(data[i].money);
+    }
+
+    return Math.round(totalNumber);
+  
+  };
 
 
 

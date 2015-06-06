@@ -13,7 +13,7 @@ angular.module('objectTable',[]).directive("contenteditable", function() {
                     element.html(ngModel.$viewValue || "");
                 };
 
-                element.bind("change", function() {
+                element.bind("change blur", function() {
                     scope.$apply(read);
                 });
             }
