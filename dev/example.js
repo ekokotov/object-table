@@ -4,7 +4,7 @@
 * gTableTest Description
 */
 angular.module('test', ['objectTable'])
-    .controller('mainController', function ($scope) {
+.controller('mainController', function ($scope,$http,$timeout,$q) {
 
 
 	$scope.data = [{name: "Moroni", age: 50, money: -10},
@@ -31,7 +31,52 @@ angular.module('test', ['objectTable'])
 
   $scope.report = {
     selectedUser:null
-  }
+}
+
+
+$scope.pagingExample = {
+    exData:null,
+    limit:0,
+    currentPage:0,
+    total:0,
+    pages:[]
+};
+
+var ctrl = this,
+initialLoaded=false;
+
+$scope.loadData = function(n){
+
+    //don't load if n==0 or n>pages
+    if($scope.pagingExample.pages.length){
+        if(n==0 || n > $scope.pagingExample.pages.length) return;
+    };
+    
+    //load data
+    $http.get('data/data-page'+ n +'.json').then(function(response){
+        $scope.pagingExample.exData = response.data.data;
+        $scope.pagingExample.limit = response.data.limit;
+        $scope.pagingExample.currentPage = response.data.page;
+        $scope.pagingExample.total = response.data.total;
+
+        //calculate pages just once - after first loading
+        if(!initialLoaded){
+            ctrl.getTotalPages();
+            initialLoaded = true;
+        };
+    });
+};
+
+// load first page
+$scope.loadData($scope.pagingExample.currentPage+1);
+
+// calculate totals and return page range ([1,2,3])
+this.getTotalPages = function(){
+    var count = Math.round($scope.pagingExample.total / $scope.pagingExample.limit);
+    for (var i = 0; i < count; i++) {
+        $scope.pagingExample.pages.push(i);
+    };
+};
 
 
 
