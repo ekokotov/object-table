@@ -38,6 +38,19 @@ angular.module('test', ['objectTable','ngRoute','ui.codemirror'])
     alert(JSON.stringify(item));
   };
 
+   $scope.getTotalBalance = function(data){
+    //return if empty or not ready
+    if(!data || !data.length) return;
+
+    var totalNumber = 0;
+    for(var i=0; i<data.length; i++){
+      totalNumber = totalNumber + parseFloat(data[i].money);
+    }
+
+    return Math.round(totalNumber);
+  
+  };
+
   // this variable will contains all data after loading
   $scope.dataFromUrl =[];
 

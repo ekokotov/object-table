@@ -36,6 +36,7 @@
 <body ng-controller="mainController">
 	<div class="col-sm-12">
 
+
 		<h2>server Paging</h2>
 
 		<table  object-table 
@@ -62,25 +63,28 @@
 
 <!-- <h2>Without header</h2>
 
+<h2>With footer</h2>
+
+
 <table object-table 
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-data="exportDataVariable5" 
-display="10" 
-headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
-select="multiply" 
+data="data" 
+headers="Name, Age,Money" 
+fields="name,age,money" 
 search="separate" 
 selected-model="report.selectedUser"
 >
+<tfoot>
+<tr>
+	<td>Total users:{{$filtered.length}}</td>
+	<td></td>
+	<td>Total balance:{{ $owner.getTotalBalance($filtered) }} $</td>
+</tr>
+</tfoot>
 <tbody>
 	<tr>
 		<td>{{::item.name}}</td>
-		<td editable>{{item.eyeColor}}</td>
 		<td>{{::item.age}}</td>
-		<td>{{::item.balance}}</td>
-		<td>{{::item.company}}</td>
-		<td>{{::item.address}}</td>
-		<td>{{::item.favoriteFruit}}</td>
+		<td editable>{{item.money}}</td>
 	</tr>
 </tbody>
 </table>
@@ -105,7 +109,7 @@ selected-model="report.selectedUser"
 	display="10" 
 	headers="Age, full Name" 
 	fields="age,name" 
-	paging="false" 
+	paging="true" 
 	sorting="simple" 
 	search="false" 
 	></table>

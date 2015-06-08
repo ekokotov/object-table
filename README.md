@@ -1,6 +1,7 @@
 Display JSON in Table with AngularJS
 =================
 
+
 ## Desription
 This Angular directive enable data representation via tables. It makes possible search, filtering, pagination, compound sorting, editable cells, row templates, etc... 
 Exhibits high performance. Without any dependencies - just pure Angular.
@@ -27,6 +28,7 @@ Feature List
 - pagination
 - search (by all fields)
 - column searching (by each column)
+- display aggregate information in footer
 - themes!
 
 ## Installing via Bower

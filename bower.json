@@ -1,12 +1,11 @@
 {
   "name": "angular-object-table",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "authors": [
   "Evgeny Kokotov<yauheni@yauheni.com>"
   ],
   "description": "angular smart table data grid",
-  "main": [
-  "build/object-table.js",
+  "main": ["build/object-table.js",
   "build/object-table-style.css"
   ],
   "keywords": [
@@ -14,7 +13,10 @@
   "table",
   "data-grid",
   "datagrid",
-  "object-table"
+  "object-table",
+  "angular-object-table"
+  "json-table",
+  "angular json table"
   ],
   "license": "MIT",
   "homepage": "index.html",
