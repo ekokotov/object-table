@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../build/object-table-style.css">
 	<link rel="stylesheet" type="text/css" href="../build/themes/dark-sky.css">
 	<link rel="stylesheet" type="text/css" href="../build/themes/blue-dust.css">
+	<link rel="stylesheet" type="text/css" href="../example/css/style.css">
 	<style>
 		._personal_inf{
 			background-color: rgb(212, 255, 227);
@@ -36,8 +37,30 @@
 <body ng-controller="mainController">
 	<div class="col-sm-12">
 
+<h2>Server Paging (Simple)</h2>
 
-		<h2>server Paging</h2>
+		<table  object-table 
+				data="simplePagingExample.exData" 
+				display="simplePagingExample.limit" 
+				headers="Age, full Name" 
+				fields="age,name">
+		</table>
+		
+<div class="loading" ng-show="!simplePagingExample.exData.length">
+	<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Data...
+</div>
+	<nav>
+		<ul class="pagination">
+			<li ng-class="{disabled : simplePagingExample.currentPage == 1}">
+				<a href ng-click="loadSimpleData(simplePagingExample.currentPage-1)">« Prev</a>
+			</li>
+			<li ng-class="{disabled : simplePagingExample.currentPage == simplePagingExample.pages}">
+				<a href ng-click="loadSimpleData(simplePagingExample.currentPage+1)">Next »</a>
+			</li>
+		</ul>
+	</nav>
+
+		<h2>Server Paging (Advanced)</h2>
 
 		<table  object-table 
 				data="pagingExample.exData" 
@@ -48,20 +71,23 @@
 
 	<nav>
 		<ul class="pagination">
-			<li>
-				<a href ng-click="loadData(pagingExample.currentPage-1)"
-				ng-disabled="pagingExample.currentPage==1">« Prev</a>
+			<li ng-class="{disabled : pagingExample.currentPage==1}">
+				<a href ng-click="loadData(pagingExample.currentPage-1)">« Prev</a>
 			</li>
-			<li ng-repeat="n in pagingExample.pages" ng-click="loadData(n+1)">
+
+			<li ng-repeat="n in pagingExample.pages"
+				ng-click="loadData(n+1)"
+				ng-class="{active: n == pagingExample.currentPage-1}">
 				<a href="javascript:void(0)">{{n+1}}</a>
 			</li>
-			<li>
+
+			<li ng-class="{disabled : pagingExample.currentPage == pagingExample.pages.length}">
 				<a href ng-click="loadData(pagingExample.currentPage+1)">Next »</a>
 			</li>
 		</ul>
 	</nav>
 
-<!-- <h2>Without header</h2>
+<h2>Without header</h2>
 
 <h2>With footer</h2>
 
@@ -300,7 +326,7 @@ headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
 fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
 add-filter="| filter:{'name':$owner.name} |filter:{'eyeColor':$owner.eyeColor} | filter:$owner.all" 
 search="false"
-></table> -->
+></table> 
 <div class="row"><hr></div> 
 
 </div>

@@ -30,13 +30,13 @@
   }
   .CodeMirror{
     height: auto !important;
-  border: 1px dashed rgb(167, 167, 167);
+    border: 1px dashed rgb(167, 167, 167);
   }
   h2{
     margin-top: 0;
   }
   p{
-      color: gray;
+    color: gray;
   }
 
   /*callout*/
@@ -46,60 +46,83 @@
     border: 1px solid #eee;
     border-left-width: 5px;
     border-radius: 3px;
-      color: gray;
-}
-.bs-callout h4 {
+    color: gray;
+  }
+  .bs-callout h4 {
     margin-top: 0;
     margin-bottom: 5px;
-}
-.bs-callout p:last-child {
+  }
+  .bs-callout p:last-child {
     margin-bottom: 0;
-}
-.bs-callout code {
+  }
+  .bs-callout code {
     border-radius: 3px;
-}
-.bs-callout+.bs-callout {
+  }
+  .bs-callout+.bs-callout {
     margin-top: -5px;
-}
-.bs-callout-default {
+  }
+  .bs-callout-default {
     border-left-color: #777;
-}
-.bs-callout-default h4 {
+  }
+  .bs-callout-default h4 {
     color: #777;
-}
-.bs-callout-primary {
+  }
+  .bs-callout-primary {
     border-left-color: #428bca;
-}
-.bs-callout-primary h4 {
+  }
+  .bs-callout-primary h4 {
     color: #428bca;
-}
-.bs-callout-success {
+  }
+  .bs-callout-success {
     border-left-color: #5cb85c;
-}
-.bs-callout-success h4 {
+  }
+  .bs-callout-success h4 {
     color: #5cb85c;
-}
-.bs-callout-danger {
+  }
+  .bs-callout-danger {
     border-left-color: #d9534f;
-}
-.bs-callout-danger h4 {
+  }
+  .bs-callout-danger h4 {
     color: #d9534f;
-}
-.bs-callout-warning {
+  }
+  .bs-callout-warning {
     border-left-color: #f0ad4e;
-}
-.bs-callout-warning h4 {
+  }
+  .bs-callout-warning h4 {
     color: #f0ad4e;
-}
-.bs-callout-info {
+  }
+  .bs-callout-info {
     border-left-color: #5bc0de;
-}
-.bs-callout-info h4 {
+  }
+  .bs-callout-info h4 {
     color: #5bc0de;
-}
+  }
 
-.label{
+  .label{
     font-size: 12px;
-  font-weight: 100;
-  font-family: Arial;
-}
+    font-weight: 100;
+    font-family: Arial;
+  }
+
+
+  .loading{
+    padding: 5px;
+    text-align: center;
+    color: rgb(51, 122, 185);
+  }
+
+  .loading .glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+  }
+
+
+  @-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+  }
+
+  @keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+  }

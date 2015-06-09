@@ -9,7 +9,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 		transclude: true,
 		scope:{
 			data:"=",
-			display:"=",
+			display:"=?",
 			paging:"=?",
 			fromUrl:"@",
 			//search:"@?",

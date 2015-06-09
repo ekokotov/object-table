@@ -29,6 +29,7 @@ Feature List
 - search (by all fields)
 - column searching (by each column)
 - display aggregate information in footer
+- support server pagination
 - themes!
 
 ## Installing via Bower

@@ -1,0 +1,226 @@
+<h2>Server Paging (Simple)</h2>
+
+
+<div class="bs-callout bs-callout-primary">
+	Just imagine, server returns JSON, that contains such information: <br>
+	<code>data</code>: array of objects <br>
+<code>page</code>: current number page<br>
+<code>limit</code>: the amount of items on the page <br>
+<code>total</code>: the total amount of objects (to calculate the number of pages). <br>
+<br>	<h4>Example</h4> <br>
+<textarea ui-codemirror ui-codemirror-opts="editorOptionsJS">
+	{
+	    "data":[
+	    {"name": "Moroni", "age": 50, "money": -10},
+	    {"name": "Tiancum", "age": 43,"money": 120},
+	    {"name": "Jacob", "age": 27, "money": 5.5},
+	    {"name": "Nephi", "age": 29,"money": -54},
+	    {"name": "Enos", "age": 34,"money": 110},
+	    {"name": "Tiancum", "age": 43, "money": 1000},
+	    {"name": "Jacob", "age": 27,"money": -201},
+	    {"name": "Nephi", "age": 29, "money": 100},
+	    {"name": "Enos", "age": 34, "money": -52.5},
+	    {"name": "Tiancum", "age": 43, "money": 52.1}
+	    ],
+	    "page":1,
+	    "limit":10,
+	    "total":25
+	}
+</textarea>
+</div>
+
+<table  object-table 
+data="simplePaging.data" 
+display="simplePaging.display" 
+headers="Age, full Name" 
+fields="age,name">
+</table>
+<!-- navigation -->
+<nav>
+	<ul class="pagination">
+		<li ng-class="{disabled : simplePaging.currentPage == 1}">
+			<a href ng-click="loadSimpleData(simplePaging.currentPage-1)">« Prev</a>
+		</li>
+		<li ng-class="{disabled : simplePaging.currentPage == simplePaging.pages}">
+			<a href ng-click="loadSimpleData(simplePaging.currentPage+1)">Next »</a>
+		</li>
+	</ul>
+</nav>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			data="simplePaging.data" 
+			display="simplePaging.display" 
+			headers="Age, full Name" 
+			fields="age,name">
+	</table>
+	<!-- navigation -->
+	<nav>
+		<ul class="pagination">
+			<li ng-class="{disabled : simplePaging.currentPage == 1}">
+				<a href ng-click="loadSimpleData(simplePaging.currentPage-1)">« Prev</a>
+			</li>
+			<li ng-class="{disabled : simplePaging.currentPage == simplePaging.pages}">
+				<a href ng-click="loadSimpleData(simplePaging.currentPage+1)">Next »</a>
+			</li>
+		</ul>
+	</nav>
+</textarea>
+
+<!-- CODE -->
+<h3>In controller:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptionsJS">
+	$scope.simplePaging = {
+		data:null,
+		display:0,
+		currentPage:0,
+		total:0,
+		pages:0
+	};
+
+	$scope.loadSimpleData = function(n){
+
+		//don't load if n==0 or n>pages
+		if($scope.simplePaging.pages){
+			if(n==0 || n > $scope.simplePaging.pages) return;
+		};
+
+    	//load data 
+	    $http.get('test-data/data-page'+ n +'.json').then(function(response){
+	    	$scope.simplePaging.data = response.data.data;
+	    	$scope.simplePaging.display = response.data.limit;
+	    	$scope.simplePaging.currentPage = response.data.page;
+	    	$scope.simplePaging.total = response.data.total;
+
+	    	//calculate page count
+	    	if(!$scope.simplePaging.pages){
+	    		$scope.simplePaging.pages = Math.round(response.data.total / response.data.limit);
+	    	};
+	    		
+	    });
+    
+	};
+
+	// load first page
+	$scope.loadSimpleData(1);
+</textarea>	
+<hr>
+
+<h2>Server Paging (Advanced)</h2>
+
+<table  object-table 
+data="advPaging.data" 
+display="advPaging.display" 
+headers="Age, full Name" 
+fields="age,name">
+</table>
+
+<!---loading -->
+<div class="loading" ng-show="!advPaging.data.length">
+	<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Data...
+</div>
+
+<!-- navigation -->
+<nav>
+	<ul class="pagination">
+		<li ng-class="{disabled : advPaging.currentPage==1}">
+			<a href ng-click="loadData(advPaging.currentPage-1)">« Prev</a>
+		</li>
+
+		<li ng-repeat="n in advPaging.pages"
+		ng-click="loadData(n+1)"
+		ng-class="{active: n == advPaging.currentPage-1}">
+		<a href="javascript:void(0)">{{n+1}}</a>
+	</li>
+
+	<li ng-class="{disabled : advPaging.currentPage == advPaging.pages.length}">
+		<a href ng-click="loadData(advPaging.currentPage+1)">Next »</a>
+	</li>
+</ul>
+</nav>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			data="advPaging.data" 
+			display="advPaging.display" 
+			headers="Age, full Name" 
+			fields="age,name">
+	</table>
+
+	<!---loading -->
+	<div class="loading" ng-show="!advPaging.data.length">
+		<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Data...
+	</div>
+
+	<!-- navigation -->
+	<nav>
+		<ul class="pagination">
+			<li ng-class="{disabled : advPaging.currentPage==1}">
+				<a href ng-click="loadData(advPaging.currentPage-1)">« Prev</a>
+			</li>
+
+			<li ng-repeat="n in advPaging.pages"
+			ng-click="loadData(n+1)"
+			ng-class="{active: n == advPaging.currentPage-1}">
+			<a href="javascript:void(0)">{{n+1}}</a>
+		</li>
+
+		<li ng-class="{disabled : advPaging.currentPage == advPaging.pages.length}">
+			<a href ng-click="loadData(advPaging.currentPage+1)">Next »</a>
+		</li>
+	</ul>
+	</nav>
+</textarea>
+
+<!-- CODE -->
+<h3>In controller:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptionsJS">
+	$scope.advPaging = {
+		data:null,
+		display:0,
+		currentPage:0,
+		total:0,
+		pages:[]
+	};
+
+	var ctrl = this;
+
+	$scope.loadData = function(n){
+
+	    //don't load if n==0 or n>pages
+	    if($scope.advPaging.pages.length){
+	    	if(n==0 || n > $scope.advPaging.pages.length) return;
+	    };
+	    $scope.advPaging.data=[];
+		//load data ($timeout to emulate delay)
+		$timeout(function(){
+			$http.get('test-data/data-page'+ n +'.json').then(function(response){
+			   	$scope.advPaging.data = response.data.data;
+			   	$scope.advPaging.display = response.data.limit;
+			   	$scope.advPaging.currentPage = response.data.page;
+			   	$scope.advPaging.total = response.data.total;
+
+		        //calculate pages just once - after first loading
+		        if(!$scope.advPaging.pages.length){
+		        	ctrl.getTotalPages();
+		        };
+			});
+		},2000);
+	   
+	};
+
+	// load first page
+	$scope.loadData(1);
+
+	// calculate totals and return page range ([1,2,3])
+	this.getTotalPages = function(){
+		var count = Math.round($scope.advPaging.total / $scope.advPaging.display);
+		for (var i = 0; i < count; i++) {
+			$scope.advPaging.pages.push(i);
+		};
+	};
+</textarea>
