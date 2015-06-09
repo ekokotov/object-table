@@ -1,0 +1,85 @@
+<h2>Footer expressions</h2>
+<p>aggregate functions in footer</p>
+
+<table object-table 
+data="data" 
+headers="Name, Age,Money" 
+fields="name,age,money" 
+search="separate" 
+selected-model="report.selectedUser"
+>
+<tfoot>
+<tr>
+	<td>Total users:{{$filtered.length}}</td>
+	<td></td>
+	<td>Total balance:{{ $owner.getTotalBalance($filtered) }} $</td>
+</tr>
+</tfoot>
+<tbody>
+	<tr>
+		<td>{{::item.name}}</td>
+		<td>{{::item.age}}</td>
+		<td editable>{{item.money}}</td>
+	</tr>
+</tbody>
+</table>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Please try to edit <code>money</code> column</h4>
+</div>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			data="data" 
+			headers="Name, Age,Money" 
+			fields="name,age,money" 
+			search="separate" 
+			selected-model="report.selectedUser">
+	<tfoot>
+		<tr>
+			<td>Total users:{{$filtered.length}}</td>
+			<td></td>
+			<td>Total balance:{{ $owner.getTotalBalance($filtered) }} $</td>
+		</tr>
+	</tfoot>
+	<tbody>
+		<tr>
+			<td>{{::item.name}}</td>
+			<td>{{::item.age}}</td>
+			<td editable>{{item.money}}</td>
+		</tr>
+	</tbody>
+	</table>
+</textarea>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice:</h4>
+	<p>variable <code>$filtered</code> contains displayed array (It depends on the filters like search or your custom filters); </p>
+	<p>If you want to apply your aggregate function for all data array despite filters, please use <code>getTotalBalance(data)</code>. In this case returned of function value won't be changed during search. </p>
+</div>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice:</h4>
+	<p>The <code>&lt;tfoot&gt;</code> tag must be used in the following context: As a child of a <code>&lt;table&gt;</code> element, after any <code>&lt;caption&gt;</code>, <code>&lt;colgroup&gt;</code>, and <code>&lt;thead&gt;</code> elements and before any <code>&lt;tbody&gt;</code> and <code>&lt;tr&gt;</code> elements.</p>
+</div>
+
+
+
+<!-- CODE -->
+<h3>Method <code>getTotalBalance</code> in controller:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptionsJS">
+		$scope.getTotalBalance = function(data){
+		    //return if empty or not ready
+		    if(!data || !data.length) return;
+
+		    var totalNumber = 0;
+		    for(var i=0; i<data.length; i++){
+		      totalNumber = totalNumber + parseFloat(data[i].money);
+		    }
+
+		    return Math.round(totalNumber);
+	  
+	  };
+</textarea>

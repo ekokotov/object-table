@@ -1,5 +1,8 @@
 angular.module('test').config(function ($routeProvider) {
-       $routeProvider.when('/:template', {
+       $routeProvider.when('/server-paging',{
+             controller:'serverPagingController',
+            templateUrl:"example/partials/server_paging.html"
+        }).when('/:template', {
             controller:'mainController',
             templateUrl:function(params){
                 return !!params.template ? 'example/partials/'+ params.template + '.html' : "example/partials/attributes.html";

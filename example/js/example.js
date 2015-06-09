@@ -36,6 +36,19 @@ angular.module('test', ['objectTable','ngRoute','ui.codemirror'])
   // this variable will contains all data after loading
   $scope.dataFromUrl =[];
 
+   $scope.getTotalBalance = function(data){
+    //return if empty or not ready
+    if(!data || !data.length) return;
+
+    var totalNumber = 0;
+    for(var i=0; i<data.length; i++){
+      totalNumber = totalNumber + parseFloat(data[i].money);
+    }
+
+    return Math.round(totalNumber);
+  
+  };
+
   /*codemirror*/
 
   $scope.editorOptions = {
