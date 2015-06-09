@@ -36,7 +36,7 @@
 <script type="text/javascript" src="example.js"></script>
 <body ng-controller="mainController">
 	<div class="col-sm-12">
-
+<!-- 
 <h2>Server Paging (Simple)</h2>
 
 		<table  object-table 
@@ -85,20 +85,16 @@
 				<a href ng-click="loadData(pagingExample.currentPage+1)">Next »</a>
 			</li>
 		</ul>
-	</nav>
-
-<h2>Without header</h2>
+	</nav> -->
 
 <h2>With footer</h2>
-
 
 <table object-table 
 data="data" 
 headers="Name, Age,Money" 
 fields="name,age,money" 
 search="separate" 
-selected-model="report.selectedUser"
->
+selected-model="report.selectedUser">
 <tfoot>
 <tr>
 	<td>Total users:{{$filtered.length}}</td>
@@ -116,16 +112,12 @@ selected-model="report.selectedUser"
 </table>
 
 {{report.selectedUser}}
-
- <br><br>
+<h2>Theme</h2>
 			<table  object-table class="hover-column blue-dust"
 			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
 			data = "exportDataVariable" 
-			display="10" 
-
 			headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-			fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
-			editable = "true">
+			fields = "name,eyeColor,age,balance,company,address,favoriteFruit">
 	</table>
 	
 <h2>Bacis</h2>
@@ -151,7 +143,6 @@ selected-model="report.selectedUser"
 	data="data" 
 	headers="Full Name,Money, Age" 
 	fields="name,money,age" 
-	paging="false" 
 	sorting="compound" 
 	></table>
 	<div class="row"><hr></div>

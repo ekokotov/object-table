@@ -58,7 +58,8 @@
 <div class="loading" ng-show="dataIsLoading">
 	<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Data...
 </div>
-<paging ng-if="paging" data-display="display" class="object-table-paging" ng-hide="dataIsLoading"></paging>
+
+<paging ng-if="paging" data-display="display" count="$filtered.length" class="object-table-paging" ng-hide="dataIsLoading"></paging>
 
 <div class="clearfix"></div>
 
