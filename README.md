@@ -28,7 +28,7 @@ Feature List
 - pagination
 - search (by all fields)
 - column searching (by each column)
-- display aggregate information in footer (like, total ,sum, etc.)
+- display aggregate information in footer (like, total ,sum)
 - support server pagination
 - themes!
 
