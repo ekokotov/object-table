@@ -63,7 +63,7 @@ Example of HTML-markup :
        headers="Name, Age" 
        fields="name, age"
        sorting="false"
-       editable="true"
+       editable="true" 
 ></table>
 ```
 ## Examples
