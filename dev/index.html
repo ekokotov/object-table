@@ -39,7 +39,15 @@
 <script type="text/javascript" src="example.js"></script>
 <body ng-controller="mainController">
 	<div class="col-sm-12">
+	
 
+		<table object-table 
+	data="data" 
+	headers="Name,Age" 
+	fields="name,age" 
+	search="separate"
+	></table>
+	
 	<h2>Excell selection</h2>
 
 		<table object-table class="hover-column" 

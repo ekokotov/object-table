@@ -29,7 +29,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			/* GET HEADERS */
 			if(!!$attrs.headers){
 				var preHeaders = $attrs.headers.split(',');
-				for (var i = preHeaders.length - 1; i >= 0; i--) {
+				for (var i = 0,length=preHeaders.length; i <length; i++) {
 					$scope.headers.push( preHeaders[i].trim() );
 				};
 				preHeaders = null;
@@ -40,7 +40,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			/* GET FIELDS */
 			if(!$attrs.fields) throw "Sorting is allowed just with specified 'fields' attribute !";
 			var preFields = $attrs.fields.split(',');
-			for (var i = preFields.length - 1; i >= 0; i--) {
+			for (var i = 0,length=preFields.length; i <length; i++) {
 				$scope.fields.push( preFields[i].trim() );
 			};
 			preFields = null;
