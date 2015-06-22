@@ -101,6 +101,7 @@
 					th{
 						border-bottom: 0;
 						padding-right: 25px;
+						position: relative;
 						&.sortable{
 							position: relative;
 							&:before {
@@ -136,6 +137,22 @@
 							outline: none;
 							&:focus{
 								outline: none;
+							}
+						}
+						div.resize{
+							width: 5px;
+							border-right: 2px dotted rgb(148, 148, 148);
+							position: absolute;
+							right: -2px;
+							visibility: hidden;
+							top: 0;
+							z-index: 999;
+							height: 100%;
+							cursor: ew-resize;
+						}
+						&:hover{
+							div.resize{
+								visibility: visible;
 							}
 						}
 					}
@@ -177,6 +194,9 @@
 					}
 				}
 			}
+		/*&.resize{
+			width: auto;
+		}*/
 		}
 
 		&.hover-column table{

@@ -10,6 +10,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 		scope:{
 			data:"=",
 			display:"=?",
+			resize:"=?",
 			paging:"=?",
 			fromUrl:"@",
 			//search:"@?",

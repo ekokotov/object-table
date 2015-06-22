@@ -10,16 +10,18 @@
 	<link rel="stylesheet" type="text/css" href="../build/themes/blue-dust.css">
 	<link rel="stylesheet" type="text/css" href="../example/css/style.css">
 	<style>
-		._personal_inf{
-			background-color: rgb(212, 255, 227);
-			color: green;
-		}
-		.additional_inf{
-			background-color: rgb(230, 241, 246);
-		}
-		.selected{
-			background-color: red;
-		}
+	._personal_inf{
+		background-color: rgb(212, 255, 227);
+		color: green;
+	}
+	.additional_inf{
+		background-color: rgb(230, 241, 246);
+	}
+	.selected{
+		background-color: red;
+	}
+
+
 	</style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
@@ -37,26 +39,37 @@
 <script type="text/javascript" src="../src/js/objectTableFilters.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="example.js"></script>
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
 <body ng-controller="mainController">
 	<div class="col-sm-12">
 	
 
-		<table object-table 
-	data="data" 
-	headers="Name,Age" 
-	fields="name,age" 
-	search="separate"
-	></table>
-	
-	<h2>Excell selection</h2>
+<table  object-table
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+data = "exportDataVariable1" 
+headers = "Name, Eye color, Age" 
+fields = "name,eyeColor,age"
+resize="true">
+<thead ng-mousedown="resizeStart($event)" ng-mouseup="resizeEnd($event)">
+	<tr>
+		<th style="background-color: green">Name <div class="resize"></div></th>
+		<th>Eye <div class="resize"></div></th>
+		<th>color <div class="resize"></div></th>
+	</tr>
+</thead>
+</table>
+
+
+		<h2>Excell selection</h2>
 
 		<table object-table class="hover-column" 
-	data="data" 
-	headers="Age, full Name" 
-	fields="age,name" 
-	></table>
+		data="data" 
+		headers="Age, full Name" 
+		fields="age,name" 
+		></table>
 
-<hr>
+		<hr>
 
 <!-- 
 <h2>Server Paging (Simple)</h2>
@@ -109,7 +122,7 @@
 		</ul>
 	</nav> -->
 
-<h2>With footer</h2>
+<!-- 	<h2>With footer</h2>
 
 <table object-table 
 data="data" 
@@ -118,11 +131,11 @@ fields="name,age,money"
 search="separate" 
 selected-model="report.selectedUser">
 <tfoot>
-<tr>
-	<td>Total users:{{$filtered.length}}</td>
-	<td></td>
-	<td>Total balance:{{ $owner.getTotalBalance($filtered) }} $</td>
-</tr>
+	<tr>
+		<td>Total users:{{$filtered.length}}</td>
+		<td></td>
+		<td>Total balance:{{ $owner.getTotalBalance($filtered) }} $</td>
+	</tr>
 </tfoot>
 <tbody>
 	<tr>
@@ -135,72 +148,73 @@ selected-model="report.selectedUser">
 
 {{report.selectedUser}}
 <h2>Theme</h2>
-			<table  object-table class="hover-column blue-dust"
-			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
-			data = "exportDataVariable" 
-			headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-			fields = "name,eyeColor,age,balance,company,address,favoriteFruit">
-	</table>
-	
+<table  object-table class="hover-column blue-dust"
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+data = "exportDataVariable" 
+headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields = "name,eyeColor,age,balance,company,address,favoriteFruit"
+resize="true" >
+</table>
+
 <h2>Bacis</h2>
 
-	<table object-table class="hover-column" 
-	data="data" 
-	display="10" 
-	headers="Age, full Name" 
-	fields="age,name" 
-	paging="true" 
-	sorting="simple" 
-	search="false" 
-	></table>
+<table object-table class="hover-column" 
+data="data" 
+display="10" 
+headers="Age, full Name" 
+fields="age,name" 
+paging="true" 
+sorting="simple" 
+search="false" 
+></table>
 <pre>
-	{{data.selected}}
+{{data.selected}}
 </pre>
 
-	<div class="row"><hr></div>
+<div class="row"><hr></div>
 
-	<h2>Compound sorting</h2>
+<h2>Compound sorting</h2>
 
-	<table object-table 
-	data="data" 
-	headers="Full Name,Money, Age" 
-	fields="name,money,age" 
-	sorting="compound" 
-	></table>
-	<div class="row"><hr></div>
+<table object-table 
+data="data" 
+headers="Full Name,Money, Age" 
+fields="name,money,age" 
+sorting="compound" 
+></table>
+<div class="row"><hr></div>
 
-	<h2>Separate Search</h2>
+<h2>Separate Search</h2>
 
-	<table object-table 
-	data="data" 
-	headers="Age, full Name" 
-	fields="age,name" 
-	search="separate"
-	></table>
-	<div class="row"><hr></div>
+<table object-table 
+data="data" 
+headers="Age, full Name" 
+fields="age,name" 
+search="separate"
+></table>
+<div class="row"><hr></div>
 
 
-	<h2>External resource</h2>
+<h2>External resource</h2>
 
-	<table object-table 
-	from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-	data="exportDataVariable1" 
-	display="2" 
-	headers="Name, Age" 
-	fields="name, age" 
-	></table>
-	<div class="row"><hr></div>  
-	<h2>Editable cells (all)</h2>
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable1" 
+display="2" 
+headers="Name, Age" 
+fields="name, age" 
+></table>
+<div class="row"><hr></div>  
+<h2>Editable cells (all)</h2>
 
-	<table object-table 
-	from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
-	data = "exportDataVariable2" 
-	display = "10" 
-	headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-	fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
-	sorting = "compound" 
-	editable = "true"
-	>
+<table object-table 
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+data = "exportDataVariable2" 
+display = "10" 
+headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
+sorting = "compound" 
+editable = "true"
+>
 </table>
 <div class="row"><hr></div>
 
@@ -215,15 +229,15 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 sorting="compound"
 >
 <tbody>
-	<tr>
-		<td>{{::item.name}}</td>
-		<td editable>{{item.eyeColor}}</td>
-		<td>{{::item.age}}</td>
-		<td>{{::item.balance}}</td>
-		<td>{{::item.company}}</td>
-		<td>{{::item.address}}</td>
-		<td>{{::item.favoriteFruit}}</td>
-	</tr>
+<tr>
+	<td>{{::item.name}}</td>
+	<td editable>{{item.eyeColor}}</td>
+	<td>{{::item.age}}</td>
+	<td>{{::item.balance}}</td>
+	<td>{{::item.company}}</td>
+	<td>{{::item.address}}</td>
+	<td>{{::item.favoriteFruit}}</td>
+</tr>
 </tbody>
 </table>
 <div class="row"><hr></div> 
@@ -239,19 +253,19 @@ headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
 fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
 >
 <thead>
-	<tr>
-		<th colspan="3" class="_personal_inf" >Personal information</th>
-		<th colspan="4" class="additional_inf">Additional information</th>
-	</tr>
-	<tr>
-		<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable _personal_inf">Name</th>
-		<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable  _personal_inf">Eye color</th>
-		<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable  _personal_inf">Age</th>
-		<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable">Balance</th>
-		<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable">Company</th>
-		<th ng-click="sortBy('address')" ng-class="headerIsSortedClass('Address')" class="sortable">Address</th>
-		<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable">Favorite Fruit</th>
-	</tr>
+<tr>
+	<th colspan="3" class="_personal_inf" >Personal information</th>
+	<th colspan="4" class="additional_inf">Additional information</th>
+</tr>
+<tr>
+	<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable _personal_inf">Name</th>
+	<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable  _personal_inf">Eye color</th>
+	<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable  _personal_inf">Age</th>
+	<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable">Balance</th>
+	<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable">Company</th>
+	<th ng-click="sortBy('address')" ng-class="headerIsSortedClass('Address')" class="sortable">Address</th>
+	<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable">Favorite Fruit</th>
+</tr>
 </thead>
 </table>
 
@@ -268,24 +282,24 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 sorting="compound"
 >
 <tbody>
-	<tr>
-		<td>{{::item.name}}</td>
-		<td><div style="
-			background-color:{{::item.eyeColor}};
-			width:10px;height:10px;border-radius:5px;
-			float:left;margin:5px;
-			"></div>
-			{{::item.eyeColor}}
-		</td>
-		<td>{{::item.age}}</td>
-		<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
-		<td>{{::item.company}}</td>
-		<td>{{::item.address}}</td>
-		<td>{{::item.favoriteFruit}}</td>
-	</tr>
+<tr>
+	<td>{{::item.name}}</td>
+	<td><div style="
+		background-color:{{::item.eyeColor}};
+		width:10px;height:10px;border-radius:5px;
+		float:left;margin:5px;
+		"></div>
+		{{::item.eyeColor}}
+	</td>
+	<td>{{::item.age}}</td>
+	<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+	<td>{{::item.company}}</td>
+	<td>{{::item.address}}</td>
+	<td>{{::item.favoriteFruit}}</td>
+</tr>
 </tbody>
 </table>
-<div class="row"><hr></div>
+<div class="row"><hr></div> -->
 
 <h2>Custom rows and headers pattern:</h2>
 
@@ -295,6 +309,7 @@ data="exportDataVariable"
 display="10" 
 fields="name,age,money" 
 headers="Name,Age,$$$" 
+resize="true"
 >
 <thead style="background-color:yellow">
 	<tr>

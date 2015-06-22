@@ -90,4 +90,33 @@ $scope.removeSorting = function() {
 };
 /* sorting [END]*/
 
+/* column resizing*/
+
+var pressed = false;
+  var start = undefined;
+  var startX, startWidth;
+
+  $scope.resizeStart = function(e){
+    if(e.target.classList.contains("resize")){
+      start = e.target.parentNode;
+      pressed = true;
+      startX = e.pageX;
+      startWidth = e.target.parentNode.offsetWidth;
+      document.addEventListener('mousemove',drag);
+    };
+  };
+
+  function drag (e){
+    if(pressed) {
+      start.width = startWidth+(e.pageX-startX);
+    }
+  };
+
+  $scope.resizeEnd = function(e){
+    if(pressed) {
+      document.removeEventListener('mousemove',drag);
+      pressed = false;
+    }
+  };
+
 }]);
