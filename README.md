@@ -23,6 +23,7 @@ Feature List
 - custom row templates
 - custom header templates
 - column highlighting
+- column resizing
 - multiply selection
 - external filtering
 - pagination
@@ -86,6 +87,7 @@ sorting				 | no       | *default: simple*. Value "simple" is used to sort by si
 editable     		 | no       | Allows to edit content inside cells. Editing updates your angular model. 
 select               | no       | select="multiply" allows to select more than one row. Selected rows are accessible.
 selected-model		 | no		| It exports selected model to controller variable. selected-model="yourModel"
+resize		 		 | no		| *default: true*. Use column resizing.
 
 ##Themes
 Please check new 'Dark-sky' and 'Blue-dust' themes:
