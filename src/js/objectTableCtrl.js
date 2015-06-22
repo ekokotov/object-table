@@ -12,29 +12,38 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			$scope.sortingType = $scope.sortingType || "simple";
 			$scope.currentPage = 0;
 			$scope.customHeader = false;
-
 			
 			/* 'separate' or 'true' or 'false '*/
 			$scope.search = $attrs.search !=="separate"? (typeof($attrs.search)!=='undefined'? JSON.parse($attrs.search): true): $attrs.search ;
 
 			if($scope.search =="separate"){
 				$scope.columnSearch = [];
+
+				/* ## after changing search model - clear currentPage ##*/
+				$scope.$watch('columnSearch', function() {
+					if(!!ctrl.pageCtrl)
+				ctrl.pageCtrl.setPage(0);
+				}, true);
 			};
 
 			/* GET HEADERS */
 			if(!!$attrs.headers){
-				$attrs.headers.split(',').forEach(function(item){
-					$scope.headers.push( item.trim() );
-				});
+				var preHeaders = $attrs.headers.split(',');
+				for (var i = preHeaders.length - 1; i >= 0; i--) {
+					$scope.headers.push( preHeaders[i].trim() );
+				};
+				preHeaders = null;
 			}else{
 				throw "Required 'headers' attribute is not found!"
 			};
 
 			/* GET FIELDS */
 			if(!$attrs.fields) throw "Sorting is allowed just with specified 'fields' attribute !";
-			$attrs.fields.split(',').forEach(function(item){
-				$scope.fields.push( item.trim() );
-			});
+			var preFields = $attrs.fields.split(',');
+			for (var i = preFields.length - 1; i >= 0; i--) {
+				$scope.fields.push( preFields[i].trim() );
+			};
+			preFields = null;
 
 			//LOAD FROM EXTERNAL URL
 			if(!!$attrs.fromUrl){
@@ -83,7 +92,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 		};
 
 		this._checkEditableContent = function(node){
-			[].forEach.call(node.querySelectorAll("[editable]"), function(td){
+			Array.prototype.forEach.call(node.querySelectorAll("[editable]"), function(td){
 				var innerModel = td.innerHTML.replace("::","").replace("{{","").replace("}}","");
 				td.innerHTML = "<span contentEditable ng-model='" +innerModel+ "'>" +td.innerHTML.replace("::","")+ "</span>";
 			});
@@ -122,5 +131,11 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 				return item.$$hashKey==$scope.selectedModel.$$hashKey;
 			}
 		};
+
+		/* ## after changing search model - clear currentPage ##*/
+		$scope.$watch('globalSearch',function(){
+			if(!!ctrl.pageCtrl)
+				ctrl.pageCtrl.setPage(0);
+		})
 
 	}]);

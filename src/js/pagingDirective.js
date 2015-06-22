@@ -11,6 +11,7 @@ angular.module('objectTable').directive('paging', ['$compile','$interpolate',fun
 		},
 		link:function(scope, element, attrs, objectTableCtrl){
 			scope.objectTableCtrl = objectTableCtrl;
+			scope.objectTableCtrl.pageCtrl = scope;
 		}
 	}
 }]);
