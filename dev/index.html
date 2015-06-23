@@ -43,22 +43,6 @@
 
 <body ng-controller="mainController">
 	<div class="col-sm-12">
-	
-
-<table  object-table
-from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
-data = "exportDataVariable1" 
-headers = "Name, Eye color, Age" 
-fields = "name,eyeColor,age"
-resize="true">
-<thead ng-mousedown="resizeStart($event)" ng-mouseup="resizeEnd($event)">
-	<tr>
-		<th style="background-color: green">Name <div class="resize"></div></th>
-		<th>Eye <div class="resize"></div></th>
-		<th>color <div class="resize"></div></th>
-	</tr>
-</thead>
-</table>
 
 
 		<h2>Excell selection</h2>
@@ -66,12 +50,14 @@ resize="true">
 		<table object-table class="hover-column" 
 		data="data" 
 		headers="Age, full Name" 
-		fields="age,name" 
+		fields="age,name"
+		sorting="compound" 
+		search="separate" 
 		></table>
 
 		<hr>
 
-<!-- 
+
 <h2>Server Paging (Simple)</h2>
 
 		<table  object-table 
@@ -120,15 +106,16 @@ resize="true">
 				<a href ng-click="loadData(pagingExample.currentPage+1)">Next »</a>
 			</li>
 		</ul>
-	</nav> -->
+	</nav> 
 
-<!-- 	<h2>With footer</h2>
+ 	<h2>With footer</h2>
 
 <table object-table 
 data="data" 
 headers="Name, Age,Money" 
 fields="name,age,money" 
 search="separate" 
+select="multiply"
 selected-model="report.selectedUser">
 <tfoot>
 	<tr>
@@ -166,6 +153,7 @@ fields="age,name"
 paging="true" 
 sorting="simple" 
 search="false" 
+selected-model="data.selected1"
 ></table>
 <pre>
 {{data.selected}}
@@ -299,7 +287,7 @@ sorting="compound"
 </tr>
 </tbody>
 </table>
-<div class="row"><hr></div> -->
+<div class="row"><hr></div> 
 
 <h2>Custom rows and headers pattern:</h2>
 

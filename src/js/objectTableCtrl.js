@@ -12,50 +12,45 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			$scope.sortingType = $scope.sortingType || "simple";
 			$scope.currentPage = 0;
 			$scope.customHeader = false;
-			
-			/* 'separate' or 'true' or 'false '*/
-			$scope.search = $attrs.search !=="separate"? (typeof($attrs.search)!=='undefined'? JSON.parse($attrs.search): true): $attrs.search ;
 
-			if($scope.search =="separate"){
+			if($attrs.search =="separate"){
+				$scope.search = "separate";
 				$scope.columnSearch = [];
 
 				/* ## after changing search model - clear currentPage ##*/
 				$scope.$watch('columnSearch', function() {
 					if(!!ctrl.pageCtrl)
-				ctrl.pageCtrl.setPage(0);
+						ctrl.pageCtrl.setPage(0);
 				}, true);
-			};
+			}else{
+				/* 'separate' or 'true' or 'false '*/
+				$scope.search = typeof($attrs.search)==='undefined' || $attrs.search==="true";
+			}
 
 			/* GET HEADERS */
-			if(!!$attrs.headers){
-				var preHeaders = $attrs.headers.split(',');
-				for (var i = 0,length=preHeaders.length; i <length; i++) {
-					$scope.headers.push( preHeaders[i].trim() );
-				};
-				preHeaders = null;
-			}else{
-				throw "Required 'headers' attribute is not found!"
-			};
+			if(!$attrs.headers) throw "Required 'headers' attribute is not found!";
+			var preHeaders = $attrs.headers.split(',');
+			for (var i = 0,length=preHeaders.length; i <length; i++) {
+				$scope.headers.push( preHeaders[i].trim() );
+			}
+			preHeaders = null;
+
 
 			/* GET FIELDS */
 			if(!$attrs.fields) throw "Sorting is allowed just with specified 'fields' attribute !";
 			var preFields = $attrs.fields.split(',');
-			for (var i = 0,length=preFields.length; i <length; i++) {
+			for (i = 0,length=preFields.length; i <length; i++) {
 				$scope.fields.push( preFields[i].trim() );
-			};
+			}
 			preFields = null;
 
 			//LOAD FROM EXTERNAL URL
 			if(!!$attrs.fromUrl){
 				this._loadExternalData($attrs.fromUrl);
-			};
+			}
 
 			//reinitialize selected model
-			if( $scope.select==="multiply" ){
-				$scope.selectedModel = [];
-			}else{
-				$scope.selectedModel = {};
-			}
+			$scope.selectedModel = $scope.select==="multiply"? []:{};
 			
 		};
 
@@ -100,11 +95,10 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 		};
 
 		this.setCurrentPage = function(_currentPage){
-			$scope.currentPage = _currentPage
+			$scope.currentPage = _currentPage;
 		};
 
 		$scope.setSelected = function(item){
-
 			if( $scope.select==="multiply"){
 				if(!ctrl._containsInSelectArray(item)){
 					$scope.selectedModel.push(item);
@@ -119,7 +113,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 		this._containsInSelectArray = function(obj) {
 			if($scope.selectedModel.length)
 				return $scope.selectedModel.filter(function(listItem) {
-					return angular.equals(listItem, obj)
+					return angular.equals(listItem, obj);
 				}).length > 0;
 		};
 
@@ -136,6 +130,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 		$scope.$watch('globalSearch',function(){
 			if(!!ctrl.pageCtrl)
 				ctrl.pageCtrl.setPage(0);
-		})
+		});
 
 	}]);

@@ -4,33 +4,33 @@ angular.module('objectTable').controller('pagingTableCtrl', ['$scope', '$element
 		$scope.currentPage = 0;
 
 
-		$scope.prevPage = function() {
+		$scope.prevPage = function () {
 			if ($scope.currentPage > 0) {
 				$scope.currentPage--;
-			};
+			}
 			$scope.setCurrentPageToTable();
 		};
 
-		$scope.nextPage = function() {
+		$scope.nextPage = function () {
 			if ($scope.currentPage < $scope.pageCount()) {
 				$scope.currentPage++;
-			};
+			}
 			$scope.setCurrentPageToTable();
 		};
 
-		$scope.setCurrentPageToTable = function(){
+		$scope.setCurrentPageToTable = function (){
 			$scope.objectTableCtrl.setCurrentPage($scope.currentPage);
 		};
 
-		$scope.prevPageDisabled = function() {
+		$scope.prevPageDisabled = function () {
 			return $scope.currentPage === 0 ? "disabled" : "";
 		};
 
-		$scope.pageCount = function() {
+		$scope.pageCount = function () {
 			return $scope.count>0 ?Math.ceil($scope.count/$scope.display)-1: 0;
 		};
 
-		$scope.nextPageDisabled = function() {
+		$scope.nextPageDisabled = function () {
 			return $scope.currentPage === $scope.pageCount() ? "disabled" : "";
 		};
 
@@ -40,7 +40,7 @@ angular.module('objectTable').controller('pagingTableCtrl', ['$scope', '$element
 		};
 
 		
-		$scope.range = function() {
+		$scope.range = function () {
 			var rangeSize = $scope.pageCount()+1 <5 ?$scope.pageCount()+1 :5;
 			
 			var ret = [];

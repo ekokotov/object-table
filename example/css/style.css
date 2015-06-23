@@ -1,9 +1,11 @@
   ._personal_inf{
   	background-color: rgb(212, 255, 227);
   	color: green;
+    text-align: center;
   }
   .additional_inf{
   	background-color: rgb(230, 241, 246);
+    text-align: center;
   }
   body{
   	margin-top: 70px;

@@ -1,4 +1,3 @@
-"use strict"
 angular.module('objectTable').filter('offset', function() {
 		return function(input, start, display) {
 			if (!input) return;
@@ -8,4 +7,4 @@ angular.module('objectTable').filter('offset', function() {
             var offset = start* display;
             return input.slice(offset, offset + display);
         };
-    })
+    });
