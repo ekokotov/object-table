@@ -92,3 +92,8 @@ resize		 		 | no		| *default: true*. Use column resizing.
 ##Themes
 Please check new 'Dark-sky' and 'Blue-dust' themes:
 http://ekokotov.github.io/object-table/samples.html#/themes
+
+## Tests (Karma + Jasmine)
+```
+karma start tests/karma.conf.js
+```
