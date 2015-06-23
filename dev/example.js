@@ -6,7 +6,7 @@
 angular.module('test', ['objectTable'])
 .controller('mainController', function ($scope,$http,$timeout,$q) {
 
-
+    $scope.fields = ['age','name'];
 	$scope.data = [{name: "Moroni", age: 50, money: -10},
     {name: "Tiancum", age: 43,money: 120},
     {name: "Jacob", age: 27, money: 5.5},
