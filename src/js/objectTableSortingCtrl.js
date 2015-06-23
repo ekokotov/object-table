@@ -29,7 +29,7 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
                     $scope.changeReversing(field);
 
                 }
-                sortedHeader = null;
+
             }
 
 

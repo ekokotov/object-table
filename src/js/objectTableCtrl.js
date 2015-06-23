@@ -33,7 +33,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			for (var i = 0,length=preHeaders.length; i <length; i++) {
 				$scope.headers.push( preHeaders[i].trim() );
 			}
-			preHeaders = null;
 
 
 			/* GET FIELDS */
@@ -42,7 +41,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			for (i = 0,length=preFields.length; i <length; i++) {
 				$scope.fields.push( preFields[i].trim() );
 			}
-			preFields = null;
 
 			//LOAD FROM EXTERNAL URL
 			if(!!$attrs.fromUrl){
@@ -87,9 +85,10 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 		};
 
 		this._checkEditableContent = function(node){
+			var innerModel,findModelRegex=/\{\{:*:*(.*?)\}\}/g;
 			Array.prototype.forEach.call(node.querySelectorAll("[editable]"), function(td){
-				var innerModel = td.innerHTML.replace("::","").replace("{{","").replace("}}","");
-				td.innerHTML = "<span contentEditable ng-model='" +innerModel+ "'>" +td.innerHTML.replace("::","")+ "</span>";
+				innerModel = td.innerHTML.replace(findModelRegex,'$1');
+				td.innerHTML = "<span contentEditable ng-model='" +innerModel+ "'>{{" + innerModel + "}}</span>";
 			});
 			return node;
 		};

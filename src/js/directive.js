@@ -52,7 +52,6 @@
 
 			return function preLink(scope, element, attrs, ctrl, transclude) {
 				ctrl._init();
-				var ii=0;
 				transclude(scope, function(clone, innerScope) {
 					scope.$owner = innerScope.$parent;
 					for(var key in clone){
