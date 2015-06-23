@@ -4,7 +4,7 @@
   "description": "angular smart table directive",
   "main": "build/object-table.js",
   "scripts": {
-    "test": "karma start tests/karma.conf.js"
+    "test": "node_modules/karma/bin/karma start tests/karma.conf.js"
   },
   "keywords": [
     "angular",
