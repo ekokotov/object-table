@@ -1,6 +1,6 @@
 /**
  * object-table - angular smart table directive
- * @version v0.1.7
+ * @version v0.1.8
  * @author Yauheni Kokatau
  * @license MIT
  */
