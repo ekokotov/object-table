@@ -1,0 +1,87 @@
+<h2>Resizable table columns</h2>
+
+<table  object-table
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+data = "exportDataVariable" 
+headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+fields = "name,eyeColor,age,balance,company,address,favoriteFruit"
+resize="true">
+</table>
+
+<hr>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Example</h4>
+	Just add attribute <code>resize</code> to the table
+</div>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table
+			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data = "exportDataVariable" 
+			headers = "Name,Eye color,Age,Balance,Company,Home address,Favorite Fruit" 
+			fields = "name,eyeColor,age,balance,company,address,favoriteFruit"
+			resize="true">
+	</table>
+</textarea>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice</h4>
+	If you want to change in the size of the cell was changed and the length of the table, just add a CSS class with style <code>width:auto</code> to the table. Example:
+	<code>.object-table-module table{ width:auto; }</code>
+</div>
+
+<h3>If you are using custom header:</h3>
+<p>1) Add <code>ng-mousedown="resizeStart($event)"</code> and <code>ng-mouseup="resizeEnd($event)"</code> to your <code>&lt;thead&gt;</code>tag.</p>
+<p>2) Add <code>&lt;div class=&quot;resize&quot;&gt;&lt;/div&gt;</code> to resized headers (<code>&lt;td&gt;</code> tag)</p>
+
+<table  object-table
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+data = "exportDataVariable1" 
+headers = "Name, Eye color, Age" 
+fields = "name,eyeColor,age"
+resize="true">
+<thead ng-mousedown="resizeStart($event)" ng-mouseup="resizeEnd($event)">
+	<tr>
+		<th>
+			<span class="glyphicon glyphicon-user"></span>
+			Name of Person <div class="resize"></div>
+		</th>
+		<th>
+			<span class="glyphicon glyphicon-eye-open"></span>
+			Eye <div class="resize"></div></th>
+		<th>
+			<span class="glyphicon glyphicon-gift"></span>
+			Age <div class="resize"></div></th>
+	</tr>
+</thead>
+</table>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table
+			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data = "exportDataVariable1" 
+			headers = "Name, Eye color, Age" 
+			fields = "name,eyeColor,age"
+			resize="true">
+		<thead ng-mousedown="resizeStart($event)" ng-mouseup="resizeEnd($event)">
+		<tr>
+			<th>
+				<span class="glyphicon glyphicon-user"></span>
+				Name of Person <div class="resize"></div>
+			</th>
+			<th>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				Eye <div class="resize"></div></th>
+			<th>
+				<span class="glyphicon glyphicon-gift"></span>
+				Age <div class="resize"></div>
+			</th>
+		</tr>
+		</thead>
+	</table>
+</textarea>
