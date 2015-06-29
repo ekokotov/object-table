@@ -49,8 +49,8 @@ gulp.task('watch', function() {
 gulp.task('js-min', function () {
 	return gulp.src(SRC_FOLDER + '/js/**/*.js')
 	.pipe(plugins.concat(OUTPUT_FILE))
-	.pipe(plugins.ngAnnotate())
-	.pipe(plugins.uglify())
+	.pipe(plugins.ngAnnotate({add: true}))
+	.pipe(plugins.uglify({mangle:true}))
 	.pipe(header(banner, { pkg : pkg } ))
 	.pipe(gulp.dest(TEMP_FOLDER))
 });

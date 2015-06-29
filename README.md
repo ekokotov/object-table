@@ -24,6 +24,7 @@ Feature List
 - custom header templates
 - column highlighting
 - column resizing
+- draggable columns
 - multiply selection
 - external filtering
 - pagination

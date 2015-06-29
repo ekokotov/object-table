@@ -6,7 +6,9 @@
 			templateUrl: '/src/templates/common.html',
 			controller:'objectTableCtrl',
 			controllerAs:"ctrl",
-			transclude: true,
+			transclude: 'true',
+			  priority: 10000,
+    terminal: true,
 			scope:{
 				data:"=",
 				display:"=?",
@@ -18,11 +20,13 @@
 			//fields:"@",
 			sortingType: "@?sorting",
 			editable:"=?",
+			dragColumns:"=?",
 			select:"@?",
 			selectedModel:"=?"
 
 		},
-		compile:function( tElement, tAttributes) {
+
+		compile:function( tElement, tAttributes,transclude) {
 
 			//collect filters
 			var rowFilter = "", pagingFilter = "";
@@ -39,11 +43,24 @@
 
 			//If SEARCH allowed
 			if(tAttributes.search =="separate"){
+
+				var preArray = tAttributes.headers.split(','),headers=[];
+				for (var i = 0,length=preArray.length; i <length; i++) {
+					headers.push( preArray[i].trim() );
+				}
+
 				tAttributes.fields.split(',').forEach(function(item,index){
-					rowFilter += "| filter:{'" +item.trim()+ "':columnSearch[" +index+ "]}";
+					rowFilter += "| filter:{'" +item.trim()+ "':columnSearch['" +headers[index]+ "']}";
 				});
 			}else if(typeof(tAttributes.search)=='undefined' || tAttributes.search==="true"){
 				rowFilter += "| filter:globalSearch";
+			}
+
+			//add draggable if attribute is present
+			if(!!tAttributes.dragColumns){
+				Array.prototype.forEach.call(tElement.find('thead').find('th'),function(th){
+					th.setAttribute("allow-drag",true);
+				});
 			}
 
 			pagingFilter += " | offset: currentPage:display |limitTo: display";
@@ -73,8 +90,8 @@
 				});
 
 			}; //[END transclude]
-			
-		},
+		}
+		
 
 	};
 

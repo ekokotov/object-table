@@ -21,7 +21,6 @@
 		background-color: red;
 	}
 
-
 	</style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
@@ -33,83 +32,125 @@
 <script type="text/javascript" src="../src/js/contentEditableDirective.js"></script>
 <script type="text/javascript" src="../src/js/directive.js"></script>
 <script type="text/javascript" src="../src/js/objectTableSortingCtrl.js"></script>
-<script type="text/javascript" src="../src/js/objectTableCtrl.js"></script>
 <script type="text/javascript" src="../src/js/objectTablePagingCtrl.js"></script>
+<script type="text/javascript" src="../src/js/objectTableCtrl.js"></script>
+<script type="text/javascript" src="../src/js/draggableDirective.js"></script>
 <script type="text/javascript" src="../src/js/pagingDirective.js"></script>
 <script type="text/javascript" src="../src/js/objectTableFilters.js"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../src/js/objectTableUtilService.js"></script>
 <script type="text/javascript" src="example.js"></script>
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 <body ng-controller="mainController">
 	<div class="col-sm-12">
+		<h2>Patel</h2>
 
+		<table object-table
+		data="dataTeacherSearch"
+		display="10"
+		paging = "false"
+		headers="Name, Department, Category"
+		fields="name, department, category"
+		sorting="simple"
+		paging="true"
+		drag-columns="true">
+		<tbody>
+			<tr ng-click="$owner.showTeacherDetails(item)">
+				<td>{{item.name.firstName}}&nbsp;{{item.name.middleName}}&nbsp;{{item.name.lastName}}</td>
+				<td repeat="items in item.department" if="items.status">
+					<span>{{items.dept}}</span>
+				</td>
+				<td repeat="designation in item.designation" if="designation.status">
+					<span >{{designation.status}}</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-		<h2>Excell selection</h2>
+	<h2>Excell selection</h2>
 
-		<table object-table class="hover-column" 
-		data="data" 
-		headers="Age, full Name" 
-		fields="age,name"
-		sorting="compound" 
-		search="separate" 
-		resize="true"
-		></table>
+	<table object-table class="hover-column" 
+	data="data" 
+	headers="Age, full Name" 
+	fields="age,name" 
+	sorting="compound" 
+	search="separate" 
+	resize="true"
+	drag-columns="true"
+	></table>
 
-		<hr>
+	<h2>Template</h2>
 
+	<table object-table class="hover-column" 
+	data="data" 
+	headers="Age, full Name,money" 
+	fields="age,name,money" 
+	sorting="compound" 
+	search="separate" 
+	resize="true"
+	drag-columns="true">
+	<thead>
+		<tr>
+			<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable" allow-drag>Age</th>
+			<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>
+			<th ng-click="sortBy('money')" ng-class="headerIsSortedClass('Money')" class="sortable" allow-drag>Money</th>
+		</tr>
+	</thead>
+</table>
+<hr>
+<!-- 
 
 <h2>Server Paging (Simple)</h2>
 
-		<table  object-table 
-				data="simplePagingExample.exData" 
-				display="simplePagingExample.limit" 
-				headers="Age, full Name" 
-				fields="age,name">
-		</table>
-		
+<table  object-table 
+		data="simplePagingExample.exData" 
+		display="simplePagingExample.limit" 
+		headers="Age, full Name" 
+		fields="age,name">
+</table>
+
 <div class="loading" ng-show="!simplePagingExample.exData.length">
 	<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Data...
 </div>
 	<nav>
-		<ul class="pagination">
-			<li ng-class="{disabled : simplePagingExample.currentPage == 1}">
-				<a href ng-click="loadSimpleData(simplePagingExample.currentPage-1)">« Prev</a>
-			</li>
-			<li ng-class="{disabled : simplePagingExample.currentPage == simplePagingExample.pages}">
-				<a href ng-click="loadSimpleData(simplePagingExample.currentPage+1)">Next »</a>
-			</li>
-		</ul>
+<ul class="pagination">
+	<li ng-class="{disabled : simplePagingExample.currentPage == 1}">
+		<a href ng-click="loadSimpleData(simplePagingExample.currentPage-1)">« Prev</a>
+	</li>
+	<li ng-class="{disabled : simplePagingExample.currentPage == simplePagingExample.pages}">
+		<a href ng-click="loadSimpleData(simplePagingExample.currentPage+1)">Next »</a>
+	</li>
+</ul>
 	</nav>
 
-		<h2>Server Paging (Advanced)</h2>
+<h2>Server Paging (Advanced)</h2>
 
-		<table  object-table 
-				data="pagingExample.exData" 
-				display="pagingExample.limit" 
-				headers="Age, full Name" 
-				fields="age,name">
-		</table>
+<table  object-table 
+		data="pagingExample.exData" 
+		display="pagingExample.limit" 
+		headers="Age, full Name" 
+		fields="age,name">
+</table>
 
 	<nav>
-		<ul class="pagination">
-			<li ng-class="{disabled : pagingExample.currentPage==1}">
-				<a href ng-click="loadData(pagingExample.currentPage-1)">« Prev</a>
-			</li>
+<ul class="pagination">
+	<li ng-class="{disabled : pagingExample.currentPage==1}">
+		<a href ng-click="loadData(pagingExample.currentPage-1)">« Prev</a>
+	</li>
 
-			<li ng-repeat="n in pagingExample.pages"
-				ng-click="loadData(n+1)"
-				ng-class="{active: n == pagingExample.currentPage-1}">
-				<a href="javascript:void(0)">{{n+1}}</a>
-			</li>
+	<li ng-repeat="n in pagingExample.pages"
+		ng-click="loadData(n+1)"
+		ng-class="{active: n == pagingExample.currentPage-1}">
+		<a href="javascript:void(0)">{{n+1}}</a>
+	</li>
 
-			<li ng-class="{disabled : pagingExample.currentPage == pagingExample.pages.length}">
-				<a href ng-click="loadData(pagingExample.currentPage+1)">Next »</a>
-			</li>
-		</ul>
-	</nav> 
+	<li ng-class="{disabled : pagingExample.currentPage == pagingExample.pages.length}">
+		<a href ng-click="loadData(pagingExample.currentPage+1)">Next »</a>
+	</li>
+</ul>
+</nav>  -->
 
- 	<h2>With footer</h2>
+<h2>With footer</h2>
 
 <table object-table 
 data="data" 
@@ -127,8 +168,8 @@ selected-model="report.selectedUser">
 </tfoot>
 <tbody>
 	<tr>
-		<td>{{::item.name}}</td>
-		<td>{{::item.age}}</td>
+		<td >{{item.name}}</td>
+		<td>{{item.age}}</td>
 		<td editable>{{item.money}}</td>
 	</tr>
 </tbody>
@@ -157,7 +198,7 @@ search="false"
 selected-model="data.selected1"
 ></table>
 <pre>
-{{data.selected}}
+	{{data.selected}}
 </pre>
 
 <div class="row"><hr></div>
@@ -218,15 +259,15 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 sorting="compound"
 >
 <tbody>
-<tr>
-	<td>{{::item.name}}</td>
-	<td editable>{{item.eyeColor}}</td>
-	<td>{{::item.age}}</td>
-	<td>{{::item.balance}}</td>
-	<td>{{::item.company}}</td>
-	<td>{{::item.address}}</td>
-	<td>{{::item.favoriteFruit}}</td>
-</tr>
+	<tr>
+		<td>{{::item.name}}</td>
+		<td editable>{{item.eyeColor}}</td>
+		<td>{{::item.age}}</td>
+		<td>{{::item.balance}}</td>
+		<td>{{::item.company}}</td>
+		<td>{{::item.address}}</td>
+		<td>{{::item.favoriteFruit}}</td>
+	</tr>
 </tbody>
 </table>
 <div class="row"><hr></div> 
@@ -242,19 +283,19 @@ headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
 fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
 >
 <thead>
-<tr>
-	<th colspan="3" class="_personal_inf" >Personal information</th>
-	<th colspan="4" class="additional_inf">Additional information</th>
-</tr>
-<tr>
-	<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable _personal_inf">Name</th>
-	<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable  _personal_inf">Eye color</th>
-	<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable  _personal_inf">Age</th>
-	<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable">Balance</th>
-	<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable">Company</th>
-	<th ng-click="sortBy('address')" ng-class="headerIsSortedClass('Address')" class="sortable">Address</th>
-	<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable">Favorite Fruit</th>
-</tr>
+	<tr>
+		<th colspan="3" class="_personal_inf" >Personal information</th>
+		<th colspan="4" class="additional_inf">Additional information</th>
+	</tr>
+	<tr>
+		<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable _personal_inf">Name</th>
+		<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable  _personal_inf">Eye color</th>
+		<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable  _personal_inf">Age</th>
+		<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable">Balance</th>
+		<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable">Company</th>
+		<th ng-click="sortBy('address')" ng-class="headerIsSortedClass('Address')" class="sortable">Address</th>
+		<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable">Favorite Fruit</th>
+	</tr>
 </thead>
 </table>
 
@@ -271,21 +312,21 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 sorting="compound"
 >
 <tbody>
-<tr>
-	<td>{{::item.name}}</td>
-	<td><div style="
-		background-color:{{::item.eyeColor}};
-		width:10px;height:10px;border-radius:5px;
-		float:left;margin:5px;
-		"></div>
-		{{::item.eyeColor}}
-	</td>
-	<td>{{::item.age}}</td>
-	<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
-	<td>{{::item.company}}</td>
-	<td>{{::item.address}}</td>
-	<td>{{::item.favoriteFruit}}</td>
-</tr>
+	<tr>
+		<td>{{::item.name}}</td>
+		<td><div style="
+			background-color:{{::item.eyeColor}};
+			width:10px;height:10px;border-radius:5px;
+			float:left;margin:5px;
+			"></div>
+			{{::item.eyeColor}}
+		</td>
+		<td>{{::item.age}}</td>
+		<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+		<td>{{::item.company}}</td>
+		<td>{{::item.address}}</td>
+		<td>{{::item.favoriteFruit}}</td>
+	</tr>
 </tbody>
 </table>
 <div class="row"><hr></div> 

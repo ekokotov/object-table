@@ -102,6 +102,33 @@
 						border-bottom: 0;
 						padding-right: 25px;
 						position: relative;
+						will-change:width;
+						-webkit-touch-callout: none;
+						-webkit-user-select: none;
+						-khtml-user-select: none;
+						-moz-user-select: none;
+						-ms-user-select: none;
+						user-select: none;
+						&[draggable]{
+							a{
+								width: 100%;
+								display: block;
+							}
+						}
+						&.dragged{
+							background-color: rgba(255, 255, 255, 0.64);
+							border: 2px dashed rgb(66, 121, 152);
+							div.resize{
+								display: none;
+							}
+						}
+						&.draggedOver{
+							background-color: rgba(128, 128, 128, 0.16);
+							border: 1px solid rgb(147, 153, 156);
+							div.resize{
+								display: none;
+							}
+						}
 						&.sortable{
 							position: relative;
 							&:before {
@@ -174,10 +201,13 @@
 					&:hover{
 						background-color:rgba(103, 103, 103, 0.08);
 						color: black;
-						cursor: pointer;
 					}
 				}
 				td{
+					//will-change:width;
+					&:hover{
+						cursor: pointer;
+					}
 					&[editable]{
 						span{
 							&:focus{
@@ -193,10 +223,11 @@
 						}
 					}
 				}
+				
 			}
 		/*&.resize{
 			width: auto;
-		}*/
+			}*/
 		}
 
 		&.hover-column table{

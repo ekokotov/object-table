@@ -24,9 +24,10 @@
 		<thead ng-if="!customHeader" >
 			<tr>
 				<th ng-repeat="head in headers track by $index" 
-				ng-click="sortBy(fields[$index])"
-				ng-class="headerIsSortedClass(head)"
-				class="sortable">{{::head}} <div ng-if="resize" class="resize"></div>
+				index="{{$index}}" 
+				ng-click="sortBy(fields[$index])" 
+				ng-class="headerIsSortedClass(head)" 
+				class="sortable">{{head}} <div ng-if="resize" class="resize"></div>
 			</th>
 		</tr>
 	</thead>
@@ -35,7 +36,7 @@
 		<tr>
 			<th ng-repeat="head in headers track by $index" class="separate">
 			<i class="glyphicon glyphicon-search search_icon separate"></i>
-				<input type="text" ng-model="columnSearch[$index]" placeholder="{{::head}}..." class="form-control search separate">
+				<input type="text" ng-model="columnSearch[head]" placeholder="{{head}}..." class="form-control search separate">
 			</th>
 		</tr>
 	</thead>	
@@ -44,7 +45,7 @@
 
 		<tr id="rowTr" ng-click="setSelected(item)" ng-class="{'selected-row':ifSelected(item)}"> <!-- <= will inject ng-repeat -->
 			<!-- params: headers and fields -->
-			<td ng-if="!editable" ng-repeat="field in fields">{{::item[field]}}</td>
+			<td ng-if="!editable" ng-repeat="field in fields">{{item[field]}}</td>
 			<td ng-if="editable" editable ng-repeat="field in fields">
 				<span contenteditable ng-model="item[field]">{{item[field]}}</span>
 			</td>
@@ -53,7 +54,9 @@
 	</tbody>
 
 </table>
+
 </div>
+
 <div class="loading" ng-show="dataIsLoading">
 	<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading Data...
 </div>

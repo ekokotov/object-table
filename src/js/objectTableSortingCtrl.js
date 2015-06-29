@@ -27,11 +27,8 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
                 } else if ($scope.sortingType == 'simple') {
                     $scope.sort.fields = [sortedHeader];
                     $scope.changeReversing(field);
-
                 }
-
             }
-
 
         };
 
@@ -79,12 +76,15 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
         start,startX, startWidth;
 
         $scope.resizeStart = function(e) {
-            if (e.target.classList.contains("resize")) {
-                start = e.target.parentNode;
+            var target = e.target ? e.target : e.srcElement;
+            if (target.classList.contains("resize")) {
+                start = target.parentNode;
                 pressed = true;
                 startX = e.pageX;
-                startWidth = e.target.parentNode.offsetWidth;
+                startWidth = target.parentNode.offsetWidth;
                 document.addEventListener('mousemove', drag);
+                e.stopPropagation();
+                e.preventDefault();
             }
         };
 

@@ -29,6 +29,18 @@ angular.module('test', ['objectTable'])
       alert('Alert from controller method!');
   };
 
+
+  $scope.dataTeacherSearch = [{"employeeNo":"4433",
+  "name":{"firstName":"kuldeep","middleName":"dsf","lastName":"gfdkjh"},
+  "department":[{"dept":"Computer Science","status":true},
+  {"dept":"science","status":false},
+  {"dept":"sports","status":false},
+  {"dept":"sdlkf","status":false}],
+  "designation":[{"post":"director","status":false},
+  {"post":"principal","status":false},
+  {"post":"teaching","status":true},
+  {"post":"nonteaching","status":false}]}];
+
   $scope.report = {
     selectedUser:null
 }
