@@ -89,6 +89,7 @@ editable     		 | no       | Allows to edit content inside cells. Editing update
 select               | no       | select="multiply" allows to select more than one row. Selected rows are accessible.
 selected-model		 | no		| It exports selected model to controller variable. selected-model="yourModel"
 resize		 		 | no		| *default: true*. Use column resizing.
+drag-columns		 | no		| *default: false*. It allows to reorder your columns using drag-n-drop.
 
 ##Themes
 Please check new 'Dark-sky' and 'Blue-dust' themes:
