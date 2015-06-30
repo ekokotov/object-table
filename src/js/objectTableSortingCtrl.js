@@ -12,6 +12,8 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
         $scope.sortingArray = [];
 
         $scope.sortBy = function(field) {
+             if (!resizePressed) 
+                return;
             if ($scope.data.length) {
                 var sortedHeader = $scope.headers[$scope.fields.indexOf(field)];
                 if ($scope.sortingType == 'compound') {
@@ -72,14 +74,14 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
 
 
         /* column resizing*/
-        var pressed = false,
+        var resizePressed = false,
         start,startX, startWidth;
 
         $scope.resizeStart = function(e) {
             var target = e.target ? e.target : e.srcElement;
             if (target.classList.contains("resize")) {
                 start = target.parentNode;
-                pressed = true;
+                resizePressed = true;
                 startX = e.pageX;
                 startWidth = target.parentNode.offsetWidth;
                 document.addEventListener('mousemove', drag);
@@ -89,15 +91,17 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
         };
 
         function drag(e) {
-            if (pressed) {
+            if (resizePressed) {
                 start.width = startWidth + (e.pageX - startX);
             }
         }
 
         $scope.resizeEnd = function(e) {
-            if (pressed) {
+            if (resizePressed) {
                 document.removeEventListener('mousemove', drag);
-                pressed = false;
+                e.stopPropagation();
+                e.preventDefault();
+                resizePressed = false;
             }
         };
 
