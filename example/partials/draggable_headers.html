@@ -1,0 +1,95 @@
+<h2>Draggable headers</h2>
+
+<table  object-table
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+data = "exportDataVariable" 
+headers = "Name, Eye color, Age,Balance,Company,Favorite Fruit" 
+fields = "name,eyeColor,age,balance,company,favoriteFruit"
+search="separate" 
+resize="true"
+drag-columns="true">
+</table>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table
+			from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data = "exportDataVariable" 
+			headers = "Name, Eye color, Age,Balance,Company,Favorite Fruit" 
+			fields = "name,eyeColor,age,balance,company,favoriteFruit"
+			resize="true"
+			search="separate" 
+			drag-columns="true">
+	</table>
+</textarea>
+<div class="bs-callout bs-callout-primary">
+	<h4>Example</h4>
+	Working perfect with <code>resize</code> resizing columns
+</div>
+
+<h3>If you are using custom templates:</h3>
+<p>add <code>allow-drag</code> attribute to draggable header</p>
+<table object-table 
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+data="exportDataVariable4" 
+display="10" 
+headers="Name, Eye color, Age,Balance,Company,Favorite Fruit" 
+fields="name,eyeColor,age,balance,company,favoriteFruit">
+<thead>
+		<tr>
+			<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>
+			<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable" allow-drag>Eye color</th>
+			<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable" allow-drag>Age</th>
+			<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable" allow-drag>Balance</th>
+			<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable" allow-drag>Company</th>
+			<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable" allow-drag>Favorite Fruit</th>
+		</tr>
+	</thead>
+<tbody>
+	<tr>
+		<td>{{::item.name}}</td>
+		<td><div class="{{::item.eyeColor}} eye"></div>
+			{{::item.eyeColor}}
+		</td>
+		<td>{{::item.age}}</td>
+		<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+		<td>{{::item.balance}}</td>
+		<td>{{::item.favoriteFruit}}</td>
+	</tr>
+</tbody>
+</table>
+
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportDataVariable4" 
+			display="10" 
+			headers="Name, Eye color, Age,Balance,Company,Favorite Fruit" 
+			fields="name,eyeColor,age,balance,company,favoriteFruit" >
+		<thead>
+				<tr>
+					<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>
+					<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable" allow-drag>Eye color</th>
+					<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable" allow-drag>Age</th>
+					<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable" allow-drag>Balance</th>
+					<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable" allow-drag>Company</th>
+					<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable" allow-drag>Favorite Fruit</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr>
+				<td>{{::item.name}}</td>
+				<td><div class="{{::item.eyeColor}} eye"></div>
+					{{::item.eyeColor}}
+				</td>
+				<td>{{::item.age}}</td>
+				<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+				<td>{{::item.balance}}</td>
+				<td>{{::item.favoriteFruit}}</td>
+			</tr>
+		</tbody>
+	</table>
+</textarea>
