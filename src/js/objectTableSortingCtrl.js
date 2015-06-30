@@ -12,8 +12,10 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
         $scope.sortingArray = [];
 
         $scope.sortBy = function(field) {
-             if (!resizePressed) 
+             if (resizePressedEnd) {
+                resizePressedEnd= false;
                 return;
+             };
             if ($scope.data.length) {
                 var sortedHeader = $scope.headers[$scope.fields.indexOf(field)];
                 if ($scope.sortingType == 'compound') {
@@ -75,6 +77,7 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
 
         /* column resizing*/
         var resizePressed = false,
+        resizePressedEnd = false,
         start,startX, startWidth;
 
         $scope.resizeStart = function(e) {
@@ -102,6 +105,7 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
                 e.stopPropagation();
                 e.preventDefault();
                 resizePressed = false;
+                resizePressedEnd = true;
             }
         };
 
