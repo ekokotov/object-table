@@ -7,8 +7,6 @@
 			controller:'objectTableCtrl',
 			controllerAs:"ctrl",
 			transclude: 'true',
-			  priority: 10000,
-    terminal: true,
 			scope:{
 				data:"=",
 				display:"=?",
@@ -31,7 +29,7 @@
 			//collect filters
 			var rowFilter = "", pagingFilter = "";
 
-			// additional user filters 
+			// additional user filters
 			if(!!tAttributes.addFilter){
 				rowFilter += tAttributes.addFilter;
 			}
@@ -63,6 +61,7 @@
 				});
 			}
 
+
 			pagingFilter += " | offset: currentPage:display |limitTo: display";
 
 			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in $parent.$filtered = (data" + rowFilter +")"+ pagingFilter);
@@ -91,7 +90,7 @@
 
 			}; //[END transclude]
 		}
-		
+
 
 	};
 

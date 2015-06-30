@@ -46,47 +46,55 @@
 		<h2>Patel</h2>
 
 		<table object-table
-		data="dataTeacherSearch"
+		from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+		data="exportDataVariable4"
 		display="10"
-		paging = "false"
-		headers="Name, Department, Category"
-		fields="name, department, category"
-		sorting="simple"
-		paging="true"
-		drag-columns="true">
+		headers="Name, Eye color, Age,Balance,Company,Favorite Fruit"
+		fields="name,eyeColor,age,balance,company,favoriteFruit">
+		<thead>
+				<tr>
+					<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>
+					<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable" allow-drag>Eye color</th>
+					<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable" allow-drag>Age</th>
+					<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable" allow-drag>Balance</th>
+					<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable" allow-drag>Company</th>
+					<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable" allow-drag>Favorite Fruit</th>
+				</tr>
+			</thead>
 		<tbody>
-			<tr ng-click="$owner.showTeacherDetails(item)">
-				<td>{{item.name.firstName}}&nbsp;{{item.name.middleName}}&nbsp;{{item.name.lastName}}</td>
-				<td repeat="items in item.department" if="items.status">
-					<span>{{items.dept}}</span>
+			<tr>
+				<td>{{::item.name}}</td>
+				<td><div class="{{::item.eyeColor}} eye"></div>
+					{{::item.eyeColor}}
 				</td>
-				<td repeat="designation in item.designation" if="designation.status">
-					<span >{{designation.status}}</span>
-				</td>
+				<td>{{::item.age}}</td>
+				<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+				<td>{{::item.balance}}</td>
+				<td>{{::item.favoriteFruit}}</td>
 			</tr>
 		</tbody>
-	</table>
+		</table>
 
 	<h2>Excell selection</h2>
 
-	<table object-table class="hover-column" 
-	data="data" 
-	headers="Age, full Name" 
-	fields="age,name" 
-	sorting="compound" 
-	search="separate" 
+	<table object-table class="hover-column"
+	data="data"
+	headers="Age, full Name"
+	fields="age,name"
+	sorting="compound"
+	search="separate"
 	resize="true"
 	drag-columns="true"
 	></table>
 
 	<h2>Template</h2>
 
-	<table object-table class="hover-column" 
-	data="data" 
-	headers="Age, full Name,money" 
-	fields="age,name,money" 
-	sorting="compound" 
-	search="separate" 
+	<table object-table class="hover-column"
+	data="data"
+	headers="Age, full Name,money"
+	fields="age,name,money"
+	sorting="compound"
+	search="separate"
 	resize="true"
 	drag-columns="true">
 	<thead>
@@ -98,14 +106,14 @@
 	</thead>
 </table>
 <hr>
-<!-- 
+<!--
 
 <h2>Server Paging (Simple)</h2>
 
-<table  object-table 
-		data="simplePagingExample.exData" 
-		display="simplePagingExample.limit" 
-		headers="Age, full Name" 
+<table  object-table
+		data="simplePagingExample.exData"
+		display="simplePagingExample.limit"
+		headers="Age, full Name"
 		fields="age,name">
 </table>
 
@@ -125,10 +133,10 @@
 
 <h2>Server Paging (Advanced)</h2>
 
-<table  object-table 
-		data="pagingExample.exData" 
-		display="pagingExample.limit" 
-		headers="Age, full Name" 
+<table  object-table
+		data="pagingExample.exData"
+		display="pagingExample.limit"
+		headers="Age, full Name"
 		fields="age,name">
 </table>
 
@@ -152,11 +160,11 @@
 
 <h2>With footer</h2>
 
-<table object-table 
-data="data" 
-headers="Name, Age,Money" 
-fields="name,age,money" 
-search="separate" 
+<table object-table
+data="data"
+headers="Name, Age,Money"
+fields="name,age,money"
+search="separate"
 select="multiply"
 selected-model="report.selectedUser">
 <tfoot>
@@ -178,23 +186,23 @@ selected-model="report.selectedUser">
 {{report.selectedUser}}
 <h2>Theme</h2>
 <table  object-table class="hover-column blue-dust"
-from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
-data = "exportDataVariable" 
-headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj"
+data = "exportDataVariable"
+headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
 fields = "name,eyeColor,age,balance,company,address,favoriteFruit"
 resize="true" >
 </table>
 
 <h2>Bacis</h2>
 
-<table object-table class="hover-column" 
-data="data" 
-display="10" 
-headers="Age, full Name" 
-fields="age,name" 
-paging="true" 
-sorting="simple" 
-search="false" 
+<table object-table class="hover-column"
+data="data"
+display="10"
+headers="Age, full Name"
+fields="age,name"
+paging="true"
+sorting="simple"
+search="false"
 selected-model="data.selected1"
 ></table>
 <pre>
@@ -205,20 +213,20 @@ selected-model="data.selected1"
 
 <h2>Compound sorting</h2>
 
-<table object-table 
-data="data" 
-headers="Full Name,Money, Age" 
-fields="name,money,age" 
-sorting="compound" 
+<table object-table
+data="data"
+headers="Full Name,Money, Age"
+fields="name,money,age"
+sorting="compound"
 ></table>
 <div class="row"><hr></div>
 
 <h2>Separate Search</h2>
 
-<table object-table 
-data="data" 
-headers="Age, full Name" 
-fields="age,name" 
+<table object-table
+data="data"
+headers="Age, full Name"
+fields="age,name"
 search="separate"
 ></table>
 <div class="row"><hr></div>
@@ -226,23 +234,23 @@ search="separate"
 
 <h2>External resource</h2>
 
-<table object-table 
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-data="exportDataVariable1" 
-display="2" 
-headers="Name, Age" 
-fields="name, age" 
+<table object-table
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+data="exportDataVariable1"
+display="2"
+headers="Name, Age"
+fields="name, age"
 ></table>
-<div class="row"><hr></div>  
+<div class="row"><hr></div>
 <h2>Editable cells (all)</h2>
 
-<table object-table 
-from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
-data = "exportDataVariable2" 
-display = "10" 
-headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
-sorting = "compound" 
+<table object-table
+from-url = "http://beta.json-generator.com/api/json/get/DXXROxj"
+data = "exportDataVariable2"
+display = "10"
+headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
+fields = "name,eyeColor,age,balance,company,address,favoriteFruit"
+sorting = "compound"
 editable = "true"
 >
 </table>
@@ -250,12 +258,12 @@ editable = "true"
 
 <h2>Editable cells (Eye color)</h2>
 
-<table object-table 
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-data="exportDataVariable3" 
-display="10" 
-headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+<table object-table
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+data="exportDataVariable3"
+display="10"
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
+fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 sorting="compound"
 >
 <tbody>
@@ -270,17 +278,17 @@ sorting="compound"
 	</tr>
 </tbody>
 </table>
-<div class="row"><hr></div> 
+<div class="row"><hr></div>
 
 
 <h2>Custom headers pattern</h2>
 
-<table object-table 
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-data="exportDataVariable5" 
-display="10" 
-headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+<table object-table
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+data="exportDataVariable5"
+display="10"
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
+fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 >
 <thead>
 	<tr>
@@ -299,16 +307,16 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 </thead>
 </table>
 
-<div class="row"><hr></div> 
+<div class="row"><hr></div>
 
 <h2>Rows pattern</h2>
 
-<table object-table 
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-data="exportDataVariable4" 
-display="10" 
-headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+<table object-table
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+data="exportDataVariable4"
+display="10"
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
+fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 sorting="compound"
 >
 <tbody>
@@ -329,16 +337,16 @@ sorting="compound"
 	</tr>
 </tbody>
 </table>
-<div class="row"><hr></div> 
+<div class="row"><hr></div>
 
 <h2>Custom rows and headers pattern:</h2>
 
-<table object-table 
-data="data" 
-data="exportDataVariable" 
-display="10" 
-fields="name,age,money" 
-headers="Name,Age,$$$" 
+<table object-table
+data="data"
+data="exportDataVariable"
+display="10"
+fields="name,age,money"
+headers="Name,Age,$$$"
 resize="true"
 >
 <thead style="background-color:yellow">
@@ -357,7 +365,7 @@ resize="true"
 	</tr>
 </tbody>
 </table>
-<div class="row"><hr></div>  
+<div class="row"><hr></div>
 
 <h2>Additional filters</h2>
 <div class="col-sm-3">
@@ -366,7 +374,7 @@ resize="true"
 		<option value="green">green</option>
 		<option value="blue">blue</option>
 		<option value="brown">brown</option>
-	</select>	
+	</select>
 
 </div>
 <div class="col-sm-3">
@@ -376,16 +384,16 @@ resize="true"
 	<input type="text" ng-model="all" class="form-control" placeholder="all">
 </div>
 <br><br>
-<table object-table 
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-data="exportDataVariable5" 
-display="10" 
-headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
-fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
-add-filter="| filter:{'name':$owner.name} |filter:{'eyeColor':$owner.eyeColor} | filter:$owner.all" 
+<table object-table
+from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+data="exportDataVariable5"
+display="10"
+headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
+fields="name,eyeColor,age,balance,company,address,favoriteFruit"
+add-filter="| filter:{'name':$owner.name} |filter:{'eyeColor':$owner.eyeColor} | filter:$owner.all"
 search="false"
-></table> 
-<div class="row"><hr></div> 
+></table>
+<div class="row"><hr></div>
 
 </div>
 </body>

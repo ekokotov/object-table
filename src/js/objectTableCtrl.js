@@ -40,7 +40,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 
 			//reinitialize selected model
 			$scope.selectedModel = $scope.select==="multiply"? []:{};
-			
+
 		};
 
 		this._loadExternalData = function(url){
@@ -49,7 +49,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 				$scope.data = response.data;
 				$scope.dataIsLoading = false;
 			});
-			
+
 		};
 
 		this._addHeaderPattern = function(node){
@@ -60,7 +60,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			});
 			$element.find("table").prepend(node);
 		};
-		
+
 		this._addFooterPattern = function(node){
 			$element.find("table").prepend(node);
 		};
@@ -182,7 +182,9 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 					thead  = document.createElement('thead');
 
 					Array.prototype.swap.apply(ths,[from,to]);
+
 					for (var i = 0,length=ths.length; i <length; i++) {
+						ths[i].setAttribute('index',i);
 						tr.appendChild(ths[i]);
 					};
 					thead.appendChild(tr);
