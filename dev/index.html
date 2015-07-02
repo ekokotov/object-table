@@ -44,7 +44,30 @@
 <body ng-controller="mainController">
 	<div class="col-sm-12">
 		<h2>Patel</h2>
-
+--
+<table object-table
+		data="dataTeacherSearch"
+		display="10"
+		paging = "false"
+		headers="Name, Department, Category"
+		fields="name, department, category"
+		sorting="simple"
+		paging="true"
+		drag-columns="true">
+		<tbody ng-non-bindable>
+			<tr ng-click="$owner.showTeacherDetails(item)">
+				<td>{{item.name.firstName}}&nbsp;{{item.name.middleName}}&nbsp;{{item.name.lastName}}</td>
+				<td ng-repeat="items in item.department" ng-if="items.status">
+					<span>{{items.dept}}</span>
+				</td>
+				<td ng-repeat="designation in item.designation" ng-if="designation.status">
+					<span >{{designation.status}}</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+<br>
+--
 		<table object-table
 		from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
 		data="exportDataVariable4"

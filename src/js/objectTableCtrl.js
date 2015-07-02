@@ -58,6 +58,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			Array.prototype.forEach.call(node.querySelectorAll("[allow-drag]"), function(th,index){
 				th.setAttribute('index',index);
 			});
+			node.removeAttribute('ng-non-bindable');
 			$element.find("table").prepend(node);
 		};
 
@@ -68,8 +69,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 		this._addRowPattern = function(node, rowFilter, paggingFilter){
 			this._checkEditableContent(node);
 			this._addRepeatToRow(node,rowFilter,paggingFilter);
-			this._transcludeTdRepeatAndIf(node);
-
+			node.removeAttribute('ng-non-bindable');
 			//compile TBODY
 			$element.find("table").append(node.outerHTML);
 			this.bodyTemplate = node.innerHTML;
@@ -85,23 +85,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			}
 
 			tr.attr("ng-class","{'selected-row':ifSelected(item)}");
-		};
-
-		// repeat -> ng-repeat + if-> ng-if
-		this._transcludeTdRepeatAndIf = function(node){
-			function convertAttribute(td,from ,to){
-				var attr = td.getAttribute(from);
-				if(!!attr){
-					td.setAttribute(to,attr);
-					td.removeAttribute(from);
-				}
-			}
-			Array.prototype.forEach.call(node.querySelectorAll("[repeat]"), function(td){
-				convertAttribute(td ,"repeat", "ng-repeat");
-			});
-			Array.prototype.forEach.call(node.querySelectorAll("[if]"), function(td){
-				convertAttribute(td ,"if","ng-if");
-			});
 		};
 
 		this._checkEditableContent = function(node){
