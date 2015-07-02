@@ -6,7 +6,7 @@
 angular.module('test', ['objectTable'])
 .controller('mainController', function ($scope,$http,$timeout,$q) {
 
-    $scope.fields = ['age','name'];
+
 	$scope.data = [{name: "Moroni", age: 50, money: -10},
     {name: "Tiancum", age: 43,money: 120},
     {name: "Jacob", age: 27, money: 5.5},
@@ -29,54 +29,11 @@ angular.module('test', ['objectTable'])
       alert('Alert from controller method!');
   };
 
-
-  $scope.dataTeacherSearch = [{"employeeNo":"4433",
-  "name":{"firstName":"kuldeep","middleName":"dsf","lastName":"gfdkjh"},
-  "department":[{"dept":"Computer Science","status":true},
-  {"dept":"science","status":false},
-  {"dept":"sports","status":false},
-  {"dept":"sdlkf","status":false}],
-  "designation":[{"post":"director","status":false},
-  {"post":"principal","status":false},
-  {"post":"teaching","status":true},
-  {"post":"nonteaching","status":false}]}];
-
   $scope.report = {
     selectedUser:null
 }
 
-/* Simple server paging */
-$scope.simplePagingExample = {
-    exData:null,
-    limit:0,
-    currentPage:0,
-    total:0,
-    pages:0
-};
-$scope.loadSimpleData = function(n){
-   
-      //don't load if n==0 or n>pages
-      if($scope.simplePagingExample.pages){
-        if(n==0 || n > $scope.simplePagingExample.pages) return;
-    };
-    //load data
-    $scope.simplePagingExample.exData = [];
-    $timeout(function(){
-     $http.get('data/data-page'+ n +'.json').then(function(response){
-        $scope.simplePagingExample.exData = response.data.data;
-        $scope.simplePagingExample.limit = response.data.limit;
-        $scope.simplePagingExample.currentPage = response.data.page;
-        $scope.simplePagingExample.total = response.data.total;
-        if(!$scope.simplePagingExample.pages)
-            $scope.simplePagingExample.pages = Math.round($scope.simplePagingExample.total / $scope.simplePagingExample.limit);
-    });
- },1000);
-    
-};
-// load first page
-$scope.loadSimpleData(1);
 
-/* Advanced server paging */
 $scope.pagingExample = {
     exData:null,
     limit:0,
@@ -85,8 +42,8 @@ $scope.pagingExample = {
     pages:[]
 };
 
-var ctrl = this;
-
+var ctrl = this,
+initialLoaded=false;
 
 $scope.loadData = function(n){
 
@@ -103,14 +60,15 @@ $scope.loadData = function(n){
         $scope.pagingExample.total = response.data.total;
 
         //calculate pages just once - after first loading
-        if(!$scope.pagingExample.pages.length){
+        if(!initialLoaded){
             ctrl.getTotalPages();
+            initialLoaded = true;
         };
     });
 };
 
 // load first page
-$scope.loadData(1);
+$scope.loadData($scope.pagingExample.currentPage+1);
 
 // calculate totals and return page range ([1,2,3])
 this.getTotalPages = function(){
@@ -120,18 +78,16 @@ this.getTotalPages = function(){
     };
 };
 
-
-
-$scope.getTotalBalance = function(data){
+  $scope.getTotalBalance = function(data){
     if(!data || !data.length) return;
     var totalNumber = 0;
     for(var i=0; i<data.length; i++){
       totalNumber = totalNumber + parseFloat(data[i].money);
-  }
+    }
 
-  return Math.round(totalNumber);
+    return Math.round(totalNumber);
   
-};
+  };
 
 
 
