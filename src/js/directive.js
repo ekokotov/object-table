@@ -9,7 +9,8 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 		transclude: true,
 		scope:{
 			data:"=",
-			display:"=",
+			display:"=?",
+			resize:"=?",
 			paging:"=?",
 			fromUrl:"@",
 			//search:"@?",
@@ -18,14 +19,15 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			sortingType: "@?sorting",
 			editable:"=?",
 			select:"@?",
-			selectedModel:"=?"
+			selectedModel:"=?",
+			dragColumns:"=?"
 
 		},
 		compile:function( tElement, tAttributes) {
 
 			//collect filters
 			var rowFilter = "",
-			    pagingFilter = "";
+			pagingFilter = "";
 
 			// additional user filters 
 			if(!!tAttributes.addFilter){
@@ -36,6 +38,11 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			if(tAttributes.sorting!=="false"){
 				rowFilter += "| orderBy:sortingArray";
 			};
+
+			// add 'allow-drag' attribute to header is just cistom tbody present
+			if(tAttributes.dragColumns){
+				tElement.find('th').attr('allow-drag','')
+			}
 
 			//If SEARCH allowed
 			if(tAttributes.search =="separate"){
@@ -59,23 +66,29 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 
 			return function preLink(scope, element, attrs, ctrl, transclude) {
 				ctrl._init();
-
+				var ii=0;
 				transclude(scope, function(clone, innerScope) {
 					scope.$owner = innerScope.$parent;
 					for(var key in clone){
-						if(clone.hasOwnProperty(key) && clone[key].tagName=="THEAD"){
-							ctrl._addHeaderPattern(clone[key]);
-						}else if(clone[key].tagName=="TBODY"){
-							scope.findBody = true;
-							ctrl._addRowPattern(clone[key],rowFilter,pagingFilter);
-						}else if(clone[key].tagName=="TFOOT"){
-							ctrl._addFooterPattern(clone[key]);
+						if(clone.hasOwnProperty(key)){
+							switch (clone[key].tagName) {
+								case 'THEAD':
+								ctrl._addHeaderPattern(clone[key]);
+								break;
+								case 'TBODY':
+								scope.findBody = true;
+								ctrl._addRowPattern(clone[key],rowFilter,pagingFilter);
+								break;
+								case 'TFOOT':
+								ctrl._addFooterPattern(clone[key]);
+								break;
+							}
 						}
-					};
+					}
 				});
 
 			}; //[END transclude]
-			$scope.rowFilter = rowFilter;
+			
 		},
 
 	}
