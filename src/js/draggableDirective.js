@@ -3,13 +3,20 @@ angular.module('objectTable').directive("allowDrag", function() {
     restrict: "A",
     controller:function(){},
     compile:function (el,attr){
+
+      function removeDragClass(element,className){
+        var elm = element[0].parentNode.querySelector('.' + className);
+        if(!!elm)
+          elm.classList.remove(className);
+      }
+
       return function pre(scope, element, attrs,ctrl) {
         element.attr('draggable',true);
-        //var ctrl = this;
+
         element.bind("dragstart", function( e ) {
           ctrl.target = this;
           this.classList.add("dragged");
-          e.dataTransfer.setData("text", ctrl.target.getAttribute("index"));
+          e.dataTransfer.setData("text", ctrl.target.cellIndex);
         });
 
         element.bind("dragover", function( e ) {
@@ -24,21 +31,21 @@ angular.module('objectTable').directive("allowDrag", function() {
           e.stopPropagation();
         });
 
+        element.bind("dragend", function( e ) {
+          if(this.classList.contains("dragged"))
+            this.classList.remove("dragged");
+          e.preventDefault();
+        });
+
         element.bind("dragleave", function( e ) {
           this.classList.remove("draggedOver");
         });
 
-        element.bind("dragend", function( e ) {
-         this.classList.remove("dragged");
-         var draggedOver = ctrl.target.parentNode.getElementsByClassName("draggedOver");
-         if(draggedOver.length)
-          draggedOver[0].classList.remove("draggedOver");
-      });
-
         element.bind("drop", function( e ) {
-         var currentIndex = ctrl.toTarget.getAttribute("index"),
-         draggedIndex = e.dataTransfer.getData("text");
-         if(typeof currentIndex == 'undefined' || typeof draggedIndex == 'undefined') throw "Please add 'index' attribute for drag-n-drop function!";
+         var currentIndex = ctrl.toTarget.cellIndex,
+         draggedIndex = parseInt(e.dataTransfer.getData("text"),10);
+         removeDragClass(element, 'dragged');
+         removeDragClass(element, 'draggedOver');
          element.parent().controller('objectTable').changeColumnsOrder(currentIndex,draggedIndex);
          e.preventDefault();
        });

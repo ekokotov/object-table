@@ -24,7 +24,6 @@
 		<thead ng-if="!customHeader" >
 			<tr>
 				<th ng-repeat="head in headers track by $index" 
-				index="{{$index}}" 
 				ng-click="sortBy(fields[$index])" 
 				ng-class="headerIsSortedClass(head)" 
 				class="sortable">{{head}} <div ng-if="resize" class="resize"></div>

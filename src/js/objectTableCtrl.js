@@ -129,8 +129,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 
 		/* Drag-n-Drop columns exchange*/
 		this.changeColumnsOrder = function(from,to){
-			//console.log("from "+from + " to "+to);
-			var self = this;
 			$scope.$apply(function() {
 				$scope.fields.swap(from,to);
 				$scope.headers.swap(from,to);
@@ -167,7 +165,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 					Array.prototype.swap.apply(ths,[from,to]);
 
 					for (var i = 0,length=ths.length; i <length; i++) {
-						ths[i].setAttribute('index',i);
 						tr.appendChild(ths[i]);
 					};
 					thead.appendChild(tr);
