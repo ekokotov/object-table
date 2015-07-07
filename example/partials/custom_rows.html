@@ -51,3 +51,56 @@ sorting="compound"
 	</table>
 
 </textarea>
+
+<div class="bs-callout bs-callout-primary">
+	<h4>Warning:</h4>
+	If you want to use ng-attributes (like <code>ng-if</code>, <code>ng-repeat</code>,...) inside your template - please add to your <code>&lt;body&gt;</code> <code>ng-non-bindable</code> attribute to prevent Angular engine to compile attributes before table render.
+</div>
+
+<h3>Example:</h3>
+
+<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportDataVariable" 
+			headers="Name, Eye color, Home address, Friends" 
+			fields="name,eyeColor,address,friends">
+		<tbody ng-non-bindable>
+			<tr>
+				<td>{{::item.name}}</td>
+				<td><div class="{{::item.eyeColor}} eye"></div>
+					{{::item.eyeColor}}
+				</td>
+				<td>{{::item.address}}</td>
+				<td>
+					<span ng-repeat="friend in item.friends" class="label label-info friend">
+						{{::friend.name}}
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table  object-table 
+			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
+			data="exportDataVariable" 
+			headers="Name, Eye color, Home address, Friends" 
+			fields="name,eyeColor,address,friends">
+		<tbody ng-non-bindable>
+			<tr>
+				<td>{{::item.name}}</td>
+				<td><div class="{{::item.eyeColor}} eye"></div>
+					{{::item.eyeColor}}
+				</td>
+				<td>{{::item.address}}</td>
+				<td>
+					<span ng-repeat="friend in item.friends" class="label label-info friend">
+						{{::friend.name}}
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</textarea>

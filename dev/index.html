@@ -48,13 +48,8 @@
 
 <table object-table
 		data="dataTeacherSearch"
-		display="10"
-		paging = "false"
 		headers="Name, Department, Category"
-		fields="name, department, category"
-		sorting="simple"
-		paging="true"
-		drag-columns="true">
+		fields="name, department, category">
 		<tbody ng-non-bindable>
 			<tr ng-click="$owner.showTeacherDetails(item)">
 				<td>{{item.name.firstName}}&nbsp;{{item.name.middleName}}&nbsp;{{item.name.lastName}}</td>
