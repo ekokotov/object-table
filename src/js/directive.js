@@ -76,8 +76,10 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 								ctrl._addHeaderPattern(clone[key]);
 								break;
 								case 'TBODY':
-								scope.findBody = true;
-								ctrl._addRowPattern(clone[key],rowFilter,pagingFilter);
+									if(!scope.findBody) {
+										scope.findBody = true;
+										ctrl._addRowPattern(clone[key],rowFilter,pagingFilter);
+									}
 								break;
 								case 'TFOOT':
 								ctrl._addFooterPattern(clone[key]);
