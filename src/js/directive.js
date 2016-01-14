@@ -32,16 +32,16 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			// additional user filters
 			if(!!tAttributes.addFilter){
 				rowFilter += tAttributes.addFilter;
-			};
+			}
 
 			//If SORTING allowed
 			if(tAttributes.sorting!=="false"){
 				rowFilter += "| orderBy:sortingArray";
-			};
+			}
 
 			// add 'allow-drag' attribute to header is just cistom tbody present
 			if(tAttributes.dragColumns){
-				tElement.find('th').attr('allow-drag','')
+				tElement.find('th').attr('allow-drag','');
 			}
 
 			//If SEARCH allowed
@@ -53,7 +53,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 
 			}else if(typeof(tAttributes.search)=='undefined' || tAttributes.search=="true"){
 				rowFilter += "| filter:globalSearch";
-			};
+			}
 
 			//pagingFilter = rowFilter;
 			pagingFilter += " | offset: currentPage:display |limitTo: display";
@@ -89,6 +89,6 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 
 		},
 
-	}
+	};
 
 }]);

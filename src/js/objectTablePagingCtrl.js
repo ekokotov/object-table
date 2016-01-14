@@ -39,10 +39,10 @@ angular.module('objectTable').controller('pagingTableCtrl', ['$scope', '$element
 			$scope.setCurrentPageToTable();
 		};
 
-		
+
 		$scope.range = function () {
 			var rangeSize = $scope.pageCount()+1 <5 ?$scope.pageCount()+1 :5;
-			
+
 			var ret = [];
 			var start = $scope.currentPage;
 

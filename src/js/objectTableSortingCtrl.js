@@ -51,9 +51,9 @@ angular.module('objectTable').controller('objectTableSortingCtrl', ['$scope',
             if (!$scope.sortingArray.length) return;
 
             if ($scope.sortingType == 'simple') {
-                if (field == $scope.sort.fields[0] || "-" + field == $scope.sort.fields[0]) {
+              if (field == $scope.sort.fields[0] || "-" + field == $scope.sort.fields[0]) {
                     return $scope.sort.reverse[0] ? 'table-sort-down' : 'table-sort-up';
-                }
+              }
             } else if ($scope.sortingType == 'compound') {
                 var rowIndex = $scope.sort.fields.indexOf(field);
                 if (rowIndex != -1) {
