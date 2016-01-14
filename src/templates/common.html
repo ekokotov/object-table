@@ -1,31 +1,27 @@
 <div class="object-table-module">
 	<div class="col-xs-12 col-sm-6 col-md-8 sorting-container">
 		<div ng-if="sortingType && sort.fields.length">
-			Sorting: 
+			Sorting:
 			<div ng-repeat="sortField in sort.fields" class="sorting-badge">
-				<span class="glyphicon " 
-				ng-class="{'glyphicon-chevron-down':sort.reverse[$index],
-				'glyphicon-chevron-up':!sort.reverse[$index]}" 
-				></span> 
-
+				<span class="glyphicon" ng-class="{'glyphicon-chevron-down':sort.reverse[$index], 'glyphicon-chevron-up':!sort.reverse[$index]}"></span>
 				{{::sortField}}
-				<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span> 
+				<span class="glyphicon glyphicon-remove close" ng-click="removeSorting()"></span>
 			</div>
 		</div>
 	</div>
 	<div class="form-group col-xs-12 col-sm-6 col-md-4" ng-if="search && 'separate'!=search">
-		<input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="row pull-right form-control search">
+		<input type="text"  placeholder="Search" ng-model="$parent.globalSearch" class="row pull-right form-control search" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="setCurrentPageForPageCtrl(0)"/>
 		<i class="glyphicon glyphicon-search search_icon"></i>
 	</div>
 
 	<div class="clearfix"></div>
 <div class="back-cover">
 	<table class="table table-responsive table-bordered object-table" ng-mousedown="resizeStart($event)" ng-mouseup="resizeEnd($event)">
-		<thead ng-if="!customHeader" >
+		<thead ng-if="!customHeader">
 			<tr>
-				<th ng-repeat="head in headers track by $index" 
-				ng-click="sortBy(fields[$index])" 
-				ng-class="headerIsSortedClass(head)" 
+				<th ng-repeat="head in headers track by $index"
+				ng-click="sortBy(fields[$index])"
+				ng-class="headerIsSortedClass(head)"
 				class="sortable">{{head}} <div ng-if="resize" class="resize"></div>
 			</th>
 		</tr>
@@ -35,25 +31,23 @@
 		<tr>
 			<th ng-repeat="head in headers track by $index" class="separate">
 			<i class="glyphicon glyphicon-search search_icon separate"></i>
-				<input type="text" ng-model="columnSearch[head]" placeholder="{{head}}..." class="form-control search separate">
+				<input type="text" ng-model="columnSearch[fields[$index]]" placeholder="{{head}}..." class="form-control search separate" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }" ng-change="setCurrentPageForPageCtrl(0)"/>
 			</th>
 		</tr>
-	</thead>	
+	</thead>
 
 	<tbody ng-if="!findBody">
-
 		<tr id="rowTr" ng-click="setSelected(item)" ng-class="{'selected-row':ifSelected(item)}"> <!-- <= will inject ng-repeat -->
 			<!-- params: headers and fields -->
 			<td ng-if="!editable" ng-repeat="field in fields">{{item[field]}}</td>
 			<td ng-if="editable" editable ng-repeat="field in fields">
-				<span contenteditable ng-model="item[field]">{{item[field]}}</span>
+				<div contenteditable ng-model="item[field]">{{item[field]}}</div>
 			</td>
 		</tr>
 
 	</tbody>
 
 </table>
-
 </div>
 
 <div class="loading" ng-show="dataIsLoading">
@@ -63,3 +57,4 @@
 <paging ng-if="paging" data-display="display" count="$filtered.length" class="object-table-paging" ng-hide="dataIsLoading"></paging>
 
 <div class="clearfix"></div>
+</div>

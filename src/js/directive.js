@@ -29,7 +29,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			var rowFilter = "",
 			pagingFilter = "";
 
-			// additional user filters 
+			// additional user filters
 			if(!!tAttributes.addFilter){
 				rowFilter += tAttributes.addFilter;
 			};
@@ -46,13 +46,11 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 
 			//If SEARCH allowed
 			if(tAttributes.search =="separate"){
-				//var fields = [];
 				tAttributes.fields.split(',').forEach(function(item,index){
-				//fields.push( item.trim() );
-				rowFilter += "| filter:{'" +item.trim()+ "':columnSearch[" +index+ "]}";
+				rowFilter += "| filter:{'" + item.trim() + "':columnSearch['" + item + "']}";
 			});
 
-				
+
 			}else if(typeof(tAttributes.search)=='undefined' || tAttributes.search=="true"){
 				rowFilter += "| filter:globalSearch";
 			};
@@ -60,7 +58,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 			//pagingFilter = rowFilter;
 			pagingFilter += " | offset: currentPage:display |limitTo: display";
 
-			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in $filtered = (data" + rowFilter +")"+ pagingFilter);
+			tElement[0].querySelector("#rowTr").setAttribute("ng-repeat","item in $parent.$filtered = (data" + rowFilter +")"+ pagingFilter);
 			//add paging
 			tElement.find("paging").attr("count","$filtered.length");
 
@@ -88,7 +86,7 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
 				});
 
 			}; //[END transclude]
-			
+
 		},
 
 	}

@@ -43,7 +43,31 @@
 
 <body ng-controller="mainController">
 	<div class="col-sm-12">
-		<h2>Patel</h2>
+		<h2>Row custom</h2>
+		<table  object-table
+				from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+				data="exportDataVariable"
+				display="10"
+				search="separate"
+				headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
+				fields="name,eyeColor,age,balance,company,address,favoriteFruit"
+				sorting="compound"
+				drag-columns="true">
+			<tbody>
+				<tr>
+					<td>{{::item.name}}</td>
+					<td><div class="{{::item.eyeColor}} eye"></div>
+						{{::item.eyeColor}}
+					</td>
+					<td>{{::item.age}}</td>
+					<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+					<td>{{::item.company}}</td>
+					<td>{{::item.address}}</td>
+					<td>{{::item.favoriteFruit}}</td>
+				</tr>
+			</tbody>
+		</table>
+	<h2>Patel</h2>
 --
 
 <table object-table
@@ -63,7 +87,7 @@
 		</tbody>
 	</table>
 <br>
---
+
 		<table object-table
 		from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
 		data="exportDataVariable4"
@@ -102,11 +126,12 @@
 	headers="Age, full Name"
 	fields="age,name"
 	sorting="compound"
+	editable="true"
 	search="separate"
 	resize="true"
 	drag-columns="true"
 	></table>
-
+<!--
 	<h2>Template</h2>
 
 	<table object-table class="hover-column"
@@ -126,7 +151,7 @@
 	</thead>
 </table>
 <hr>
-<!--
+
 
 <h2>Server Paging (Simple)</h2>
 
@@ -176,7 +201,7 @@
 		<a href ng-click="loadData(pagingExample.currentPage+1)">Next »</a>
 	</li>
 </ul>
-</nav>  -->
+</nav>
 
 <h2>With footer</h2>
 
@@ -204,6 +229,9 @@ selected-model="report.selectedUser">
 </table>
 
 {{report.selectedUser}}
+
+<h2>Excell selection</h2>
+
 <h2>Theme</h2>
 <table  object-table class="hover-column blue-dust"
 from-url = "http://beta.json-generator.com/api/json/get/DXXROxj"
@@ -414,7 +442,7 @@ add-filter="| filter:{'name':$owner.name} |filter:{'eyeColor':$owner.eyeColor} |
 search="false"
 ></table>
 <div class="row"><hr></div>
-
+ -->
 </div>
 </body>
 </html>

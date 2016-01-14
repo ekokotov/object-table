@@ -18,10 +18,6 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 				$scope.columnSearch = [];
 
 				/* ## after changing search model - clear currentPage ##*/
-				$scope.$watch('columnSearch', function() {
-					if(!!ctrl.pageCtrl)
-						ctrl.pageCtrl.setPage(0);
-				}, true);
 			}else{
 				/* 'separate' or 'true' or 'false '*/
 				$scope.search = typeof($attrs.search)==='undefined' || $attrs.search==="true";
@@ -68,7 +64,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 
 		this._addRowPattern = function(node, rowFilter, paggingFilter){
 			this._checkEditableContent(node);
-			this._addRepeatToRow(node,rowFilter,paggingFilter);
+			this._addRepeatToRow(node, rowFilter, paggingFilter);
 			node.removeAttribute('ng-non-bindable');
 			//compile TBODY
 			$element.find("table").append(node.outerHTML);
@@ -76,7 +72,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			$compile($element.find("tbody"))($scope);
 		};
 
-		this._addRepeatToRow = function(node,rowFilter,paggingFilter){
+		this._addRepeatToRow = function(node, rowFilter, paggingFilter){
 			var tr = angular.element(node).find("tr");
 
 			tr.attr("ng-repeat","item in $filtered = (data" + rowFilter + ")" + paggingFilter);
@@ -91,7 +87,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 			var innerModel,findModelRegex=/\{\{:*:*(.*?)\}\}/g;
 			Array.prototype.forEach.call(node.querySelectorAll("[editable]"), function(td){
 				innerModel = td.innerHTML.replace(findModelRegex,'$1');
-				td.innerHTML = "<span contentEditable ng-model='" +innerModel+ "'>{{" + innerModel + "}}</span>";
+				td.innerHTML = "<div contentEditable ng-model='" +innerModel+ "'>{{" + innerModel + "}}</div>";
 			});
 		};
 
@@ -129,58 +125,55 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 
 		/* Drag-n-Drop columns exchange*/
 		this.changeColumnsOrder = function(from,to){
-			$scope.$apply(function() {
-				$scope.fields.swap(from,to);
-				$scope.headers.swap(from,to);
-				if(!!$scope.columnSearch){
-					$scope.columnSearch.swap(from,to);
-				}
-				if(!!ctrl.bodyTemplate){
-					var tds = angular.element(ctrl.bodyTemplate).children(),
-					html="",
-					tr  = document.createElement('tr'),
-					tbody  = document.createElement('tbody'),
-					attributes = $element.find("tbody").find('tr')[0].attributes;
-					Array.prototype.swap.apply(tds,[from,to]);
-
-					[].forEach.call(attributes, function(attr,index) {
-						tr.setAttribute(attr.name, attr.value);
-					});
-
-					for (var i = 0,length=tds.length; i <length; i++) {
-						tr.appendChild(tds[i]);
+				$scope.$apply(function() {
+					$scope.fields.swap(from,to);
+					$scope.headers.swap(from,to);
+					if(!!$scope.columnSearch){
+						$scope.columnSearch.swap(from,to);
 					}
+					if(!!ctrl.bodyTemplate){
+						var tds = angular.element(ctrl.bodyTemplate).children(),
+						html="",
+						tr  = document.createElement('tr'),
+						tbody  = document.createElement('tbody'),
+						attributes = $element.find("tbody").find('tr')[0].attributes;
+						Array.prototype.swap.apply(tds,[from,to]);
 
-					tbody.appendChild(tr);
+						[].forEach.call(attributes, function(attr,index) {
+							tr.setAttribute(attr.name, attr.value);
+						});
 
-					$element.find("tbody").replaceWith(tbody);
-					ctrl.bodyTemplate = tbody.innerHTML;
-					$compile($element.find('tbody'))($scope);
-				}
-				if($scope.customHeader){
-					var ths = $element.find('th'),
-					tr  = document.createElement('tr'),
-					thead  = document.createElement('thead');
+						for (var i = 0,length=tds.length; i <length; i++) {
+							tr.appendChild(tds[i]);
+						}
 
-					Array.prototype.swap.apply(ths,[from,to]);
+						tbody.appendChild(tr);
 
-					for (var i = 0,length=ths.length; i <length; i++) {
-						tr.appendChild(ths[i]);
-					};
-					thead.appendChild(tr);
-					$element.find("thead").replaceWith(thead);
+						$element.find("tbody").replaceWith(tbody);
+						ctrl.bodyTemplate = tbody.innerHTML;
+						$compile($element.find('tbody'))($scope);
+					}
+					if($scope.customHeader){
+						var ths = $element.find('th'),
+						tr  = document.createElement('tr'),
+						thead  = document.createElement('thead');
 
-				}
-				if(!!ctrl.pageCtrl)
-					ctrl.pageCtrl.setPage(0);
-			});
-};
+						Array.prototype.swap.apply(ths,[from,to]);
 
-/* ## after changing search model - clear currentPage ##*/
-$scope.$watch('globalSearch',function(){
-	if(!!ctrl.pageCtrl)
-		ctrl.pageCtrl.setPage(0);
-});
+						for (var i = 0,length=ths.length; i <length; i++) {
+							tr.appendChild(ths[i]);
+						};
+						thead.appendChild(tr);
+						$element.find("thead").replaceWith(thead);
 
+					}
+					if(!!ctrl.pageCtrl)
+						ctrl.pageCtrl.setPage(0);
+				});
+		};
+
+		$scope.setCurrentPageForPageCtrl = function(_currentPage) {
+			if(!!ctrl.pageCtrl) ctrl.pageCtrl.setPage(_currentPage);
+		}
 
 }]);

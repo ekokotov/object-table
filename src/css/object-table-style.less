@@ -209,9 +209,9 @@
 						cursor: pointer;
 					}
 					&[editable]{
-						span{
+						div[contenteditable]{
+							padding: 3px;
 							&:focus{
-								padding: 3px;
 								margin: -3px;
 								border: 2px dotted #738395;
 								background-color: #F5F5F5;
@@ -223,7 +223,7 @@
 						}
 					}
 				}
-				
+
 			}
 		/*&.resize{
 			width: auto;
@@ -250,10 +250,10 @@
 						&:hover{
 							z-index: 1;
 							&::before{
-								content: '';  
+								content: '';
 								height: 10000px;
 								left: 0;
-								position: absolute;  
+								position: absolute;
 								top: -5000px;
 								width: 100%;
 								z-index: -1;
