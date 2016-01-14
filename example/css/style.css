@@ -144,3 +144,11 @@
     margin: 0;
     box-shadow: 0 0 3px gray;
   }
+  .label{
+    font-size: 12px;
+    font-weight: 100;
+    font-family: Arial;
+  }
+  .label.friend{
+    margin-right: 10px;
+  }
