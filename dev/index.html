@@ -1,34 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="test" >
+<html lang="en" ng-app="test">
 
 <head>
-	<meta charset="UTF-8">
-	<title>jTable Example</title>
-	<link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../build/object-table-style.css">
-	<link rel="stylesheet" type="text/css" href="../build/themes/dark-sky.css">
-	<link rel="stylesheet" type="text/css" href="../build/themes/blue-dust.css">
-	<link rel="stylesheet" type="text/css" href="../example/css/style.css">
-	<style>
-	._personal_inf{
-		background-color: rgb(212, 255, 227);
-		color: green;
-	}
-	.additional_inf{
-		background-color: rgb(230, 241, 246);
-	}
-	.selected{
-		background-color: red;
-	}
-
-	</style>
+    <meta charset="UTF-8">
+    <title>jTable Example</title>
+    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../build/object-table-style.css">
+    <link rel="stylesheet" type="text/css" href="../build/themes/dark-sky.css">
+    <link rel="stylesheet" type="text/css" href="../build/themes/blue-dust.css">
+    <link rel="stylesheet" type="text/css" href="../example/css/style.css">
+    <style>
+    ._personal_inf {
+        background-color: rgb(212, 255, 227);
+        color: green;
+    }
+    
+    .additional_inf {
+        background-color: rgb(230, 241, 246);
+    }
+    
+    .selected {
+        background-color: red;
+    }
+    </style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular-route.js"></script>
-
 <!-- bower:js -->
 <!-- endbower -->
-
 <script type="text/javascript" src="../src/js/contentEditableDirective.js"></script>
 <script type="text/javascript" src="../src/js/directive.js"></script>
 <script type="text/javascript" src="../src/js/objectTableSortingCtrl.js"></script>
@@ -42,96 +41,67 @@
 <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 <body ng-controller="mainController">
-	<div class="col-sm-12">
-		<h2>Row custom</h2>
-		<table  object-table
-				from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
-				data="exportDataVariable"
-				display="10"
-				search="separate"
-				headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
-				fields="name,eyeColor,age,balance,company,address,favoriteFruit"
-				sorting="compound"
-				drag-columns="true">
-			<tbody>
-				<tr>
-					<td>{{::item.name}}</td>
-					<td><div class="{{::item.eyeColor}} eye"></div>
-						{{::item.eyeColor}}
-					</td>
-					<td>{{::item.age}}</td>
-					<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
-					<td>{{::item.company}}</td>
-					<td>{{::item.address}}</td>
-					<td>{{::item.favoriteFruit}}</td>
-				</tr>
-			</tbody>
-		</table>
-	<h2>Patel</h2>
---
-
-<table object-table
-		data="dataTeacherSearch"
-		headers="Name, Department, Category"
-		fields="name, department, category">
-		<tbody ng-non-bindable>
-			<tr ng-click="$owner.showTeacherDetails(item)">
-				<td>{{item.name.firstName}}&nbsp;{{item.name.middleName}}&nbsp;{{item.name.lastName}}</td>
-				<td ng-repeat="items in item.department" ng-if="items.status">
-					<span>{{items.dept}}</span>
-				</td>
-				<td ng-repeat="designation in item.designation" ng-if="designation.status">
-					<span >{{designation.status}}</span>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-<br>
-
-		<table object-table
-		from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
-		data="exportDataVariable4"
-		display="10"
-		headers="Name, Eye color, Age,Balance,Company,Favorite Fruit"
-		fields="name,eyeColor,age,balance,company,favoriteFruit"
-		resize="true">
-		<thead>
-				<tr>
-					<th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>
-					<th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable" allow-drag>Eye color</th>
-					<th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable" allow-drag>Age</th>
-					<th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable" allow-drag>Balance</th>
-					<th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable" allow-drag>Company</th>
-					<th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable" allow-drag>Favorite Fruit</th>
-				</tr>
-			</thead>
-		<tbody>
-			<tr>
-				<td>{{::item.name}}</td>
-				<td><div class="{{::item.eyeColor}} eye"></div>
-					{{::item.eyeColor}}
-				</td>
-				<td>{{::item.age}}</td>
-				<td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
-				<td>{{::item.balance}}</td>
-				<td>{{::item.favoriteFruit}}</td>
-			</tr>
-		</tbody>
-		</table>
-
-	<h2>Excell selection</h2>
-
-	<table object-table class="hover-column"
-	data="data"
-	headers="Age, full Name"
-	fields="age,name"
-	sorting="compound"
-	editable="true"
-	search="separate"
-	resize="true"
-	drag-columns="true"
-	></table>
-<!--
+    <div class="col-sm-12">
+        <h2>Row custom</h2>
+        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable" display="10" search="separate" headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" fields="name,eyeColor,age,balance,company,address,favoriteFruit" sorting="compound" drag-columns="true">
+            <tbody>
+                <tr>
+                    <td editable>{{::item.name}}</td>
+                    <td>
+                        <div class="{{::item.eyeColor}} eye"></div>
+                        {{::item.eyeColor}}
+                    </td>
+                    <td>{{::item.age}}</td>
+                    <td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+                    <td>{{::item.company}}</td>
+                    <td>{{::item.address}}</td>
+                    <td>{{::item.favoriteFruit}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Patel</h2> --
+        <table object-table data="dataTeacherSearch" headers="Name, Department, Category" fields="name, department, category">
+            <tbody ng-non-bindable>
+                <tr ng-click="$owner.showTeacherDetails(item)">
+                    <td>{{item.name.firstName}}&nbsp;{{item.name.middleName}}&nbsp;{{item.name.lastName}}</td>
+                    <td ng-repeat="items in item.department" ng-if="items.status">
+                        <span>{{items.dept}}</span>
+                    </td>
+                    <td ng-repeat="designation in item.designation" ng-if="designation.status">
+                        <span>{{designation.status}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable4" display="10" headers="Name, Eye color, Age,Balance,Company,Favorite Fruit" fields="name,eyeColor,age,balance,company,favoriteFruit" resize="true">
+            <thead>
+                <tr>
+                    <th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>
+                    <th ng-click="sortBy('eyeColor')" ng-class="headerIsSortedClass('Eye color')" class="sortable" allow-drag>Eye color</th>
+                    <th ng-click="sortBy('age')" ng-class="headerIsSortedClass('Age')" class="sortable" allow-drag>Age</th>
+                    <th ng-click="sortBy('balance')" ng-class="headerIsSortedClass('Balance')" class="sortable" allow-drag>Balance</th>
+                    <th ng-click="sortBy('company')" ng-class="headerIsSortedClass('Company')" class="sortable" allow-drag>Company</th>
+                    <th ng-click="sortBy('favoriteFruit')" ng-class="headerIsSortedClass('Favorite Fruit')" class="sortable" allow-drag>Favorite Fruit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{::item.name}}</td>
+                    <td>
+                        <div class="{{::item.eyeColor}} eye"></div>
+                        {{::item.eyeColor}}
+                    </td>
+                    <td>{{::item.age}}</td>
+                    <td style="background-color:rgb(212, 255, 227)">{{::item.balance}}</td>
+                    <td>{{::item.balance}}</td>
+                    <td>{{::item.favoriteFruit}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Excell selection</h2>
+        <table object-table class="hover-column" data="data" headers="Age, full Name" fields="age,name" sorting="compound" editable="true" on-edit="logChange($oldValue, $newValue)" search="separate" resize="true" drag-columns="true"></table>
+        <!--
 	<h2>Template</h2>
 
 	<table object-table class="hover-column"
@@ -443,6 +413,7 @@ search="false"
 ></table>
 <div class="row"><hr></div>
  -->
-</div>
+    </div>
 </body>
+
 </html>
