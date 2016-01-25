@@ -84,3 +84,38 @@ sorting="compound"
 	Add attribute <code>editable</code> to cell for editing.
 </div>
 
+<h2>Edit event</h2>
+<div class="bs-callout bs-callout-primary">
+	<h4>Notice:</h4>
+	Use <code>on-edit</code> attribute to catch after-edit event. Pass <code>$oldValue</code> and <code>$newValue</code> parameters to your callback.
+</div>
+	<table object-table 
+	from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data = "exportDataVariable2" 
+	display = "10" 
+	headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+	fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
+	sorting = "compound" 
+	editable = "true"
+	on-edit="logChange($oldValue, $newValue)">
+</table>
+<!-- CODE -->
+<h3>In template:</h3>
+<textarea ui-codemirror ui-codemirror-opts="editorOptions">
+	<table object-table 
+	from-url = "http://beta.json-generator.com/api/json/get/DXXROxj" 
+	data = "exportDataVariable2" 
+	display = "10" 
+	headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" 
+	fields = "name,eyeColor,age,balance,company,address,favoriteFruit" 
+	sorting = "compound" 
+	editable = "true"
+	on-edit="logChange($oldValue, $newValue)">
+</textarea>
+<h3>In your controller:</h3>
+
+<textarea ui-codemirror ui-codemirror-opts="editorOptionsJS">
+  $scope.logChange = function(oldValue, newValue) {
+    console.log('OLD value:', oldValue, '\nNEW value:', newValue);
+  };
+</textarea>
