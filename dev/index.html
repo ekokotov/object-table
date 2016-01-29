@@ -43,7 +43,7 @@
 <body ng-controller="mainController">
     <div class="col-sm-12">
         <h2>Row custom</h2>
-        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable" display="10" search="separate" headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" fields="name,eyeColor,age,balance,company,address,favoriteFruit" sorting="compound" drag-columns="true">
+        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable" display="10" search="separate" headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" fields="name,eyeColor,age,balance,company,address,favoriteFruit" sorting="compound" drag-columns="true" on-edit="logChange($oldValue, $newValue)">
             <tbody>
                 <tr>
                     <td editable>{{::item.name}}</td>

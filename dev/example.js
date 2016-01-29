@@ -29,8 +29,7 @@ angular.module('test', ['objectTable'])
   };
 
   $scope.logChange = function(oldValue, newValue) {
-    console.log(oldValue);
-    console.log(newValue);
+    console.log('OLD value:', oldValue, '\nNEW value:', newValue);
   };
 
   $scope.dataTeacherSearch = [{'employeeNo': '4433',

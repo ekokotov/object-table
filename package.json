@@ -1,6 +1,6 @@
 {
   "name": "object-table",
-  "version": "",
+  "version": "0.2.2",
   "description": "angular smart table directive",
   "main": "build/object-table.js",
   "scripts": {
