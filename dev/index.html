@@ -43,7 +43,7 @@
 <body ng-controller="mainController">
     <div class="col-sm-12">
         <h2>Row custom</h2>
-        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable" display="10" search="separate" headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" fields="name,eyeColor,age,balance,company,address,favoriteFruit" sorting="compound" drag-columns="true" on-edit="logChange($oldValue, $newValue)">
+        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable" display="10" search="separate" headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" fields="name,eyeColor,age,balance,company,address,favoriteFruit" sorting="compound" drag-columns="true" on-edit="logChange($oldValue, $newValue)" on-drag="logDrag($oldOrder, $newOrder)">
             <tbody>
                 <tr>
                     <td editable>{{::item.name}}</td>
@@ -74,7 +74,7 @@
             </tbody>
         </table>
         <br>
-        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable4" display="10" headers="Name, Eye color, Age,Balance,Company,Favorite Fruit" fields="name,eyeColor,age,balance,company,favoriteFruit" resize="true">
+        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable4" display="10" headers="Name, Eye color, Age,Balance,Company,Favorite Fruit" fields="name,eyeColor,age,balance,company,favoriteFruit" resize="true" drag-columns="true" on-drag="logDrag($oldOrder, $newOrder)">
             <thead>
                 <tr>
                     <th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>

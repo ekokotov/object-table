@@ -18,10 +18,12 @@ angular.module('objectTable').directive('objectTable', ['$compile','$interpolate
       //fields:"@",
       sortingType: '@?sorting',
       editable: '&?',
-      onEdit: '&?',
       select: '@?',
       selectedModel: '=?',
-      dragColumns: '=?'
+      dragColumns: '=?',
+      //events
+      onEdit: '&?',
+      onDrag: '&?',
 
     },
     compile: function(tElement, tAttributes) {

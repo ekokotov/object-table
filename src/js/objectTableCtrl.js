@@ -1,10 +1,10 @@
 angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout','$element', '$attrs','$http', '$compile', '$controller', 'objectTableUtilService',
-	function angTableCtrl($scope, $timeout, $element, $attrs, $http, $compile, $controller, Util) {
+  function angTableCtrl($scope, $timeout, $element, $attrs, $http, $compile, $controller, Util) {
 
-  $controller('objectTableSortingCtrl', {$scope: $scope});
-  var ctrl = this;
+    $controller('objectTableSortingCtrl', {$scope: $scope});
+    var ctrl = this;
 
-  this._init = function() {
+    this._init = function() {
     $scope.headers = [];
     $scope.fields = [];
     $scope.display = $scope.display || 5;
@@ -38,14 +38,14 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
       this.onEdit = $scope.onEdit;
     }
 
-    //reinitialize selected model
+    //reinitialize selected model~`
     $scope.selectedModel = $scope.select === 'multiply' ? [] : {};
 
   };
 
-  this.onEdit = $scope.onEdit;
+    this.onEdit = $scope.onEdit;
 
-  this._loadExternalData = function(url) {
+    this._loadExternalData = function(url) {
     $scope.dataIsLoading = true;
     $http.get(url).then(function(response) {
       $scope.data = response.data;
@@ -54,7 +54,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
 
   };
 
-  this._addHeaderPattern = function(node) {
+    this._addHeaderPattern = function(node) {
     $scope.customHeader = true;
     //add Index to drag
     Array.prototype.forEach.call(node.querySelectorAll('[allow-drag]'), function(th, index) {
@@ -64,11 +64,11 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     $element.find('table').prepend(node);
   };
 
-  this._addFooterPattern = function(node) {
+    this._addFooterPattern = function(node) {
     $element.find('table').prepend(node);
   };
 
-  this._addRowPattern = function(node, rowFilter, paggingFilter) {
+    this._addRowPattern = function(node, rowFilter, paggingFilter) {
     this._checkEditableContent(node);
     this._addRepeatToRow(node, rowFilter, paggingFilter);
     node.removeAttribute('ng-non-bindable');
@@ -78,7 +78,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     $compile($element.find('tbody'))($scope);
   };
 
-  this._addRepeatToRow = function(node, rowFilter, paggingFilter) {
+    this._addRepeatToRow = function(node, rowFilter, paggingFilter) {
     var tr = angular.element(node).find('tr');
 
     tr.attr('ng-repeat','item in $filtered = (data' + rowFilter + ')' + paggingFilter);
@@ -89,7 +89,7 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     tr.attr('ng-class','{\'selected-row\':ifSelected(item)}');
   };
 
-  this._checkEditableContent = function(node) {
+    this._checkEditableContent = function(node) {
     var innerModel, findModelRegex = /\{\{:*:*(.*?)\}\}/g;
     Array.prototype.forEach.call(node.querySelectorAll('[editable]'), function(td) {
       innerModel = td.innerHTML.replace(findModelRegex,'$1');
@@ -97,15 +97,15 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     });
   };
 
-  this.setCurrentPage = function(_currentPage) {
+    this.setCurrentPage = function(_currentPage) {
     $scope.currentPage = _currentPage;
   };
 
-  $scope.setSelected = function(item) {
+    $scope.setSelected = function(item) {
     if ($scope.select === 'multiply') {
       if (!ctrl._containsInSelectArray(item)) {
         $scope.selectedModel.push(item);
-      }else {
+      } else {
         $scope.selectedModel.splice($scope.selectedModel.indexOf(item),1);
       }
     }else {
@@ -113,27 +113,31 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     }
   };
 
-  this._containsInSelectArray = function(obj) {
+    this._containsInSelectArray = function(obj) {
     if ($scope.selectedModel.length)
-				return $scope.selectedModel.filter(function(listItem) {
-  return angular.equals(listItem, obj);
-				}).length > 0;
+        return $scope.selectedModel.filter(function(listItem) {
+          return angular.equals(listItem, obj);
+        }).length > 0;
   };
 
-  $scope.ifSelected = function(item) {
+    $scope.ifSelected = function(item) {
 
-    if (!!$scope.selectedModel && $scope.select === 'multiply') {
-      return ctrl._containsInSelectArray(item);
-    }else {
-      return item.$$hashKey == $scope.selectedModel.$$hashKey;
-    }
-  };
+      if (!!$scope.selectedModel && $scope.select === 'multiply') {
+        return ctrl._containsInSelectArray(item);
+      }else {
+        return item.$$hashKey == $scope.selectedModel.$$hashKey;
+      }
+    };
 
-  /* Drag-n-Drop columns exchange*/
-  this.changeColumnsOrder = function(from, to) {
+    /* Drag-n-Drop columns exchange*/
+    this.changeColumnsOrder = function(from, to) {
     $scope.$apply(function() {
       $scope.fields.swap(from,to);
+      var headersBackup =  $scope.headers.slice();
       $scope.headers.swap(from,to);
+      if (!!$scope.onDrag && typeof $scope.onDrag === 'function')
+          $scope.onDrag({$oldOrder: headersBackup, $newOrder: $scope.headers});
+      headersBackup = null;
       if (!!$scope.columnSearch) {
         $scope.columnSearch.swap(from,to);
       }
@@ -178,8 +182,8 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
     });
   };
 
-  $scope.setCurrentPageForPageCtrl = function(_currentPage) {
+    $scope.setCurrentPageForPageCtrl = function(_currentPage) {
     if (!!ctrl.pageCtrl) ctrl.pageCtrl.setPage(_currentPage);
   }
 
-}]);
+  }]);

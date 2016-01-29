@@ -32,6 +32,10 @@ angular.module('test', ['objectTable'])
     console.log('OLD value:', oldValue, '\nNEW value:', newValue);
   };
 
+  $scope.logDrag = function(oldOrder, newOrder) {
+    console.log(oldOrder, newOrder)
+  };
+
   $scope.dataTeacherSearch = [{'employeeNo': '4433',
  'name': {'firstName': 'kuldeep','middleName': 'dsf','lastName': 'gfdkjh'},
  'department': [{'dept': 'Computer Science','status': true},
