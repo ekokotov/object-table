@@ -1,4 +1,5 @@
 Display JSON in Table with AngularJS
+# Is no longer supported...
 =================
 [![Build Status](https://travis-ci.org/ekokotov/object-table.svg)](https://travis-ci.org/ekokotov/object-table)
 
