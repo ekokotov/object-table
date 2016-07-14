@@ -121,12 +121,14 @@ angular.module('objectTable').controller('objectTableCtrl', ['$scope', '$timeout
   };
 
     $scope.ifSelected = function(item) {
-
-      if (!!$scope.selectedModel && $scope.select === 'multiply') {
-        return ctrl._containsInSelectArray(item);
-      }else {
-        return item.$$hashKey == $scope.selectedModel.$$hashKey;
+      if (!!$scope.selectedModel ) {
+        if ($scope.select === 'multiply') {
+          return ctrl._containsInSelectArray(item);
+        } else {
+          return item.$$hashKey == $scope.selectedModel.$$hashKey;
+        }
       }
+      return false;
     };
 
     /* Drag-n-Drop columns exchange*/
