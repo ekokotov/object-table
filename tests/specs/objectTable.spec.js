@@ -64,4 +64,12 @@ describe('Unit: ObjectTableController', function() {
     expect(elm.find('tbody').find('td')[1].innerText).toEqual(""+scope.users[0][fields[1]]);
   });
 
+  describe('ifSelected', function(){
+    it('should return false if no row selected', function(){
+      var isolatedScope = elm.children().scope()
+      isolatedScope.selectedModel = null;
+      expect(isolatedScope.ifSelected({})).toBeFalsy()
+    })
+  })
+
 });
