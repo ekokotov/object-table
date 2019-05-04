@@ -92,7 +92,7 @@ selected-model		 | no		| It exports selected model to controller variable. selec
 resize		 		 | no		| *default: true*. Use column resizing.
 drag-columns		 | no		| *default: false*. It allows to reorder your columns using drag-n-drop.
 
-##Themes
+## Themes
 Please check new 'Dark-sky' and 'Blue-dust' themes:
 http://ekokotov.github.io/object-table/samples.html#/themes
 
