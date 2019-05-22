@@ -69,7 +69,7 @@ gulp.task('js-templates', function() {
 });*/
 
 
-gulp.task('build', ['js-templates', 'js-min', 'less'], function() {
+gulp.task('build', gulp.series('js-templates', 'js-min', 'less'), function() {
 
 	gulp.src(TEMP_FOLDER + '/**/*.js')
 	.pipe(plugins.concat(OUTPUT_FILE))

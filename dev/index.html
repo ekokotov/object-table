@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>jTable Example</title>
-    <link rel="stylesheet" type="text/css" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../build/object-table-style.css">
     <link rel="stylesheet" type="text/css" href="../build/themes/dark-sky.css">
     <link rel="stylesheet" type="text/css" href="../build/themes/blue-dust.css">
@@ -14,11 +14,11 @@
         background-color: rgb(212, 255, 227);
         color: green;
     }
-    
+
     .additional_inf {
         background-color: rgb(230, 241, 246);
     }
-    
+
     .selected {
         background-color: red;
     }
@@ -43,7 +43,7 @@
 <body ng-controller="mainController">
     <div class="col-sm-12">
         <h2>Row custom</h2>
-        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable" display="10" search="separate" headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" fields="name,eyeColor,age,balance,company,address,favoriteFruit" sorting="compound" drag-columns="true" on-edit="logChange($oldValue, $newValue)" on-drag="logDrag($oldOrder, $newOrder)">
+        <table object-table from-url="https://next.json-generator.com/api/json/get/VyffA6MhV" data="exportDataVariable" display="10" search="separate" headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit" fields="name,eyeColor,age,balance,company,address,favoriteFruit" sorting="compound" drag-columns="true" on-edit="logChange($oldValue, $newValue)" on-drag="logDrag($oldOrder, $newOrder)">
             <tbody>
                 <tr>
                     <td editable>{{::item.name}}</td>
@@ -74,7 +74,7 @@
             </tbody>
         </table>
         <br>
-        <table object-table from-url="http://beta.json-generator.com/api/json/get/DXXROxj" data="exportDataVariable4" display="10" headers="Name, Eye color, Age,Balance,Company,Favorite Fruit" fields="name,eyeColor,age,balance,company,favoriteFruit" resize="true" drag-columns="true" on-drag="logDrag($oldOrder, $newOrder)">
+        <table object-table from-url="https://next.json-generator.com/api/json/get/VyffA6MhV" data="exportDataVariable4" display="10" headers="Name, Eye color, Age,Balance,Company,Favorite Fruit" fields="name,eyeColor,age,balance,company,favoriteFruit" resize="true" drag-columns="true" on-drag="logDrag($oldOrder, $newOrder)">
             <thead>
                 <tr>
                     <th ng-click="sortBy('name')" ng-class="headerIsSortedClass('Name')" class="sortable" allow-drag>Name</th>
@@ -204,7 +204,7 @@ selected-model="report.selectedUser">
 
 <h2>Theme</h2>
 <table  object-table class="hover-column blue-dust"
-from-url = "http://beta.json-generator.com/api/json/get/DXXROxj"
+from-url = "https://next.json-generator.com/api/json/get/VyffA6MhV"
 data = "exportDataVariable"
 headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
 fields = "name,eyeColor,age,balance,company,address,favoriteFruit"
@@ -253,7 +253,7 @@ search="separate"
 <h2>External resource</h2>
 
 <table object-table
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+from-url="https://next.json-generator.com/api/json/get/VyffA6MhV"
 data="exportDataVariable1"
 display="2"
 headers="Name, Age"
@@ -263,7 +263,7 @@ fields="name, age"
 <h2>Editable cells (all)</h2>
 
 <table object-table
-from-url = "http://beta.json-generator.com/api/json/get/DXXROxj"
+from-url = "https://next.json-generator.com/api/json/get/VyffA6MhV"
 data = "exportDataVariable2"
 display = "10"
 headers = "Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
@@ -277,7 +277,7 @@ editable = "true"
 <h2>Editable cells (Eye color)</h2>
 
 <table object-table
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+from-url="https://next.json-generator.com/api/json/get/VyffA6MhV"
 data="exportDataVariable3"
 display="10"
 headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
@@ -302,7 +302,7 @@ sorting="compound"
 <h2>Custom headers pattern</h2>
 
 <table object-table
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+from-url="https://next.json-generator.com/api/json/get/VyffA6MhV"
 data="exportDataVariable5"
 display="10"
 headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
@@ -330,7 +330,7 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 <h2>Rows pattern</h2>
 
 <table object-table
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+from-url="https://next.json-generator.com/api/json/get/VyffA6MhV"
 data="exportDataVariable4"
 display="10"
 headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"
@@ -403,7 +403,7 @@ resize="true"
 </div>
 <br><br>
 <table object-table
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj"
+from-url="https://next.json-generator.com/api/json/get/VyffA6MhV"
 data="exportDataVariable5"
 display="10"
 headers="Name, Eye color, Age,Balance,Company,Home address,Favorite Fruit"

@@ -1,11 +1,11 @@
 <h2>Custom headers pattern</h2>
 
-<table object-table 
-from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-data="exportDataVariable5" 
-display="10" 
-headers="Name, Eye color, Age,Balance,Company,Address,Favorite Fruit" 
-fields="name,eyeColor,age,balance,company,address,favoriteFruit" 
+<table object-table
+from-url="https://next.json-generator.com/api/json/get/VyffA6MhV"
+data="exportDataVariable5"
+display="10"
+headers="Name, Eye color, Age,Balance,Company,Address,Favorite Fruit"
+fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 >
 <thead>
 	<tr>
@@ -31,11 +31,11 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 <!-- CODE -->
 <h3>In template:</h3>
 <textarea ui-codemirror ui-codemirror-opts="editorOptions">
-	<table  object-table 
-			from-url="http://beta.json-generator.com/api/json/get/DXXROxj" 
-			data="exportsVariable" 
-			display="10" 
-			headers="Name, Eye color, Age,Balance,Company,Address,Favorite Fruit" 
+	<table  object-table
+			from-url="https://next.json-generator.com/api/json/get/VyffA6MhV"
+			data="exportsVariable"
+			display="10"
+			headers="Name, Eye color, Age,Balance,Company,Address,Favorite Fruit"
 			fields="name,eyeColor,age,balance,company,address,favoriteFruit">
 	<thead>
 		<!-- Additional header -->
@@ -44,12 +44,12 @@ fields="name,eyeColor,age,balance,company,address,favoriteFruit"
 			<th colspan="4" class="additional_inf">Additional information</th>
 		</tr>
 		<tr>
-			<th ng-click="sortBy('name')" 
+			<th ng-click="sortBy('name')"
 				ng-class="headerIsSortedClass('Name')"
 				class="sortable _personal_inf">Name</th>
 
 			<th ng-click="sortBy('eyeColor')"
-			    ng-class="headerIsSortedClass('Eye color')" 
+			    ng-class="headerIsSortedClass('Eye color')"
 			    class="sortable  _personal_inf">Eye color</th>
 
 			<th ng-click="sortBy('age')"
