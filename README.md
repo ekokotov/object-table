@@ -1,5 +1,5 @@
-Display JSON in Table with AngularJS
-# Is no longer supported...
+Display JSON data in table with AngularJS
+
 =================
 [![Build Status](https://travis-ci.org/ekokotov/object-table.svg)](https://travis-ci.org/ekokotov/object-table)
 
@@ -35,10 +35,13 @@ Feature List
 - support server pagination
 - themes!
 
-## Installing via Bower
+## Installing:
 ```
 bower install angular-object-table
+nom i angular-object-table --save
+yarn add angular-object-table
 ```
+
 
 ## Run examples
 Just run http server form root folder and open in browser example directory: http://localhost:8080/example/
