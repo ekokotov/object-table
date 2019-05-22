@@ -1,8 +1,8 @@
 {
-  "name": "object-table",
+  "name": "angular-object-table",
   "version": "0.2.2",
   "description": "angular smart table directive",
-  "main": "build/object-table.js",
+  "main": "build/angular-object-table.js",
   "scripts": {
     "test": "karma start tests/karma.conf.js"
   },
