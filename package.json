@@ -1,10 +1,14 @@
 {
   "name": "angular-object-table",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "angular smart table directive",
   "main": "build/angular-object-table.js",
   "scripts": {
     "test": "karma start tests/karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekokotov/object-table.git"
   },
   "keywords": [
     "angular",
