@@ -1,31 +1,32 @@
 {
   "name": "angular-object-table",
-  "version": "0.2.2",
+  "version": "0.2.6",
   "authors": [
-  "Evgeny Kokotov<yauheni@yauheni.com>"
+    "Evgeny Kokotov"
   ],
   "description": "angular smart table data grid",
-  "main": ["build/object-table.js",
-  "build/object-table-style.css"
+  "main": [
+    "build/object-table.js",
+    "build/object-table-style.css"
   ],
   "keywords": [
-  "angular",
-  "table",
-  "data-grid",
-  "datagrid",
-  "object-table",
-  "angular-object-table",
-  "json-table",
-  "angular json table"
+    "angular",
+    "table",
+    "data-grid",
+    "datagrid",
+    "object-table",
+    "angular-object-table",
+    "json-table",
+    "angular json table"
   ],
   "license": "MIT",
-  "homepage": "index.html",
+  "homepage": "https://github.com/ekokotov/",
   "ignore": [
-  "**/.*",
-  "node_modules",
-  "bower_components",
-  "test",
-  "tests"
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
   ],
   "dependencies": {
     "angular": "~1.3.15"
