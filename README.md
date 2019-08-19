@@ -38,7 +38,7 @@ Feature List
 ## Installing:
 ```
 bower install angular-object-table
-nom i angular-object-table --save
+npm i angular-object-table --save
 yarn add angular-object-table
 ```
 
